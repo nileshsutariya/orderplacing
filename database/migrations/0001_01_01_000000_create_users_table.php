@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('user')) {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
@@ -19,12 +20,12 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number');
             $table->string('address')->nullable();
-            $table->boolean('status');
+            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');;
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
-
+    }
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

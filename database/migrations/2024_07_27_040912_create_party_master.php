@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('item')) {
         Schema::create('party_master', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -19,11 +20,12 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('gst');
             $table->string('pancard_no');
-            $table->boolean('status');
+            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');;
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+    }
     }
 
     /**
