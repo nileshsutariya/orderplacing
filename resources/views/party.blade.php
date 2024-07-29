@@ -3,7 +3,7 @@
 <section class="content ">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-5">
                 <div class="card card-outline card-info">
                     <div class="card-header">
                         <h1 class="card-title " style="font-size:35px ;"><b>Party</b></h1>
@@ -113,6 +113,7 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-7"></div>
     </div>
     </div>
 </section>

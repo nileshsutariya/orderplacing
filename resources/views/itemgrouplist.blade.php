@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @include('layouts.header')
 
 <section class="content">
@@ -71,5 +71,4 @@
 </script>
 
 @include('layouts.footer')
-=======
->>>>>>> 78915d5f057872b5262ef6d7d00cda9abe76caaf
+

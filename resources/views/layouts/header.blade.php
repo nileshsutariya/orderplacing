@@ -96,6 +96,12 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p> Party</p>
               </a>
+              <li class="nav-item">
+              <a href="{{route('itemgroup.index')}}" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
+                <p> Item Group</p>
+              </a>
+            </li>
             </li>
           </ul>
         <!-- /.sidebar-menu -->

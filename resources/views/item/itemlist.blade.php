@@ -6,13 +6,9 @@
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-header">
-<<<<<<< HEAD:resources/views/item/itemlist.blade.php
-                        <h3 class="card-title">Company data</h3>
-                        <a href="{{route('item.create')}}" class="btn btn-primary float-right">Add item</a>
-=======
+
                         <h1 class="card-title"style="font-size:35px ;"> Item data</h1>
                         <a href="{{route('item.create')}}" class="btn btn-danger float-right">Add item</a>
->>>>>>> 78915d5f057872b5262ef6d7d00cda9abe76caaf:resources/views/itemlist.blade.php
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table  table-hover table-valign-middle table-bordered">

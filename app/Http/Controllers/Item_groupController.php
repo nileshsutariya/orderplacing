@@ -50,7 +50,6 @@ class Item_groupController extends Controller
 
     public function delete($id)
     {
-        $itemgroup = Item_group::find($id);
         $itemgroup = Item_group::find($id)->delete();
         return redirect("/itemgroup/list");
     }
@@ -59,7 +58,6 @@ class Item_groupController extends Controller
     {
         $itemgroup = Item_group::find($id);
         $itemgroup = Item_group::where('id',$id)->first();
-        // print_r($itemgroup); die();
         if (is_null($itemgroup)) {
             return redirect("/itemgroup/list");
         } else {
