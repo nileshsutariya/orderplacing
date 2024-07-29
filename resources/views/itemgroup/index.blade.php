@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
-                <div class="card card-primary">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Item Group</h3>
                     </div>
@@ -54,7 +54,7 @@
 
 
             <div class="col-md-7">
-                <div class="card card-secondary">
+                <div class="card card-outline card-secondary">
                     <div class="card-header">
                         <h3 class="card-title">Item Group Data</h3>
                     </div>

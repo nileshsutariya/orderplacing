@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Validator;
 class Item_groupController extends Controller
 {
     public  function index(){
-        return view('itemgroup.index');
+        $itemgroup= Item_group::all();
+        return view('itemgroup.index', compact("itemgroup"));
     }
     // public function index()
     // {

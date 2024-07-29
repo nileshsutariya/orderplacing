@@ -15,12 +15,12 @@ use App\Http\Controllers\Item_groupController;
 
 Route::group(['prefix'=>'/admin'], function () {
 
-    Route::get('/admin/login', [AdminController::class, 'loginform'])->name('loginadmin');
-    Route::post('/admin/login', [AdminController::class, 'adminlogin'])->name('admin.login');
+    Route::get('/login', [AdminController::class, 'loginform'])->name('loginadmin');
+    Route::post('/login', [AdminController::class, 'adminlogin'])->name('admin.login');
     Route::post('/logout', [AdminController::class, 'logout'])->name('adminlogout');
 
     Route::middleware('admin')->group(function () {
-        Route::get('/admin', [AdminController::class,'adminindex'])->name('index');
+        Route::get('/', [AdminController::class,'adminindex'])->name('index');
 
         Route::get('/item',[ItemController::class,'index'] )->name('item.index');
         Route::post('/item/store',[ItemController::class,'store'] )->name('item.store');

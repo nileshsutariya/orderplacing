@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function adminindex()
     {      
-        return view('item');
+        return redirect('/admin');
     }
 
     public function loginform()

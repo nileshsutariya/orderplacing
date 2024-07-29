@@ -1,4 +1,5 @@
 @include('layouts.header')
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -78,6 +79,7 @@
                                         </span>
                                     </div>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="qty" class=" col-form-label text-dark">qty</label>
@@ -90,7 +92,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
 
