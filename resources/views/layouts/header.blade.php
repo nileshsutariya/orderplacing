@@ -49,11 +49,17 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Home</a>
         </li>
+     
       </ul>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-
+      <li class="nav-item d-none d-sm-inline-block float-right">     
+          <a href="#" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+          <form id="logout-form" action="{{ route('adminlogout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+        </li>
 
       </ul>
     </nav>
@@ -68,23 +74,8 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="info">
-            <a href="#" class="d-block"><b>Menu</b></a>
-          </div>
-        </div>
 
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="info">
-            <a href="#" class="d-block" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><b>Logout</b></a>
-          </div>
-        </div>
-        
-        <form id="logout-form" action="{{ route('adminlogout') }}" method="POST" style="display: none;">
-          @csrf
-        </form>
 
-        <!-- Sidebar Menu -->
          <!-- Sidebar Menu -->
          <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -95,9 +86,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link ">
+              <a href="{{route('user.index')}}" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Bills</p>
+                <p>User</p>
               </a>
             </li>
             <li class="nav-item">

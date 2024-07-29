@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Company data</h3>
-                        <a href="{{route('item.create')}}" class="btn btn-danger float-right">Add item</a>
+                        <a href="{{route('user.create')}}" class="btn btn-danger float-right">Add User</a>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table  table-hover table-valign-middle table-bordered">
@@ -26,7 +26,7 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach($item as $value)
+                                @foreach($user as $value)
                                     <tr>
                                         <td>
                                             {{$i++}}
@@ -68,12 +68,10 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    $(function() {
+<script>
+    $(function () {
         $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
+            "responsive": true, "lengthChange": false, "autoWidth": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });

@@ -1,8 +1,3 @@
-
-
-</div>
-  <!-- /.content-wrapper -->
-  
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="#">Billing</a>.</strong>
     All rights reserved.
@@ -10,16 +5,10 @@
       <b>Version</b> 3.2.0
     </div>
   </footer>
-
-<!-- jQuery -->
-<!-- jQuery UI 1.11.4 -->
-<!-- <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script> -->
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  </div>
 
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- ChartJS -->
-
 <script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Summernote -->
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>

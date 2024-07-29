@@ -50,8 +50,6 @@ class ItemController extends Controller
              }
             
     }
-
-
     public function delete($id)
     {
         $item = Item::find($id);
