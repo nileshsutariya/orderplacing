@@ -12,7 +12,8 @@ class Item_groupController extends Controller
     {
         $itemgroup= Item_group::all();
         $data = compact("itemgroup");
-        return view("itemgrouplist")->with($data);
+        // print_r($data); die();
+        return view("itemgroup.itemgrouplist")->with($data);
     }
     public function create()
     {
@@ -25,7 +26,7 @@ class Item_groupController extends Controller
             ]);
             if ($validator->fails()) {
                 $errors = $validator->errors();
-                print_r($errors);die;
+                // print_r($errors);die;
              }
             print_r($request->all());
             $itemgroup= new Item_group();
@@ -44,7 +45,8 @@ class Item_groupController extends Controller
              }else{
                  return redirect("/itemgroup/list");
              }
-            
+            // Item_group::create($request->all());
+            // return route("itemgroup.index");
     }
 
 
@@ -52,7 +54,7 @@ class Item_groupController extends Controller
     {
         $itemgroup = Item_group::find($id);
         $itemgroup = Item_group::find($id)->delete();
-        return redirect("/itemgroup/list");
+        return route("itemgroup.index");
     }
 
     public function edit($id)
@@ -61,7 +63,7 @@ class Item_groupController extends Controller
         $itemgroup = Item_group::where('id',$id)->first();
         // print_r($itemgroup); die();
         if (is_null($itemgroup)) {
-            return redirect("/itemgroup/list");
+            return route("itemgroup.index");
         } else {
             $data = compact("itemgroup");
             return view("itemgroup.itemgroup")->with($data);
@@ -92,7 +94,7 @@ class Item_groupController extends Controller
         if (strpos($url, 'api') == true){
              return response()->json("register successfull.");
          }else{
-             return redirect("/itemgroup/list");
+             return route("itemgroup.index");
          }
         
         }

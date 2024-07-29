@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @include('layouts.header')
 
 <section class="content">
@@ -7,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Company data</h3>
+                        <h1 class="card-title"style="font-size:35px ;"> Item Group data</h1>
                         <a href="{{route('itemgroup.create')}}" class="btn btn-primary float-right">Add Item Group</a>
                     </div>
                     <div class="card-body">
@@ -71,5 +70,3 @@
 </script>
 
 @include('layouts.footer')
-=======
->>>>>>> 78915d5f057872b5262ef6d7d00cda9abe76caaf
