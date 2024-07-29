@@ -2,8 +2,8 @@
 27/07/2024
   Today report :
      DHS testing
-     Theme set in Orderplacing
-     CRUD operation in item table
+     EMC tracker
+     CRUD operation in party_master and user table
 
 24/07/2024
   Today report :

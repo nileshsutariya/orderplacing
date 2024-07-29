@@ -52,10 +52,10 @@
                                         </td>
                                         <td>
                                             <a class="btn" href="{{route('item.edit',$value->id)}}">
-                                                <i class="fa  fa-pen text-warning"></i> Edit
+                                                <i class="far  fa-edit text-success"></i> 
                                             </a>
-                                            <a class="btn" href="{{route('item.delete',$value->id)}}">
-                                                <i class="fa fa-trash text-danger"></i> Delete
+                                            <a href="{{route('item.delete',$value->id)}}">
+                                                <i class="fa fa-trash text-danger"></i> 
                                             </a>
                                         </td>
                                     </tr>

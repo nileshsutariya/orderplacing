@@ -23,11 +23,14 @@
                                     <div class="form-group">
                                         <label for="group_id">Item Group</label>
                                         <select name="group_id" id="group_id" class="form-control">
-                                            <option value="">-- Select Item Group --</option>
+                                            @if (isset($item))
+                                            @else
+                                                <option value="">-- Select Item Group --</option>
+                                           @endif
                                             @foreach ($itemgroup as $i)
-                                        <option value="{{ $i->id }}" <?php if (isset($item) && $item->group_id == $i->id) {
-                                            echo 'selected';
-                                        } ?>>{{ $i->name }}
+                                                <option value="{{ $i->id }}" @php if (isset($item) && $item->group_id == $i->id) {
+                                                echo 'selected';
+                                        } @endphp >{{ $i->name }}
                                         </option>
                                             @endforeach
                                         </select>
@@ -56,6 +59,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -79,6 +83,7 @@
                                 </div>
                             </div>
                             <br>
+                            
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group clearfix">
