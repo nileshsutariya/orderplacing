@@ -1,9 +1,9 @@
 @include('layouts.header')
 
 <section class="content ">
-    <div class="container-fluid">
+    <div class="container md-4">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary">
                         <h3 class="card-title text-light">
@@ -61,9 +61,17 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </section>
-
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": true,
+            "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
 
 @include('layouts.footer')

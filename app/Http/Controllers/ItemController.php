@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Item_group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -18,6 +19,7 @@ class ItemController extends Controller
     public function create()
     {
         $itemgroup= Item_group::all();
+        // print_r('hguws'); die();
         return view('item.item', compact('itemgroup'));    
     }
     public function store(Request $request)
@@ -67,8 +69,7 @@ class ItemController extends Controller
         $itemgroup= Item_group::all();
         $item = Item::find($id);
         $item= Item::where('id',$id)->first();
-       
-        return view("item.itemlist",compact('item','itemgroup'));
+        return view("item.item",compact('item','itemgroup'));
     }
     public function update(request $request)
     {

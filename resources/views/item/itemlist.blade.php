@@ -6,7 +6,6 @@
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-header">
-
                         <h1 class="card-title"style="font-size:35px ;"> Item data</h1>
                         <a href="{{route('item.create')}}" class="btn btn-danger float-right">Add item</a>
                     </div>
