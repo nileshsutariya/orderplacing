@@ -3,14 +3,14 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{csrf_token() }}">
+  <meta name="csrf-token" content="{{csrf_token()}}">
   
   <title>orderplacing</title>
   
   <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
-  <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27" ></script> -->
+  <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script> -->
 
-  <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -65,11 +65,20 @@
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-
           <div class="info">
             <a href="#" class="d-block"><b>Menu</b></a>
           </div>
         </div>
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="info">
+            <a href="#" class="d-block" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><b>Logout</b></a>
+          </div>
+        </div>
+        
+        <form id="logout-form" action="{{ route('adminlogout') }}" method="POST" style="display: none;">
+          @csrf
+        </form>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
