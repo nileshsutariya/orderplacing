@@ -26,6 +26,8 @@
                                             <option value="">-- Select Item Group --</option>
                                             @foreach ($itemgroup as $items)
                                                 <option value="{{ $items->id }}">{{ $items->name }}</option>
+                                                {{-- <option value="@php if(isset($itemgroup))  {echo $itemgroup->name;} else echo old('name'); @endphp ">{{ $items->name }}</option> --}}
+
                                             @endforeach
                                         </select>
                                     </div>

@@ -16,7 +16,7 @@ class Item_groupController extends Controller
     }
     public function create()
     {
-        return view('itemgroup');    
+        return view('itemgroup.itemgroup');    
     }
     public function store(Request $request)
     {
@@ -64,7 +64,7 @@ class Item_groupController extends Controller
             return redirect("/itemgroup/list");
         } else {
             $data = compact("itemgroup");
-            return view("itemgroup")->with($data);
+            return view("itemgroup.itemgroup")->with($data);
         }
     }
     public function update(request $request)

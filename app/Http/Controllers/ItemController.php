@@ -13,13 +13,12 @@ class ItemController extends Controller
     {
         $item= Item::all();
         $itemgroup= Item_group::all();
-        $data = compact("item", "itemgroup");
-        return view("itemlist")->with($data);
+        return view("item.itemlist",compact('item','itemgroup'));
     }
     public function create()
     {
         $itemgroup= Item_group::all();
-        return view('item', compact('itemgroup'));    
+        return view('item.item', compact('itemgroup'));    
     }
     public function store(Request $request)
     {
@@ -56,8 +55,6 @@ class ItemController extends Controller
              }
             
     }
-
-
     public function delete($id)
     {
         $item = Item::find($id);
@@ -67,15 +64,11 @@ class ItemController extends Controller
 
     public function edit($id)
     {
+        $itemgroup= Item_group::all();
         $item = Item::find($id);
         $item= Item::where('id',$id)->first();
-        $itemgroup= Item_group::all();
-        if (is_null($item)) {
-            return redirect("/item/list");
-        } else {
-            $data = compact("item");
-            return view("item")->with($data);
-        }
+       
+        return view("item.itemlist",compact('item','itemgroup'));
     }
     public function update(request $request)
     {
@@ -89,8 +82,11 @@ class ItemController extends Controller
             $errors = $validator->errors();
             print_r($errors);die;
          }  
+         
         print_r($request->all());
-        $item = Item::find($request->id);        
+        $itemgroup= Item_group::all();
+        $item = Item::find($request->id); 
+        $item->group_id = $request['group_id'];       
         $item->name = $request['name'];
         $item->description = $request['description'];
         $item->price = $request['price'];

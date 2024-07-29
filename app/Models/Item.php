@@ -12,4 +12,9 @@ class Item extends Model
     protected $primarykey = "id";
     protected $fillable = ['group_id', 'name', 'price', 'qty'];
 
+    public function itemgroup()
+    {
+        return $this->belongsTo(Item_group::class);
+    }
+
 }

@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Company data</h3>
-                        <a href="{{route('item.create')}}" class="btn btn-danger float-right">Go To Trash</a>
+                        <a href="{{route('user.create')}}" class="btn btn-danger float-right">Add User</a>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table  table-hover table-valign-middle table-bordered">
@@ -26,7 +26,7 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach($item as $value)
+                                @foreach($user as $value)
                                     <tr>
                                         <td>
                                             {{$i++}}
