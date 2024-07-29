@@ -11,10 +11,10 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        @if(isset($item_group))
-                            <form action="{{route('item_group.update',$item_group->id)}}" method="post">
+                        @if(isset($itemgroup))
+                            <form action="{{route('itemgroup.update',$itemgroup->id)}}" method="post">
                         @else
-                            <form action="{{route('item_group.store')}}" method="post">
+                            <form action="{{route('itemgroup.store')}}" method="post">
                         @endif
                             @csrf
                             <div class="row">
@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <label for="name" class=" col-form-label ">Item Name</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            value="@php if(isset($item_group))  {echo $item_group->name;} else echo old('name'); @endphp ">
+                                            value="@php if(isset($itemgroup))  {echo $itemgroup->name;} else echo old('name'); @endphp ">
                                         <span class="text-danger">
                                             @error('name')
                                             {{$message}} @enderror
@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <label for="description" class=" col-form-label text-dark">Description</label>
                                         <textarea type="text" class="form-control" id="description"
-                                            name="description">@php if(isset($item_group)) {echo $item_group->description;} else echo old('description'); @endphp </textarea>
+                                            name="description">@php if(isset($itemgroup)) {echo $itemgroup->description;} else echo old('description'); @endphp </textarea>
                                         <span class="text-danger">@error('description')
                                         {{$message}} @enderror
                                         </span>
@@ -45,7 +45,7 @@
                                     <div class="form-group clearfix">
                                         <div class="icheck-primary d-inline">
                                             <input type="checkbox" id="active" name="status" @php
-                                            if(isset($item_group)){if($item_group['status']=='1' ){echo "checked" ;}} @endphp
+                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp
                                                 checked>
                                             <label for="active">is Active
                                             </label>
@@ -55,7 +55,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-success">submit</button>
                                 <input type="hidden" class="form-control" id="id" name="id"
-                                            value="@php if(isset($item_group))  {echo $item_group->id;} @endphp ">
+                                            value="@php if(isset($itemgroup))  {echo $itemgroup->id;} @endphp ">
                             </div>
                         </form>
                     </div>

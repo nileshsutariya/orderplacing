@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Item;
+use App\Models\Item_group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,12 +12,14 @@ class ItemController extends Controller
     public function index()
     {
         $item= Item::all();
-        $data = compact("item");
+        $itemgroup= Item_group::all();
+        $data = compact("item", "itemgroup");
         return view("itemlist")->with($data);
     }
     public function create()
     {
-        return view('item');    
+        $itemgroup= Item_group::all();
+        return view('item', compact('itemgroup'));    
     }
     public function store(Request $request)
     {
@@ -30,7 +33,10 @@ class ItemController extends Controller
                 print_r($errors);die;
              }
             print_r($request->all());
-            $item= new item;
+            $item= new Item();
+            // Item::create($request->all());
+            $item->group_id = $request['group_id'];
+            // print_r($item); die();
             $item->name = $request['name'];
             $item->description = $request['description'];
             $item->price = $request['price'];
@@ -63,6 +69,7 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         $item= Item::where('id',$id)->first();
+        $itemgroup= Item_group::all();
         if (is_null($item)) {
             return redirect("/item/list");
         } else {

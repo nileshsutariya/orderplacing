@@ -18,6 +18,19 @@
                         @endif
                             @csrf
                             <div class="row">
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="group_id">Item Group</label>
+                                        <select name="group_id" id="group_id" class="form-control">
+                                            <option value="">-- Select Item Group --</option>
+                                            @foreach ($itemgroup as $items)
+                                                <option value="{{ $items->id }}">{{ $items->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="name" class=" col-form-label ">Item Name</label>
@@ -29,7 +42,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="description" class=" col-form-label text-dark">Description</label>
                                         <textarea type="text" class="form-control" id="description"
@@ -44,7 +57,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="price" class=" col-form-label text-dark">Price</label>
-                                        <input type="price" class="form-control" id="price" name="price"
+                                        <input type="text" class="form-control" id="price" name="price"
                                             value="@php if(isset($item)) {echo $item->price;}else echo old('price'); @endphp ">
                                         <span class="text-danger">@error('price')
                                         {{$message}} @enderror
