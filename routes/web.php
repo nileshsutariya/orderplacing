@@ -5,8 +5,8 @@ use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PartyController;
 use App\Http\Controllers\Item_groupController;
-
 
 Route::get('/', function () {
     return view('item');
@@ -32,6 +32,13 @@ Route::post('/user/store',[UserController::class,'store'] )->name('user.store');
 Route::get('/user/edit/{id}',[UserController::class,'edit'] )->name('user.edit');
 Route::post('/user/update',[UserController::class,'update'] )->name('user.update');
 Route::get('/user/delete/{id}',[UserController::class,'delete'] )->name('user.delete');
+
+Route::get('/party/list',[PartyController::class,'index'] )->name('party.index');
+Route::get('/party/create',[PartyController::class,'create'] )->name('party.create');
+Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
+Route::get('/party/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
+Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
+Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
 
 Route::get('/admin/login', [AdminController::class, 'loginform'])->name('loginadmin');
 Route::post('/admin/login', [AdminController::class, 'adminlogin'])->name('admin.login');

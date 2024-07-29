@@ -102,6 +102,6 @@ class UserController extends Controller
         }
         $user->status = $status;
         $user->save();
-        return redirect('/page');
+        return redirect('/user/list');
     }
 }
