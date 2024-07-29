@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Item_groupController;
+
 
 Route::get('/', function () {
     return view('item');
@@ -22,3 +25,9 @@ Route::get('/itemgroup/edit/{id}',[Item_groupController::class,'edit'] )->name('
 Route::post('/itemgroup/update',[Item_groupController::class,'update'] )->name('itemgroup.update');
 Route::get('/itemgroup/delete{id}',[Item_groupController::class,'delete'] )->name('itemgroup.delete');
 
+Route::get('/admin/login', [AdminController::class, 'loginform'])->name('loginadmin');
+Route::post('/admin/login', [AdminController::class, 'adminlogin'])->name('admin.login');
+Route::post('/logout', [AdminController::class, 'logout'])->name('adminlogout');
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', [AdminController::class,'adminindex'])->name('index');
+});
