@@ -10,11 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
+    public function index(){
+        return view("item.item");
+    }
     public function index()
     {
-        $item= Item::all();
-        $itemgroup= Item_group::all();
-        return view("item.itemlist",compact('item','itemgroup'));
+        // $item= Item::all();
+        // $itemgroup= Item_group::all();
+        // return view("item.item",compact('item','itemgroup'));
     }
     public function create()
     {

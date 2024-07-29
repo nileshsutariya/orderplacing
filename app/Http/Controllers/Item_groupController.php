@@ -8,16 +8,19 @@ use Illuminate\Support\Facades\Validator;
 
 class Item_groupController extends Controller
 {
+    public  function index(){
+        return view('itemgroup.index');
+    }
     public function index()
     {
         $itemgroup= Item_group::all();
         $data = compact("itemgroup");
         // print_r($data); die();
-        return view("itemgroup.itemgrouplist")->with($data);
+        return redirect()->route('itemgroup.index');
     }
     public function create()
     {
-        return view('itemgroup.itemgroup');    
+        return redirect()->route('itemgroup.create');    
     }
     public function store(Request $request)
     {
@@ -43,7 +46,7 @@ class Item_groupController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("register successfull.");
              }else{
-                 return redirect("/itemgroup/list");
+                return redirect()->route('itemgroup.index');
              }
             // Item_group::create($request->all());
             // return route("itemgroup.index");
@@ -53,7 +56,7 @@ class Item_groupController extends Controller
     public function delete($id)
     {
         $itemgroup = Item_group::find($id)->delete();
-        return route("itemgroup.index");
+        return redirect()->route('itemgroup.index');
     }
 
     public function edit($id)
@@ -61,7 +64,7 @@ class Item_groupController extends Controller
         $itemgroup = Item_group::find($id);
         $itemgroup = Item_group::where('id',$id)->first();
         if (is_null($itemgroup)) {
-            return route("itemgroup.index");
+            return redirect()->route('itemgroup.index');
         } else {
             $data = compact("itemgroup");
             return view("itemgroup.itemgroup")->with($data);
@@ -92,9 +95,9 @@ class Item_groupController extends Controller
         if (strpos($url, 'api') == true){
              return response()->json("register successfull.");
          }else{
-             return route("itemgroup.index");
+            return redirect()->route('itemgroup.index');
          }
         
-        }
+    }
 
 }

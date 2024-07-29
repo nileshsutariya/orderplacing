@@ -35,7 +35,10 @@
                                     <div class="form-group">
                                         <label for="group_id">Item Group</label>
                                         <select name="group_id" id="group_id" class="form-control">
+                                            @if(isset)
+                                            @else
                                             <option value="">-- Select Item Group --</option>
+                                            @endif
                                             @foreach ($itemgroup as $i)
                                         <option value="{{ $i->id }}" <?php if (isset($item) && $item->group_id == $i->id) {
                                             echo 'selected';
