@@ -7,14 +7,14 @@
                 <div class="card">
                     <div class="card-header bg-primary">
                         <h3 class="card-title text-light">
-                            items
+                            item_groups
                         </h3>
                     </div>
                     <div class="card-body">
-                        @if(isset($item))
-                            <form action="{{route('item.update',$item->id)}}" method="post">
+                        @if(isset($item_group))
+                            <form action="{{route('item_group.update',$item_group->id)}}" method="post">
                         @else
-                            <form action="{{route('item.store')}}" method="post">
+                            <form action="{{route('item_group.store')}}" method="post">
                         @endif
                             @csrf
                             <div class="row">
@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <label for="name" class=" col-form-label ">Item Name</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            value="@php if(isset($item))  {echo $item->name;} else echo old('name'); @endphp ">
+                                            value="@php if(isset($item_group))  {echo $item_group->name;} else echo old('name'); @endphp ">
                                         <span class="text-danger">
                                             @error('name')
                                             {{$message}} @enderror
@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <label for="description" class=" col-form-label text-dark">Description</label>
                                         <textarea type="text" class="form-control" id="description"
-                                            name="description">@php if(isset($item)) {echo $item->description;} else echo old('description'); @endphp </textarea>
+                                            name="description">@php if(isset($item_group)) {echo $item_group->description;} else echo old('description'); @endphp </textarea>
                                         <span class="text-danger">@error('description')
                                         {{$message}} @enderror
                                         </span>
@@ -41,34 +41,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="price" class=" col-form-label text-dark">Price</label>
-                                        <input type="price" class="form-control" id="price" name="price"
-                                            value="@php if(isset($item)) {echo $item->price;}else echo old('price'); @endphp ">
-                                        <span class="text-danger">@error('price')
-                                        {{$message}} @enderror
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="qty" class=" col-form-label text-dark">qty</label>
-                                        <input type="text" class="form-control" id="qty" name="qty"
-                                            value="@php if(isset($item)){echo $item->qty;} else echo old('qty'); @endphp ">
-                                        <span class="text-danger">@error('qty')
-                                        {{$message}} @enderror
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group clearfix">
                                         <div class="icheck-primary d-inline">
                                             <input type="checkbox" id="active" name="status" @php
-                                            if(isset($item)){if($item['status']=='1' ){echo "checked" ;}} @endphp
+                                            if(isset($item_group)){if($item_group['status']=='1' ){echo "checked" ;}} @endphp
                                                 checked>
                                             <label for="active">is Active
                                             </label>
@@ -78,7 +55,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-success">submit</button>
                                 <input type="hidden" class="form-control" id="id" name="id"
-                                            value="@php if(isset($item))  {echo $item->id;} @endphp ">
+                                            value="@php if(isset($item_group))  {echo $item_group->id;} @endphp ">
                             </div>
                         </form>
                     </div>

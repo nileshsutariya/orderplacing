@@ -11,6 +11,10 @@
   <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27" ></script> -->
 
   <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  
   
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -72,8 +76,28 @@
         </div>
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
-        </nav>
+         <!-- Sidebar Menu -->
+         <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="{{route('item.index')}}" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>item</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Bills</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link ">
+                <i class="far fa-circle nav-icon"></i>
+                <p> Upload the Documents</p>
+              </a>
+            </li>
+          </ul>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->

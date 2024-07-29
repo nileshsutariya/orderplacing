@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');;
+            $table->boolean('status')->default(0)->comment('0 is Deactive , 1 is Active');;
             $table->rememberToken();
             $table->timestamps();
         });
