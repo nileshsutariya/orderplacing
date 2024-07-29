@@ -1,11 +1,12 @@
-  <footer class="main-footer">
+</div>
+ <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="#">Billing</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
   </footer>
-  </div>
+ 
 
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
