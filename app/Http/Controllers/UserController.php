@@ -3,24 +3,24 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $user= User::all();
-        $data = compact("user");
-        return view("userlist")->with($data);
+        $users= User::all();
+        $data = compact("users");
+        return view("user", compact("users"));
     }
     public function store(Request $request)
     {
             $validator = Validator::make($request->all(), [
-                'firstname' => 'required',
-                'lastname' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
                 'address' => 'required',
-                'phonenumber' => 'required|numeric',
+                'phone_number' => 'required|numeric',
                 'email' => 'required|email',
                 'password' => 'required',
                 'cpassword' => 'required|same:password',
@@ -31,12 +31,12 @@ class UserController extends Controller
              }
             print_r($request->all());
             $user = new User;
-            $user->first_name = $request['firstname'];
-            $user->last_name = $request['lastname'];
+            $user->first_name = $request['first_name'];
+            $user->last_name = $request['last_name'];
             $user->email = $request['email'];
             $user->password = Hash::make($request['password']);
             $user->address = $request['address'];
-            $user->phone_number = $request['phonenumber'];
+            $user->phone_number = $request['phone_number'];
             if ($request['status'] == 'on') {
                 $status = 1;
             } else {
@@ -48,23 +48,24 @@ class UserController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("register successfully.");
              }else{
-                 return redirect("/user/list");
+                return redirect()->route('user.index');
              }
     }
     public function delete($id)
     {
         $user = User::find($id)->delete();
-        return redirect("/view");
+        return redirect()->route('user.index');
     }
 
     public function edit($id)
     {
+        $users = User::all();
         $user = User::find($id);
         $user= User::where('id',$id)->first();
         if (is_null($user)) {
-            return redirect("/user/list");
+            return redirect("/user");
         } else {
-            $data = compact("user");
+            $data = compact("user", "users");
             return view("user")->with($data);
         }
     }
@@ -81,20 +82,20 @@ class UserController extends Controller
          }
          else{
             $request->validate([
-                'firstname' => 'required',
-                'lastname' => 'required',
+                'first_name' => 'required',
+                'last_name' => 'required',
                 'address' => 'required',
-                'phonenumber' => 'required|numeric',
+                'phone_number' => 'required|numeric',
                 'email' => 'required|email'
             ]);
          }
         $user = User::find($request->id);        
-        $user->first_name = $request['firstname'];
-        $user->last_name = $request['lastname'];       
+        $user->first_name = $request['first_name'];
+        $user->last_name = $request['last_name'];       
         $user->email = $request['email'];
         $user->password = Hash::make($request['password']);
         $user->address = $request['address'];
-        $user->phone_number = $request['phonenumber'];
+        $user->phone_number = $request['phone_number'];
         if ($request['status'] == 'on') {
             $status = 1;
         } else {
@@ -102,6 +103,6 @@ class UserController extends Controller
         }
         $user->status = $status;
         $user->save();
-        return redirect('/user/list');
+        return redirect()->route('user.index');
     }
 }
