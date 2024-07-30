@@ -23,12 +23,17 @@
                         <h3 class="card-title">Item Group</h3>
                     </div>
 
-                    <form>
+                    @if (isset($itemgroup))
+                            <form action="{{ route('itemgroup.update', $itemgroup->id) }}" method="post">
+                            @else
+                                <form action="{{ route('itemgroup.store') }}" method="post">
+                        @endif
+                        @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name" class=" col-form-label ">Item Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
-                                    value="@php if(isset($item_group))  {echo $item_group->name;} else echo old('name'); @endphp ">
+                                    value="@php if(isset($itemgroup))  {echo $itemgroup->name;} else echo old('name'); @endphp ">
                                 <span class="text-danger">
                                     @error('name')
                                     {{$message}} @enderror
@@ -37,12 +42,26 @@
                             <div class="form-group">
                                 <label for="description" class=" col-form-label text-dark">Description</label>
                                 <textarea type="text" class="form-control" id="description"
-                                    name="description">@php if(isset($item_group)) {echo $item_group->description;} else echo old('description'); @endphp </textarea>
+                                    name="description">@php if(isset($itemgroup)) {echo $itemgroup->description;} else echo old('description'); @endphp </textarea>
                                 <span class="text-danger">@error('description')
                                 {{$message}} @enderror
                                 </span>
                             </div>
                             
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group clearfix">
+                                    <div class="icheck-primary d-inline">
+                                        <input type="checkbox" id="active" name="status"
+                                            @php
+                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp
+                                            checked>
+                                        <label for="active">is Active
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="card-footer">
@@ -58,7 +77,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Item Group Data</h3>
                     </div>
-
+                    <div class="card-body">
 
                     <table id="example1" class="table  table-hover table-valign-middle table-bordered">
                         <thead>
@@ -74,18 +93,15 @@
                             @php
                                 $i = 1;
                             @endphp
-                           @foreach ($item_groups as $item_group)
+                           @foreach ($itemgroups as $item_group)
                                 <tr>
                                     <td>
                                         {{$i++}}
                                     </td>
                                     <td scope="row">
-                                        <td>{{ $item_group->name }}</td>
+                                        {{ $item_group->name }}
                                     </td>
-                                    <td>
                                         <td>{{ $item_group->description }}</td>
-
-                                    </td>
                                     <td class="text-cengroupter">
                                         @if ($item_group->status == '1')
                                             <button class="badge bg-success">Active</button>
@@ -110,4 +126,13 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
 @include('layouts.footer')

@@ -13,7 +13,7 @@ use App\Http\Controllers\Item_groupController;
 // }); 
 
 
-Route::group(['prefix'=>'/admin'], function () {
+    Route::group(['prefix'=>'/admin'], function () {
 
     Route::get('/login', [AdminController::class, 'loginform'])->name('loginadmin');
     Route::post('/login', [AdminController::class, 'adminlogin'])->name('admin.login');
@@ -46,6 +46,4 @@ Route::group(['prefix'=>'/admin'], function () {
         Route::post('/user/update',[UserController::class,'update'] )->name('user.update');
         Route::get('/user/delete/{id}',[UserController::class,'delete'] )->name('user.delete');
     });
-
-
 });

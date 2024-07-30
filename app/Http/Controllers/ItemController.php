@@ -10,26 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
-    // public function index(){
-    //     return view("item.item");
-    // }
+ 
     public function index()
-    {
-        // print_r("bjhdg"); die;
+    {   
         $item= Item::all();
         $itemgroup= Item_group::all();
-        return view('item.item', compact('item', 'itemgroup'));
-        
-        // $item = Item::all();
-        // return view('item.item', compact('item'));
+        return view('item.index', compact('item', 'itemgroup'));
     }
 
-    // public function create()
-    // {
-    //     $itemgroup= Item_group::all();
-    //     // print_r('hguws'); die();
-    //     return view('item.item', compact('itemgroup'));    
-    // }
     public function store(Request $request)
     {
             $validator = Validator::make($request->all(), [
@@ -56,29 +44,28 @@ class ItemController extends Controller
                 $status = 0;
             }
             $item->status = $status;
-            $item->save();
+            // $item->save();
             $url=$request->url();
             if (strpos($url, 'api') == true){
                  return response()->json("register successfull.");
              }else{
-                 return view("item.item");
-             }
+                return redirect()->route('item.index');
+            }
             
     }
     public function delete($id)
     {
-        $item = Item::find($id);
-        $item= Item::find($id)->delete();
-        return redirect("/item");
+        $items= Item::find($id)->delete();
+        return redirect()->route('item.index');
     }
 
     public function edit($id)
     {
-        $item = Item::all();
-        $items = Item::find($id);
+        $items= Item::all();
+        $item = Item::find($id);
         $item= Item::where('id',$id)->get();
         $itemgroup= Item_group::all();
-        return view("item.item",compact('item', 'items', 'itemgroup'));
+        return view("item.index",compact('item', 'items', 'itemgroup'));
     }
     public function update(request $request)
     {
@@ -113,8 +100,6 @@ class ItemController extends Controller
          }else{
             $items= Item::all();
             $itemgroup= Item_group::all();
-            // return view('item.item');
-
             return redirect()->route('item.index');
          }
         

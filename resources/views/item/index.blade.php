@@ -24,8 +24,8 @@
                     </div>
                     <div class="card-body">
 
-                        @if (isset($items))
-                            <form action="{{ route('item.update', $items->id) }}" method="post">
+                        @if (isset($item))
+                            <form action="{{ route('item.update', $item->id) }}" method="post">
                             @else
                                 <form action="{{ route('item.store') }}" method="post">
                         @endif
@@ -36,14 +36,14 @@
                                 <div class="form-group">
                                     <label for="group_id">Item Group</label>
                                     <select name="group_id" id="group_id" class="form-control">
-                                        @if (isset($items))
+                                        @if (isset($item))
                                         @else
                                             <option value="">-- Select Item Group --</option>
                                         @endif
                                         @foreach ($itemgroup as $i)
                                             {{-- @php print_r("jhyffyeww");
                                                 die();@endphp --}}
-                                            <option value="{{ $i->id }}" <?php if (isset($items) && $items->group_id == $i->id) {
+                                            <option value="{{ $i->id }}" <?php if (isset($item) && $item->group_id == $i->id) {
                                                 echo 'selected';
                                             } ?>>{{ $i->name }}
                                             </option>
@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label for="name" class=" col-form-label ">Item Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        value="@php if(isset($items))  {echo $items->name;} else echo old('name'); @endphp ">
+                                        value="@php if(isset($item))  {echo $item->name;} else echo old('name'); @endphp ">
                                     <span class="text-danger">
                                         @error('name')
                                             {{ $message }}
@@ -69,8 +69,8 @@
                                 <div class="form-group">
                                     <label for="description" class=" col-form-label text-dark">Description</label>
                                     <textarea type="text" class="form-control" id="description" name="description">@php
-                                        if (isset($items)) {
-                                            echo $items->description;
+                                        if (isset($item)) {
+                                            echo $item->description;
                                         } else {
                                             echo old('description');
                                         }
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label for="price" class=" col-form-label text-dark">Price</label>
                                     <input type="text" class="form-control" id="price" name="price"
-                                        value="@php if(isset($items)) {echo $items->price;}else echo old('price'); @endphp ">
+                                        value="@php if(isset($item)) {echo $item->price;}else echo old('price'); @endphp ">
                                     <span class="text-danger">
                                         @error('price')
                                             {{ $message }}
@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                     <label for="qty" class=" col-form-label text-dark">qty</label>
                                     <input type="text" class="form-control" id="qty" name="qty"
-                                        value="@php if(isset($items)){echo $items->qty;} else echo old('qty'); @endphp ">
+                                        value="@php if(isset($item)){echo $item->qty;} else echo old('qty'); @endphp ">
                                     <span class="text-danger">
                                         @error('qty')
                                             {{ $message }}
@@ -117,7 +117,7 @@
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status"
                                             @php
-if(isset($items)){if($items['status']=='1' ){echo "checked" ;}} @endphp
+                                            if(isset($item)){if($item['status']=='1' ){echo "checked" ;}} @endphp
                                             checked>
                                         <label for="active">is Active
                                         </label>
@@ -127,7 +127,7 @@ if(isset($items)){if($items['status']=='1' ){echo "checked" ;}} @endphp
                         </div>
                         <button type="submit" class="btn btn-success">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
-                            value="@php if(isset($items))  {echo $items->id;} @endphp ">
+                            value="@php if(isset($item))  {echo $item->id;} @endphp ">
                     </div>
                     </form>
                 </div>
@@ -156,7 +156,7 @@ if(isset($items)){if($items['status']=='1' ){echo "checked" ;}} @endphp
                                 @php
                                     $i = 1;
                                 @endphp
-                                @foreach ($item as $value)
+                                @foreach ($items as $value)
                                     <tr>
                                         <td>
                                             {{ $i++ }}
