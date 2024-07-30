@@ -29,9 +29,7 @@ class ItemController extends Controller
              }
             print_r($request->all());
             $item= new Item();
-            // Item::create($request->all());
             $item->group_id = $request['group_id'];
-            // print_r($item); die();
             $item->name = $request['name'];
             $item->description = $request['description'];
             $item->price = $request['price'];

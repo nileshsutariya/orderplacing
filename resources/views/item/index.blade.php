@@ -146,7 +146,9 @@
                                     <th>Price</th>
                                     <th>Qauntity</th>
                                     <th>Status</th>
+                                    @if (isset($item))
                                     <th class="text-center">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody class="m-3 p-3">

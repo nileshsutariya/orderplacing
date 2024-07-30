@@ -107,7 +107,7 @@
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status" value="1" 
                                             @php
-                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp >
+                                            if(isset($party)){if($party['status']=='1' ){echo "checked" ;}} @endphp >
                                         <label for="active">is Active
                                         </label>
                                     </div>
