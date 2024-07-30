@@ -44,7 +44,7 @@ class ItemController extends Controller
                 $status = 0;
             }
             $item->status = $status;
-            // $item->save();
+            $item->save();
             $url=$request->url();
             if (strpos($url, 'api') == true){
                  return response()->json("register successfull.");

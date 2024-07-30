@@ -122,7 +122,6 @@
                                 </div>
                             </div>
                         </div>
-                       
                         <button type="submit" class="btn btn-success">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($item))  {echo $item->id;} @endphp ">
@@ -131,7 +130,7 @@
                 </div>
                 </div>
                 <div class="col-md-7">
-                    <div class="card card-outline card-secondary">
+                    <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Item Group Data</h3>
                         </div>

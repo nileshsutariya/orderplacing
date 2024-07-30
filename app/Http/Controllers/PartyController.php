@@ -9,9 +9,9 @@ class PartyController extends Controller
 {
     public function index()
     {
-        $party= Party::all();
-        $data = compact("party");
-        return view("party")->with($data);
+        $parties= Party::all();
+        $data = compact("parties");
+        return view("party.index")->with($data);
     }
     public function store(Request $request)
     {
@@ -33,7 +33,7 @@ class PartyController extends Controller
             $party->Pancard_no = $request['pancardno'];
             $party->address = $request['address'];
             $party->phone_number = $request['phonenumber'];
-            if ($request['status'] == 'on') {
+            if ($request['status'] == '1') {
                 $status = 1;
             } else {
                 $status = 0;
@@ -44,25 +44,23 @@ class PartyController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("register successfully.");
              }else{
-                 return redirect("/party/list");
+                return redirect()->route('party.index');
              }
     }
     public function delete($id)
     {
         $party = Party::find($id)->delete();
-        return redirect("/party/list");
+        return redirect()->route('party.index');
     }
 
     public function edit($id)
     {
+        $parties= Party::all();
+
         $party = Party::find($id);
         $party= Party::where('id',$id)->first();
-        if (is_null($party)) {
-            return redirect("/party/list");
-        } else { 
-            $data = compact("party");
-            return view("party")->with($data);
-        }
+        $data = compact("party","parties");
+        return view("party.index")->with($data);
     }
     public function create()
     {
@@ -90,13 +88,13 @@ class PartyController extends Controller
         $party->Pancard_no = $request['pancardno'];
         $party->address = $request['address'];
         $party->phone_number = $request['phonenumber'];
-        if ($request['status'] == 'on') {
+        if ($request['status'] == '1') {
             $status = 1;
         } else {
             $status = 0;
         }
         $party->status = $status;
         $party->save();
-        return redirect('/party/list');
+        return redirect()->route('party.index');
     }
 }
