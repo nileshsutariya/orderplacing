@@ -22,7 +22,6 @@
                     <div class="card-header">
                         <h3 class="card-title">Item Group</h3>
                     </div>
-
                     @if (isset($itemgroup))
                             <form action="{{ route('itemgroup.update') }}" method="post">
                             @else
@@ -60,11 +59,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                       
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($itemgroup))  {echo $itemgroup->id;} @endphp ">
-                        <div class="card-footer">
+                        
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
@@ -73,7 +72,7 @@
 
 
             <div class="col-md-7">
-                <div class="card card-outline card-secondary">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Item Group Data</h3>
                     </div>
