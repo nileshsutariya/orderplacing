@@ -24,7 +24,6 @@ class Item_groupController extends Controller
                 $errors = $validator->errors();
                 print_r($errors);die;
              }
-           
             $itemgroup= new Item_group();
             $itemgroup->name = $request['name'];
             $itemgroup->description = $request['description'];
@@ -41,8 +40,6 @@ class Item_groupController extends Controller
              }else{
                 return redirect()->route('itemgroup.index');
              }
-            // Item_group::create($request->all());
-            // return route("itemgroup.index");
     }
 
 
@@ -72,7 +69,8 @@ class Item_groupController extends Controller
         ]);
         if ($validator->fails()) {
             $errors = $validator->errors();
-            print_r($errors);die;
+            return redirect()->back()->with('error');
+            // print_r($errors);die;
          }  
         print_r($request->all());
 

@@ -35,17 +35,11 @@
                                 <div class="form-group">
                                     <label for="group_id">Item Group</label>
                                     <select name="group_id" id="group_id" class="form-control">
-                                        @if (isset($item))
-                                        @else
+                                        @if (!isset($item))
                                             <option value="">-- Select Item Group --</option>
                                         @endif
                                         @foreach ($itemgroup as $i)
-                                            {{-- @php print_r("jhyffyeww");
-                                                die();@endphp --}}
-                                            <option value="{{ $i->id }}" <?php if (isset($item) && $item->group_id == $i->id) {
-                                                echo 'selected';
-                                            } ?>>{{ $i->name }}
-                                            </option>
+                                            <option value="{{ $i->id }}" {{isset($item) && $item->group_id == $i->id ?'selected':''}}>{{ $i->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -54,29 +48,16 @@
                                 <div class="form-group">
                                     <label for="name" class=" col-form-label ">Item Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        value="@php if(isset($item))  {echo $item->name;} else echo old('name'); @endphp ">
-                                    <span class="text-danger">
-                                        @error('name')
+                                        value="{{isset($item)? $item->name : old('name')}} ">
+                                        @error('name')<span class="text-danger">
                                             {{ $message }}
-                                        @enderror
-                                    </span>
+                                    </span>@enderror
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="description" class=" col-form-label text-dark">Description</label>
-                                    <textarea type="text" class="form-control" id="description" name="description">@php
-                                        if (isset($item)) {
-                                            echo $item->description;
-                                        } else {
-                                            echo old('description');
-                                        }
-                                    @endphp </textarea>
-                                    <span class="text-danger">
-                                        @error('description')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                    <textarea type="text" class="form-control" id="description" name="description">{{isset($item)? $item->description:old('description')}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -85,27 +66,16 @@
                                 <div class="form-group">
                                     <label for="price" class=" col-form-label text-dark">Price</label>
                                     <input type="text" class="form-control" id="price" name="price"
-                                        value="@php if(isset($item)) {echo $item->price;}else echo old('price'); @endphp ">
-                                    <span class="text-danger">
-                                        @error('price')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                        value="{{isset($item)? $item->price : old('price')}}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="qty" class=" col-form-label text-dark">qty</label>
                                     <input type="text" class="form-control" id="qty" name="qty"
-                                        value="@php if(isset($item)){echo $item->qty;} else echo old('qty'); @endphp ">
-                                    <span class="text-danger">
-                                        @error('qty')
-                                            {{ $message }}
-                                        @enderror
-                                    </span>
+                                    value="{{isset($item)?$item->qty : old('qty')}}">
                                 </div>
                             </div>
-
                         </div>
                         <br>
                         <div class="row">
@@ -113,9 +83,7 @@
                                 <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status"
-                                            @php
-                                            if(isset($item)){if($item->status=='1' ){echo "checked" ;}else{
-                                            echo"";}} @endphp >
+                                        {{ isset($item) && $item->status=='1' ? 'checked' : '' }} >
                                         <label for="active">is Active
                                         </label>
                                     </div>
@@ -124,7 +92,7 @@
                         </div>
                         <button type="submit" class="btn btn-success">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
-                            value="@php if(isset($item))  {echo $item->id;} @endphp ">
+                            value=" {{isset($item)? $item->id:""}} ">
                     </div>
                     </form>
                 </div>
@@ -146,9 +114,7 @@
                                     <th>Price</th>
                                     <th>Qauntity</th>
                                     <th>Status</th>
-                                    @if (isset($item))
                                     <th class="text-center">Action</th>
-                                    @endif
                                 </tr>
                             </thead>
                             <tbody class="m-3 p-3">

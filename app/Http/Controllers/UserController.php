@@ -19,8 +19,7 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'address' => 'required',
-                'phone_number' => 'required|numeric',
+                'phone_number' => 'numeric',
                 'email' => 'required|email',
                 'password' => 'required',
                 'cpassword' => 'required|same:password',
@@ -79,7 +78,6 @@ class UserController extends Controller
             $request->validate([
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'address' => 'required',
                 'phone_number' => 'required|numeric',
                 'email' => 'required|email'
             ]);

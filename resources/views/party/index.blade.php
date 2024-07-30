@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <label for="name" class=" col-form-label ">Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        value="@php if(isset($party))  {echo $party->name;} else echo old('name'); @endphp ">
+                                        value="{{isset($party))? $party->name : old('name')}} ">
                                     @error('name')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label for="email" class=" col-form-label text-dark">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="@php if(isset($party)) {echo $party->email;}else echo old('email'); @endphp ">
+                                        value="{{isset($party))? $party->email : old('email')}} ">
                                     @error('email')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label for="phone number" class=" col-form-label text-dark">Phone number</label>
                                     <input type="text" class="form-control" id="phonenumber" name="phonenumber"
-                                        value="@php if(isset($party)){echo $party->phone_number;} else echo old('phonenumber'); @endphp ">
+                                        value="{{isset($party))?$party->phone_number : old('phonenumber')}} ">
                                     @error('phonenumber')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -62,42 +62,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="address" class=" col-form-label text-dark">Address</label>
-                                    <textarea type="text" class="form-control" id="address" name="address">@php
-                                        if (isset($party)) {
-                                            echo $party->address;
-                                        } else {
-                                            echo old('address');
-                                        }
-                                    @endphp </textarea>
-                                    @error('address')
-                                        <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
+                                    <textarea type="text" class="form-control" id="address" name="address">{{isset($party)?$party->address : old('address')}}</textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="gst" class=" col-form-label text-dark">GST No.</label>
                                             <input type="text" class="form-control" id="gst" name="gst"
-                                                value="@php if(isset($party)){echo $party->gst;} else echo old('gst'); @endphp ">
-                                            @error('gst')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror
+                                                value="{{isset($party)? $party->gst : old('gst')}} ">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="pancardno" class=" col-form-label text-dark">PANCard No.</label>
                                             <input type="text" class="form-control" id="pancardno" name="pancardno"
-                                                value="@php if(isset($party)){echo $party->pancard_no;} else echo old('pancardno'); @endphp ">
-                                            @error('pancardno')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror
+                                                value="{{isset($party))?$party->pancard_no : old('pancardno')}} ">
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +85,7 @@
                                 <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status" value="1" 
-                                            @php
-                                            if(isset($party)){if($party['status']=='1' ){echo "checked" ;}} @endphp >
+                                        {{ isset($party) && $party->status=='1' ? 'checked' : '' }} >
                                         <label for="active">is Active
                                         </label>
                                     </div>
@@ -115,7 +93,7 @@
                             </div>
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
-                            value="@php if(isset($party))  {echo $party->id;} @endphp ">
+                            value="{{isset($party)? $party->id:''}}">
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </form>
