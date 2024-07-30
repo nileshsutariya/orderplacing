@@ -12,7 +12,10 @@ class AdminController extends Controller
 {
     public function adminindex()
     {      
-        return redirect('/admin');
+        if (Auth::guard('admin')->check()) {
+            return view('dashboard');
+        }
+        return redirect('/admin/login');
     }
 
     public function loginform()
@@ -47,11 +50,7 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
     
         if (Auth::guard('admin')->attempt($credentials)) {
-            // $request->session()->regenerate();
-
-            // print_r(Auth::guard('admin'));
-            // die();
-            return redirect()->intended(route('index'));
+            return redirect()->intended(route('index')); 
         }
     
         return back()->withErrors([

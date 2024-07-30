@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label for="name" class=" col-form-label ">Item Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
-                                    value="@php if(isset($itemgroup))  {echo $itemgroup->name;} else echo old('name'); @endphp ">
+                                    value="@php if(isset($item_group))  {echo $item_group->name;} else echo old('name'); @endphp ">
                                 <span class="text-danger">
                                     @error('name')
                                     {{$message}} @enderror
@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label for="description" class=" col-form-label text-dark">Description</label>
                                 <textarea type="text" class="form-control" id="description"
-                                    name="description">@php if(isset($itemgroup)) {echo $itemgroup->description;} else echo old('description'); @endphp </textarea>
+                                    name="description">@php if(isset($item_group)) {echo $item_group->description;} else echo old('description'); @endphp </textarea>
                                 <span class="text-danger">@error('description')
                                 {{$message}} @enderror
                                 </span>
@@ -74,34 +74,35 @@
                             @php
                                 $i = 1;
                             @endphp
-                            {{-- @foreach($itemgroup as $value)
+                           @foreach ($item_groups as $item_group)
                                 <tr>
                                     <td>
                                         {{$i++}}
                                     </td>
                                     <td scope="row">
-                                        {{$value->name}}
+                                        <td>{{ $item_group->name }}</td>
                                     </td>
                                     <td>
-                                        {{$value->description}}
+                                        <td>{{ $item_group->description }}</td>
+
                                     </td>
-                                    <td class="text-center">
-                                        @if ($value->status == '1')
+                                    <td class="text-cengroupter">
+                                        @if ($item_group->status == '1')
                                             <button class="badge bg-success">Active</button>
                                         @else
                                             <button class="badge rounded-pill bg-danger">Inactive</button>
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn" href="{{route('itemgroup.edit',$value->id)}}">
+                                        <a class="btn" href="{{route('itemgroup.edit',$item_group->id)}}">
                                             <i class="fa fa-pen text-warning"></i> Edit
                                         </a>
-                                        <a class="btn" href="{{route('itemgroup.delete',$value->id)}}">
+                                        <a class="btn" href="{{route('itemgroup.delete',$item_group->id)}}">
                                             <i class="fa fa-trash text-danger"></i> Delete
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

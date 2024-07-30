@@ -9,11 +9,11 @@
                         <h1 class="card-title " style="font-size:35px ;"><b>Users</b></h1>
                     </div>
                     <div class="card-body">
-                        @if(isset($user))
+                        {{-- @if(isset($user))
                             <form action="{{route('user.update', $user->id)}}" method="post">
                         @else
                             <form action="{{route('user.store')}}" method="post">
-                        @endif
+                        @endif --}}
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm-4">

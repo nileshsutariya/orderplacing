@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>orderplacing</title>
 
     <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
@@ -84,27 +84,58 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item">
-                          <a href="{{ route('itemgroup.index') }}" class="nav-link ">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p> Item Group</p>
-                          </a>
-                      </li>
-                        <li class="nav-item">
-                            <a href="{{ route('item.index') }}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>item</p>
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
+                              <i class="nav-icon fas fa-tachometer-alt"></i>
+                              <p>
+                                Dashboard
+                                <i class="right fas fa-angle-left"></i>
+                              </p>
                             </a>
-                        </li>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="{{route('index')}}" class="nav-link active">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Dashboard v3</p>
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li class="nav-item menu-open">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                              <p>
+                                Items
+                                <i class="right fas fa-angle-left"></i>
+                              </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="{{route('itemgroup.index')}}" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Item Group</p>
+                                </a>
+                              </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="{{route('item.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Item</p>
+                                  </a>
+                                </li>
+                              </ul>
+                          </li>
+
                         <li class="nav-item">
                             <a href="{{ route('user.index') }}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="bi bi-people-fill m-2"></i>
                                 <p>User</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('party.index') }}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="bi bi-gender-male m-2"></i>
                                 <p> Party</p>
                             </a>
                         

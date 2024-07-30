@@ -11,7 +11,7 @@ class PartyController extends Controller
     {
         $party= Party::all();
         $data = compact("party");
-        return view("partylist")->with($data);
+        return view("party")->with($data);
     }
     public function store(Request $request)
     {

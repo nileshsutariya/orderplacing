@@ -7,7 +7,7 @@
                 <div class="card card-outline card-info">
                     <div class="card-header">
                         <h3 class="card-title"style="font-size:35px ;">Party data</h3>
-                        <a href="{{route('party.create')}}" class="btn btn-danger float-right">Add Party</a>
+                        {{-- <a href="{{route('party.create')}}" class="btn btn-danger float-right">Add Party</a> --}}
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table  table-hover table-valign-middle table-bordered">
