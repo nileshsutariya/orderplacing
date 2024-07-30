@@ -25,13 +25,12 @@
                     <div class="card-body">
 
                         @if (isset($item))
-                            <form action="{{ route('item.update', $item->id) }}" method="post">
+                            <form action="{{ route('item.update') }}" method="post">
                             @else
                                 <form action="{{ route('item.store') }}" method="post">
                         @endif
                         @csrf
                         <div class="row">
-
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="group_id">Item Group</label>
@@ -51,8 +50,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="name" class=" col-form-label ">Item Name</label>
@@ -117,14 +114,15 @@
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status"
                                             @php
-                                            if(isset($item)){if($item['status']=='1' ){echo "checked" ;}} @endphp
-                                            checked>
+                                            if(isset($item)){if($item->status=='1' ){echo "checked" ;}else{
+                                            echo"";}} @endphp >
                                         <label for="active">is Active
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                       
                         <button type="submit" class="btn btn-success">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($item))  {echo $item->id;} @endphp ">

@@ -13,9 +13,9 @@ class ItemController extends Controller
  
     public function index()
     {   
-        $item= Item::all();
+        $items= Item::all();
         $itemgroup= Item_group::all();
-        return view('item.index', compact('item', 'itemgroup'));
+        return view('item.index', compact('items', 'itemgroup'));
     }
 
     public function store(Request $request)
@@ -63,7 +63,6 @@ class ItemController extends Controller
     {
         $items= Item::all();
         $item = Item::find($id);
-        $item= Item::where('id',$id)->get();
         $itemgroup= Item_group::all();
         return view("item.index",compact('item', 'items', 'itemgroup'));
     }

@@ -24,7 +24,7 @@
                     </div>
 
                     @if (isset($itemgroup))
-                            <form action="{{ route('itemgroup.update', $itemgroup->id) }}" method="post">
+                            <form action="{{ route('itemgroup.update') }}" method="post">
                             @else
                                 <form action="{{ route('itemgroup.store') }}" method="post">
                         @endif
@@ -52,10 +52,9 @@
                             <div class="col-sm-4">
                                 <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
-                                        <input type="checkbox" id="active" name="status"
+                                        <input type="checkbox" id="active" name="status" value="1" 
                                             @php
-                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp
-                                            checked>
+                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp >
                                         <label for="active">is Active
                                         </label>
                                     </div>
@@ -63,7 +62,8 @@
                             </div>
                         </div>
                         </div>
-
+                        <input type="hidden" class="form-control" id="id" name="id"
+                            value="@php if(isset($itemgroup))  {echo $itemgroup->id;} @endphp ">
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

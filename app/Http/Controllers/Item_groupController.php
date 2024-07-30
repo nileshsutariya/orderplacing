@@ -78,10 +78,12 @@ class Item_groupController extends Controller
             print_r($errors);die;
          }  
         print_r($request->all());
+
         $itemgroup = Item_group::find($request->id);        
-        $itemgroup->name = $request['name'];
-        $itemgroup->description = $request['description'];
-        if ($request['status'] == 'on') {
+
+        $itemgroup->name = $request->name;
+        $itemgroup->description = $request->description;
+        if ($request['status'] == '1') {
             $status = 1;
         } else {
             $status = 0;
