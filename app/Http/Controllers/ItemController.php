@@ -10,14 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
- 
     public function index()
     {   
         $items= Item::all();
         $itemgroup= Item_group::all();
         return view('item.index', compact('items', 'itemgroup'));
     }
-
     public function store(Request $request)
     {
             $validator = Validator::make($request->all(), [

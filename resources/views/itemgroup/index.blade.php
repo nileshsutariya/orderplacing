@@ -63,14 +63,12 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($itemgroup))  {echo $itemgroup->id;} @endphp ">
-                        
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
-
-
+            
             <div class="col-md-7">
                 <div class="card card-outline card-primary">
                     <div class="card-header">

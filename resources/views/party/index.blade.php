@@ -1,7 +1,7 @@
 @include('layouts.header')
 <section class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row ">
             <div class="col-sm-6">
                 <h1>Party</h1>
             </div>
@@ -116,7 +116,7 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($party))  {echo $party->id;} @endphp ">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </form>
                 </div>
