@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $users= User::all();
         $data = compact("users");
-        return view("user", compact("users"));
+        return view("users.index", compact("users"));
     }
     public function store(Request $request)
     {
@@ -66,12 +66,8 @@ class UserController extends Controller
             return redirect("/user");
         } else {
             $data = compact("user", "users");
-            return view("user")->with($data);
+            return view("users.index")->with($data);
         }
-    }
-    public function create()
-    {
-        return view('user');    
     }
     public function update(request $request)
     {
