@@ -103,13 +103,13 @@
             </li>
             <li class="nav-item">
               <a href="{{route('itemgroup.index')}}" class="nav-link">
-                <i class="fas fa-th nav-icon"></i>
+                <i class="fas fa-boxes nav-icon"></i>
                 <p>Item Group</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('item.index')}}" class="nav-link">
-                <i class="far fa-th nav-icon"></i>
+                <i class="fas fa-th nav-icon"></i>
                 <p>Item</p>
               </a>
             </li>
