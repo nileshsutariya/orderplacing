@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-outline card-info">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h1 class="card-title ">Users</h1>
                     </div>
