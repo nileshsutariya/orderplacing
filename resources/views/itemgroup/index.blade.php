@@ -33,11 +33,11 @@
                                 <label for="name" class=" col-form-label ">Item Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ isset($itemgroup)? $itemgroup->name : old('name')}}">
+                                    @error('name')
                                     <span class="text-danger">
-                                        @error('name')
-                                            {{$message}}
-                                        @enderror
-                                    </span>
+                                    {{$message}} 
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="description" class=" col-form-label text-dark">Description</label>
@@ -59,7 +59,7 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="{{ isset($itemgroup)? $itemgroup->id:''}}">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>

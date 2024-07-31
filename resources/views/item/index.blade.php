@@ -23,11 +23,10 @@
                         <h3 class="card-title">Items</h3>
                     </div>
                     <div class="card-body">
-
                         @if (isset($item))
                             <form action="{{ route('item.update') }}" method="post">
-                            @else
-                                <form action="{{ route('item.store') }}" method="post">
+                        @else
+                            <form action="{{ route('item.store') }}" method="post">
                         @endif
                         @csrf
                         {{-- <pre>
@@ -74,6 +73,9 @@
                                     <label for="price" class=" col-form-label text-dark">Price</label>
                                     <input type="text" class="form-control" id="price" name="price"
                                         value="{{isset($item)? $item->price : old('price')}}">
+                                        @error('price')<span class="text-danger">
+                                            {{ $message }}
+                                    </span>@enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -81,10 +83,12 @@
                                     <label for="qty" class=" col-form-label text-dark">qty</label>
                                     <input type="text" class="form-control" id="qty" name="qty"
                                     value="{{isset($item)?$item->qty : old('qty')}}">
+                                    @error('qty')<span class="text-danger">
+                                            {{ $message }}
+                                    </span>@enderror
                                 </div>
                             </div>
                         </div>
-                        <br>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group clearfix">
@@ -97,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">submit</button>
+                        <button type="submit" class="btn btn-primary">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value=" {{isset($item)? $item->id:""}} ">
                     </div>
@@ -112,7 +116,7 @@
 
                         <div class="card-body">
 
-                        <table id="example1" class="table table-hover table-valign-middle table-bordered">
+                        <table  class="table table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -154,10 +158,12 @@
                                         </td>
                                         <td>
                                             <a class="btn" href="{{ route('item.edit', $value->id) }}">
-                                                <i class="fa fa-pen text-warning"></i> Edit
+                                                <i class="fa fa-pen text-warning"></i> 
+                                                Edit
                                             </a>
                                             <a class="btn" href="{{ route('item.delete', $value->id) }}">
-                                                <i class="fa fa-trash text-danger"></i> Delete
+                                                <i class="fa fa-trash text-danger"></i> 
+                                                Delete
                                             </a>
                                         </td>
                                     </tr>
@@ -172,9 +178,6 @@
                     </div>
                 </div>
             </div>
-        {{-- </div> --}}
 </section>
-<script type="text/javascript">
- 
-</script>
+
 @include('layouts.footer')

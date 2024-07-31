@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <title>orderplacing</title>
 
-  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
-  <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script> -->
+   <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
+   <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script> 
 
 
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
@@ -84,7 +84,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <li class="nav-item">
-              <a href="{{route('index')}}" class="nav-link active">
+              <a href="{{route('dashboard.index')}}" class="nav-link active">
               <ion-icon name="cellular-outline"></ion-icon>                
               <p>Dashboard </p>
               </a>

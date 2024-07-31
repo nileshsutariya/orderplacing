@@ -30,11 +30,8 @@ class UserController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
                 'cpassword' => 'required|same:password',
-            ]);
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
+            ])->validate();
+            
             print_r($request->all());
             $user = new User;
             $user->first_name = $request['first_name'];

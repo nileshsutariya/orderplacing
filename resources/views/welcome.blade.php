@@ -2,7 +2,8 @@
 31/07/2024
   Today report :
      EMC tracker
-     pagination in orderplacing
+     pagination and validation in orderplacing
+     
 
 /08/2024
   Today report :

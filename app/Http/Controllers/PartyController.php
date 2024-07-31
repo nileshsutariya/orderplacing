@@ -19,11 +19,11 @@ class PartyController extends Controller
                 'name' => 'required',
                 'phonenumber' => 'numeric',
                 'email' => 'required|email',
-            ]);
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
+                'gst' => 'required|regex:/^\d{2}[A-Z]{5}\d{4}[A-Z]{1}\d{1}[Z]{1}\d{1}$/',
+                'pancardno' => 'required|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
+            
+            ])->validate();
+
             print_r($request->all());
             $party = new Party;
             $party->name = $request['name'];
@@ -32,6 +32,9 @@ class PartyController extends Controller
             $party->Pancard_no = $request['pancardno'];
             $party->address = $request['address'];
             $party->phone_number = $request['phonenumber'];
+            $party->gst = $request['gst'];
+            $party->pancard_no = $request['pancardno'];
+
             if ($request['status'] == '1') {
                 $status = 1;
             } else {
@@ -65,19 +68,11 @@ class PartyController extends Controller
     
     public function update(request $request)
     {
-         if($request['password'] !=null){
-            $request->validate([
-                'cpassword' => 'required|same:password'
-            ]);
-         }
-         else{
-            $request->validate([
-                'name' => 'required',
-                'address' => 'required',
-                'phonenumber' => 'required|numeric',
-                'email' => 'required|email'
-            ]);
-         }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'phonenumber' => 'numeric',
+            'email' => 'required|email',
+        ])->validate();
         $party = Party::find($request->id);        
         $party->name = $request['name'];
         $party->email = $request['email'];

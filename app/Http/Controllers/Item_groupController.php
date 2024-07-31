@@ -19,12 +19,8 @@ class Item_groupController extends Controller
     {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-            ]);
-            
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
+            ])->validate();
+  
             $itemgroup= new Item_group();
             $itemgroup->name = $request['name'];
             $itemgroup->description = $request['description'];
@@ -67,12 +63,8 @@ class Item_groupController extends Controller
         
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-        ]);
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            return redirect()->back()->with('error');
-            // print_r($errors);die;
-         }  
+        ])->validate();
+
         print_r($request->all());
 
         $itemgroup = Item_group::find($request->id);        

@@ -26,9 +26,9 @@
                     </div>
                     <div class="card-body">
                         @if (isset($party))
-                            <form action="{{ route('party.update') }}" method="post">
+                            <form id="myform" action="{{ route('party.update') }}" method="post">
                         @else
-                            <form action="{{ route('party.store') }}" method="post">
+                            <form id="myform" action="{{ route('party.store') }}" method="post">
                         @endif
                         @csrf
                         <div class="form-group">
@@ -82,7 +82,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="gst" class=" col-form-label text-dark">GST No.</label>
-                                    <input type="text" class="form-control" id="gst" name="gst"
+                                    <input type="text" class="form-control" id="input-gst" name="gst"
                                         value="@php if(isset($party)){echo $party->gst;} else echo old('gst'); @endphp ">
                                     @error('gst')
                                         <span class="text-danger">
@@ -97,10 +97,11 @@
                                     <input type="text" class="form-control" id="pancardno" name="pancardno"
                                         value="@php if(isset($party)){echo $party->pancard_no;} else echo old('pancardno'); @endphp ">
                                     @error('pancardno')
-                                        <span class="text-danger">
+                                        <span class="text-danger" id="pancardno">
                                             {{ $message }}
                                         </span>
                                     @enderror
+                                    {{-- <span id="pancardno" class="error">Invalid PAN Number</span> --}}
                                 </div>
                             </div>
                         </div>
@@ -119,7 +120,7 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($party))  {echo $party->id;} @endphp ">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -204,12 +205,71 @@
     </div>
 </section>
 <script type="text/javascript">
-    // $(function() {
-    //     $("#example").DataTable({
-    //         "responsive": true,
-    //         "lengthChange": false,
-    //         "autoWidth": false,
-    //     }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    // });
+// // function checksum(g){
+// //     let regTest = /\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/.test(g)
+// //      if(regTest){
+// //         let a=65,b=55,c=36;
+// //         return Array['from'](g).reduce((i,j,k,g)=>{ 
+// //            p=(p=(j.charCodeAt(0)<a?parseInt(j):j.charCodeAt(0)-b)*(k%2+1))>c?1+(p-c):p;
+// //            return k<14?i+p:j==((c=(c-(i%c)))<10?c:String.fromCharCode(c+b));
+// //         },0); 
+// //     }
+// //     return regTest
+// // }
+
+// // console.log(checksum('27AAPFU0939F1ZV'))
+// // console.log(checksum('27AASCS2460H1Z0'))
+// // console.log(checksum('29AAGCB7383J1Z4'))
+
+
+// // $(document).ready(function() {
+// //   $.validator.addMethod("gst", function(value3, element3) {
+// //     var gst_value = value3.toUpperCase();
+// //     var reg = /^([0-9]{2}[a-zA-Z]{4}([a-zA-Z]{1}|[0-9]{1})[0-9]{4}[a-zA-Z]{1}([a-zA-Z]|[0-9]){3}){0,15}$/;
+// //     if (this.optional(element3)) {
+// //       return true;
+// //     }
+// //     if (gst_value.match(reg)) {
+// //       return true;
+// //     } else {
+// //       return false;
+// //     }
+
+// //   }, "Please specify a valid GSTTIN Number");
+
+// //   $('#myform').validate({ // initialize the plugin
+// //     rules: {
+// //       gst: {
+// //         required: true,
+// //         gst: true
+// //       }
+
+// //     },
+// //     submitHandler: function(form) {
+// //       alert('valid form submitted');
+// //       return false;
+// //     }
+// //   });
+// // });
+
+// $(function () {
+//     $("#submit").click(function() {
+//         var regex=/([A-Z]){5}([0-9]){4}([A-Z]){1}$/;
+//         if(regex.test($("#pancardno").val().toUpperCase())) {
+//             $("#pancardno").css("visibility", "hidden");
+//         } else {
+//             $("#pancardno").css("visibility", "visible");
+//         }
+//     });
+// });
+
+
+//     // $(function() {
+//     //     $("#example").DataTable({
+//     //         "responsive": true,
+//     //         "lengthChange": false,
+//     //         "autoWidth": false,
+//     //     }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+//     // });
 </script>
 @include('layouts.footer')
