@@ -25,23 +25,23 @@ class AdminController extends Controller
 
     public function adminlogin(Request $request) 
     {
-        // $request->validate([
-        //     'email' => 'required|email',
-        //     'password' => 'required',
-        // ]);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
     
-        // $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
     
-        // $admin = DB::table('admin')->where('email', $request->email)->first();
+        $admin = DB::table('admin')->where('email', $request->email)->first();
 
-        // if ($admin && Hash::check($request->password, $admin->password)) {
-        //     Session::put('admin', $admin);
-        //     return redirect('/admin');
-        // }
+        if ($admin && Hash::check($request->password, $admin->password)) {
+            Session::put('admin', $admin);
+            return redirect('/admin');
+        }
 
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ]);
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',

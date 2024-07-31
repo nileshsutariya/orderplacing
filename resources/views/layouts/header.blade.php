@@ -85,8 +85,8 @@
 
             <li class="nav-item">
               <a href="{{route('index')}}" class="nav-link active">
-                <i class="fas fa- nav-icon"></i>
-                <p>Dashboard </p>
+              <ion-icon name="cellular-outline"></ion-icon>                
+              <p>Dashboard </p>
               </a>
             </li>
             <li class="nav-item">

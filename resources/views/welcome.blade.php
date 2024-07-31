@@ -2,7 +2,7 @@
 30/07/2024
   Today report :
      EMC tracker
-     set all CRUD operation in new design of orderplacing
+     set all CRUD operation in orderplacing
 
 24/07/2024
   Today report :
