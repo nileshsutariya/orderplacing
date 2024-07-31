@@ -61,7 +61,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $users = User::paginate(2);
+        $users = User::paginate(1);
         $user = User::find($id);
         $user= User::where('id',$id)->first();
         $data = compact("user", "users");

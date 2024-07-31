@@ -25,10 +25,15 @@
                     <div class="card-body">
                         @if (isset($item))
                             <form action="{{ route('item.update') }}" method="post">
-                            @else
-                                <form action="{{ route('item.store') }}" method="post">
+                        @else
+                            <form action="{{ route('item.store') }}" method="post">
                         @endif
                         @csrf
+                        {{-- <pre>
+                            @php
+                                print_r($errors->all());
+                            @endphp
+                            </pre> --}}
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -48,9 +53,11 @@
                                     <label for="name" class=" col-form-label ">Item Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         value="{{isset($item)? $item->name : old('name')}} ">
-                                        @error('name')<span class="text-danger">
+                                        @error('name')
+                                        <span class="text-danger">
                                             {{ $message }}
-                                    </span>@enderror
+                                        </span>
+                                        @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -82,7 +89,6 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group clearfix">
@@ -105,7 +111,7 @@
                 <div class="col-md-7">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Item Group Data</h3>
+                            <h3 class="card-title">Item Data</h3>
                         </div>
 
                         <div class="card-body">
@@ -147,18 +153,20 @@
                                         </td>
                                         <td class="text-center">
                                             @if ($value->status == '1')
-                                                <button class="btn btn-sm text-center btn-success">Active</button>
+                                                <button class="badge bg-success">Active</button>
                                             @else
-                                                <button class="btn btn-sm btn-danger">Inactive</button>
+                                                <button class="badge bg-danger">Inactive</button>
                                             @endif
                                         </td>
                                         @if(!isset($item))
                                         <td>
                                             <a class="btn" href="{{ route('item.edit', $value->id) }}">
-                                                <i class="fa fa-pen text-warning"></i> Edit
+                                                <i class="fa fa-pen text-warning"></i> 
+                                                Edit
                                             </a>
                                             <a class="btn" href="{{ route('item.delete', $value->id) }}">
-                                                <i class="fa fa-trash text-danger"></i> Delete
+                                                <i class="fa fa-trash text-danger"></i> 
+                                                Delete
                                             </a>
                                         </td>
                                         @endif

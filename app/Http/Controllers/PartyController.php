@@ -20,6 +20,9 @@ class PartyController extends Controller
                 'name' => 'required',
                 'phonenumber' => 'numeric',
                 'email' => 'required|email',
+                'gst' => 'required|regex:/^\d{2}[A-Z]{5}\d{4}[A-Z]{1}\d{1}[Z]{1}\d{1}$/',
+                'pancardno' => 'required|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
+            
             ])->validate();
 
             print_r($request->all());
@@ -30,6 +33,9 @@ class PartyController extends Controller
             $party->Pancard_no = $request['pancardno'];
             $party->address = $request['address'];
             $party->phone_number = $request['phonenumber'];
+            $party->gst = $request['gst'];
+            $party->pancard_no = $request['pancardno'];
+
             if ($request['status'] == '1') {
                 $status = 1;
             } else {

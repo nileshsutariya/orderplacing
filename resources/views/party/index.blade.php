@@ -26,9 +26,9 @@
                     </div>
                     <div class="card-body">
                         @if (isset($party))
-                            <form action="{{ route('party.update') }}" method="post">
-                            @else
-                                <form action="{{ route('party.store') }}" method="post">
+                            <form id="myform" action="{{ route('party.update') }}" method="post">
+                        @else
+                            <form id="myform" action="{{ route('party.store') }}" method="post">
                         @endif
                         @csrf
                         <div class="form-group">
@@ -91,10 +91,11 @@
                                     <input type="text" class="form-control" id="pancardno" name="pancardno"
                                         value="{{isset($party)?$party->pancard_no:old('pancardno')}} ">
                                     @error('pancardno')
-                                        <span class="text-danger">
+                                        <span class="text-danger" id="pancardno">
                                             {{ $message }}
                                         </span>
                                     @enderror
+                                    {{-- <span id="pancardno" class="error">Invalid PAN Number</span> --}}
                                 </div>
                             </div>
                         </div>
@@ -170,9 +171,9 @@
                                         </td>
                                         <td class="text-center">
                                             @if ($value->status == '1')
-                                                <button class="btn btn-sm text-center btn-success">Active</button>
+                                                <button class="badge bg-success">Active</button>
                                             @else
-                                                <button class="btn btn-sm btn-danger">Inactive</button>
+                                                <button class="badge bg-danger">Inactive</button>
                                             @endif
                                         </td>
                                         @if(!isset($party))
@@ -193,10 +194,6 @@
                     <div class="mt-3">
                         {{$parties->links('pagination::bootstrap-5')}}
                     </div>
-                    {{-- Paginate {{ $items->links('pagination::bootstrap-5' ) }} --}}
-                    {{-- {{ $items->links('pagination::bootstrap-4')}} --}}
-                    {{-- {!! $items->links('pagination::bootstrap-5') !!} --}}
-                    
                 </div>
             </div>
 

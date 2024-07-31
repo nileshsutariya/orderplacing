@@ -14,19 +14,19 @@
         </div>
     </div>
 </section>
-<section class="content ">
+<section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-outline card-info">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h1 class="card-title ">Users</h1>
                     </div>
                     <div class="card-body">
                         @if (isset($user))
                             <form action="{{ route('user.update') }}" method="post">
-                            @else
-                                <form action="{{ route('user.store') }}" method="post">
+                        @else
+                            <form action="{{ route('user.store') }}" method="post">
                         @endif
                         @csrf
                         <div class="row">
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <div class="form-group clearfix">
                                 <div class="icheck-primary d-inline">
                                     <input type="checkbox" id="active" name="status"
@@ -174,9 +174,9 @@
                                         </td>
                                         <td class="text-center">
                                             @if ($value->status == '1')
-                                                <button class="btn btn-sm text-center btn-success">Active</button>
+                                                <button class="badge bg-success">Active</button>
                                             @else
-                                                <button class="btn btn-sm btn-danger">Inactive</button>
+                                                <button class="badge bg-danger">Inactive</button>
                                             @endif
                                         </td>
                                         @if(!isset($user))
