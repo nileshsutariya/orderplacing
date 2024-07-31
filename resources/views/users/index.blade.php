@@ -101,7 +101,6 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address" class=" col-form-label text-dark">Address</label>
