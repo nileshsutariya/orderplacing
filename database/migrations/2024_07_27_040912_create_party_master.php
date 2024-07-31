@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('item')) {
+        if (!Schema::hasTable('party_master')) {
         Schema::create('party_master', function (Blueprint $table) {
             $table->id();
             $table->string('name');
