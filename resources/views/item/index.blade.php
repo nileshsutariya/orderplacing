@@ -114,7 +114,6 @@
                                     <th>Price</th>
                                     <th>Qauntity</th>
                                     <th>Status</th>
-                                    @if (isset($items))
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>

@@ -208,12 +208,12 @@
     </div>
 </section>
 <script type="text/javascript">
-    $(function() {
-        $("#example").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-        }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+    // $(function() {
+    //     $("#example").DataTable({
+    //         "responsive": true,
+    //         "lengthChange": false,
+    //         "autoWidth": false,
+    //     }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    // });
 </script>
 @include('layouts.footer')
