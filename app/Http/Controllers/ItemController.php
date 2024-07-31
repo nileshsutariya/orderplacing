@@ -23,11 +23,16 @@ class ItemController extends Controller
                 'price' => 'numeric',
                 'qty' => 'numeric',
             ]);
+            // if ($validator->fails()) {
+            //     $errors = $validator->errors();
+            //     print_r($errors);die;
+            // }
             if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
-            print_r($request->all());
+                return redirect()->back()
+                            ->withErrors($validator)
+                            ->withInput();
+            }
+            // print_r($request->all());
             $item= new Item();
             $item->group_id = $request['group_id'];
             $item->name = $request['name'];

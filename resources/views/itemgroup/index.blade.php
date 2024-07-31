@@ -33,10 +33,11 @@
                                 <label for="name" class=" col-form-label ">Item Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ isset($itemgroup)? $itemgroup->name : old('name')}}">
-                                    @error('name')
                                     <span class="text-danger">
-                                    {{$message}} 
-                                </span>@enderror
+                                        @error('name')
+                                            {{$message}}
+                                        @enderror
+                                    </span>
                             </div>
                             <div class="form-group">
                                 <label for="description" class=" col-form-label text-dark">Description</label>

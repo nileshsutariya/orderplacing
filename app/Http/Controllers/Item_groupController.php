@@ -20,6 +20,7 @@ class Item_groupController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
             ]);
+            
             if ($validator->fails()) {
                 $errors = $validator->errors();
                 print_r($errors);die;

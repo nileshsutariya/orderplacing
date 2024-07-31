@@ -27,8 +27,8 @@
                     <div class="card-body">
                         @if (isset($party))
                             <form action="{{ route('party.update') }}" method="post">
-                            @else
-                                <form action="{{ route('party.store') }}" method="post">
+                        @else
+                            <form action="{{ route('party.store') }}" method="post">
                         @endif
                         @csrf
                         <div class="form-group">
@@ -197,10 +197,6 @@
                     <div class="mt-3">
                         {{$parties->links('pagination::bootstrap-5')}}
                     </div>
-                    {{-- Paginate {{ $items->links('pagination::bootstrap-5' ) }} --}}
-                    {{-- {{ $items->links('pagination::bootstrap-4')}} --}}
-                    {{-- {!! $items->links('pagination::bootstrap-5') !!} --}}
-                    
                 </div>
             </div>
 

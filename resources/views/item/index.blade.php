@@ -30,6 +30,11 @@
                                 <form action="{{ route('item.store') }}" method="post">
                         @endif
                         @csrf
+                        {{-- <pre>
+                            @php
+                                print_r($errors->all());
+                            @endphp
+                            </pre> --}}
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -49,9 +54,11 @@
                                     <label for="name" class=" col-form-label ">Item Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         value="{{isset($item)? $item->name : old('name')}} ">
-                                        @error('name')<span class="text-danger">
+                                        @error('name')
+                                        <span class="text-danger">
                                             {{ $message }}
-                                    </span>@enderror
+                                        </span>
+                                        @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12">
