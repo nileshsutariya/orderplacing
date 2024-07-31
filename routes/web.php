@@ -11,9 +11,7 @@ use App\Http\Controllers\Item_groupController;
 // Route::get('/', function () {
 //     return view('item');
 // }); 
-
-
-    Route::group(['prefix'=>'/admin'], function () {
+    Route::group(['prefix'=>'admin'], function () {
 
     Route::get('/login', [AdminController::class, 'loginform'])->name('loginadmin');
     Route::post('/login', [AdminController::class, 'adminlogin'])->name('admin.login');

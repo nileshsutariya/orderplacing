@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label for="first_name" class=" col-form-label "> First name</label>
                                     <input type="text" class="form-control" id="first_name" name="first_name"
-                                        value="@php if(isset($user))  {echo $user->first_name;} else echo old('first_name'); @endphp ">
+                                    value="{{isset($user)? $user->first_name : old('first_name')}} ">
                                     @error('first_name')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="last_name" class=" col-form-label "> last name</label>
                                     <input type="text" class="form-control" id="last_name" name="last_name"
-                                        value="@php if(isset($user))  {echo $user->last_name;} else echo old('last_name'); @endphp ">
+                                    value="{{isset($user)? $user->last_name : old('last_name')}} ">
                                     @error('last_name')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                     <label for="email" class=" col-form-label text-dark">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="@php if(isset($user)) {echo $user->email;}else echo old('email'); @endphp ">
+                                    value="{{isset($user)? $user->email : old('email')}} ">
                                     @error('email')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -71,7 +71,7 @@
                                     <label for="phone number" class=" col-form-label text-dark">Phone
                                         number</label>
                                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                        value="@php if(isset($user)){echo $user->phone_number;} else echo old('phone_number'); @endphp ">
+                                    value="{{isset($user)?$user->phone_number : old('phone_number')}} ">
                                     @error('phone_number')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -92,8 +92,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="confirm password" class=" col-form-label text-dark">Confirm
-                                        Password</label>
+                                    <label for="confirm password" class=" col-form-label text-dark">Confirm Password</label>
                                     <input type="password" class="form-control" id="cpassword" name="cpassword">
                                     @error('cpassword')
                                         <span class="text-danger">
@@ -106,18 +105,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address" class=" col-form-label text-dark">Address</label>
-                                    <textarea type="text" class="form-control" id="address" name="address">@php
-                                        if (isset($user)) {
-                                            echo $user->address;
-                                        } else {
-                                            echo old('address');
-                                        }
-                                    @endphp </textarea>
-                                    @error('address')
-                                        <span class="text-danger">
-                                            {{ $message }}
-                                        </span>
-                                    @enderror
+                                    <textarea type="text" class="form-control" id="address" name="address">
+                                        {{isset($user)?$user->address : old('address')}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -125,11 +114,7 @@
                             <div class="form-group clearfix">
                                 <div class="icheck-primary d-inline">
                                     <input type="checkbox" id="active" name="status"
-                                        @php if (isset($user)) {
-                                                        if ($user['status'] == '1') {
-                                                            echo "checked";
-                                                        }
-                                                } @endphp>
+                                    {{ isset($user) && $user->status=='1' ? 'checked' : '' }} >
                                     <label for="active">is Active
                                     </label>
                                 </div>
@@ -137,7 +122,7 @@
                         </div>
                         <button type="submit" class="btn btn-success">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
-                            value="@php if(isset($user))  {echo $user->id;} @endphp ">
+                        value="{{isset($user)? $user->id:''}}">
                     </div>
                     </form>
                 </div>
@@ -212,7 +197,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     {{-- </div> --}}

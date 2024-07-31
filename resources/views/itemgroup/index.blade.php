@@ -32,19 +32,16 @@
                             <div class="form-group">
                                 <label for="name" class=" col-form-label ">Item Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
-                                    value="@php if(isset($itemgroup))  {echo $itemgroup->name;} else echo old('name'); @endphp ">
-                                <span class="text-danger">
+                                    value="{{ isset($itemgroup)? $itemgroup->name : old('name')}}">
                                     @error('name')
-                                    {{$message}} @enderror
-                                </span>
+                                    <span class="text-danger">
+                                    {{$message}} 
+                                </span>@enderror
                             </div>
                             <div class="form-group">
                                 <label for="description" class=" col-form-label text-dark">Description</label>
                                 <textarea type="text" class="form-control" id="description"
-                                    name="description">@php if(isset($itemgroup)) {echo $itemgroup->description;} else echo old('description'); @endphp </textarea>
-                                <span class="text-danger">@error('description')
-                                {{$message}} @enderror
-                                </span>
+                                    name="description">{{ isset($itemgroup)? $itemgroup->description : old('description')}}</textarea>
                             </div>
                             
                         <div class="row">
@@ -52,17 +49,15 @@
                                 <div class="form-group clearfix">
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status" value="1" 
-                                            @php
-                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp >
+                                        {{ isset($itemgroup) && $itemgroup->status=='1' ? 'checked' : '' }} >
                                         <label for="active">is Active
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                       
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
-                            value="@php if(isset($itemgroup))  {echo $itemgroup->id;} @endphp ">
+                            value="{{ isset($itemgroup)? $itemgroup->id:''}}">
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>

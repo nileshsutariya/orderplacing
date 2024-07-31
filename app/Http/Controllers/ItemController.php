@@ -23,8 +23,8 @@ class ItemController extends Controller
     {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'price' => 'required|numeric',
-                'qty' => 'required|numeric',
+                'price' => 'numeric',
+                'qty' => 'numeric',
             ]);
             if ($validator->fails()) {
                 $errors = $validator->errors();
@@ -70,8 +70,8 @@ class ItemController extends Controller
         
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'price' => 'required|numeric',
-            'qty' => 'required|numeric',
+            'price' => 'numeric',
+            'qty' => 'numeric',
         ]);
         if ($validator->fails()) {
             $errors = $validator->errors();

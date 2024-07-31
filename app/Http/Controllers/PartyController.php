@@ -17,8 +17,7 @@ class PartyController extends Controller
     {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'address' => 'required',
-                'phonenumber' => 'required|numeric',
+                'phonenumber' => 'numeric',
                 'email' => 'required|email',
             ]);
             if ($validator->fails()) {
