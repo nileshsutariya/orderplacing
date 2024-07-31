@@ -85,7 +85,7 @@
 
             <li class="nav-item">
               <a href="{{route('dashboard.index')}}" class="nav-link active">
-              <ion-icon name="cellular-outline"></ion-icon>                
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard </p>
               </a>
             </li>
@@ -109,7 +109,7 @@
             </li>
             <li class="nav-item">
               <a href="{{route('item.index')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far fa-th nav-icon"></i>
                 <p>Item</p>
               </a>
             </li>

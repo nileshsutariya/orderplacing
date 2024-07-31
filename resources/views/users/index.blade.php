@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">submit</button>
+                        <button type="submit" class="btn btn-primary">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
                         value="{{isset($user)? $user->id:''}}">
                     </div>

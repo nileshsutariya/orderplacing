@@ -59,7 +59,7 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="{{ isset($itemgroup)? $itemgroup->id:''}}">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
