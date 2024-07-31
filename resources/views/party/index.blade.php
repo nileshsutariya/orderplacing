@@ -121,7 +121,7 @@
             <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Item Group Data</h3>
+                        <h3 class="card-title">party Data</h3>
                     </div>
 
                     <div class="card-body">
@@ -136,7 +136,9 @@
                                     <th>GST No.</th>
                                     <th>PANCard No.</th>
                                     <th>Status</th>
+                                    @if(!isset($party))
                                     <th class="text-center">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,6 +175,7 @@
                                                 <button class="btn btn-sm btn-danger">Inactive</button>
                                             @endif
                                         </td>
+                                        @if(!isset($party))
                                         <td>
                                             <a class="btn" href="{{ route('party.edit', $value->id) }}">
                                                 <i class="fa  fa-pen text-warning"></i> Edit
@@ -181,6 +184,7 @@
                                                 <i class="fa fa-trash text-danger"></i> Delete
                                             </a>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

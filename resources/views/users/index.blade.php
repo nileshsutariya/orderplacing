@@ -143,7 +143,9 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Status</th>
+                                    @if(!isset($user))
                                     <th class="text-center">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody >
@@ -177,6 +179,7 @@
                                                 <button class="btn btn-sm btn-danger">Inactive</button>
                                             @endif
                                         </td>
+                                        @if(!isset($user))
                                         <td>
                                             <a class="btn" href="{{ route('user.edit', $value->id) }}">
                                                 <i class="fa  fa-pen text-warning"></i> Edit
@@ -185,6 +188,7 @@
                                                 <i class="fa fa-trash text-danger"></i> Delete
                                             </a>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

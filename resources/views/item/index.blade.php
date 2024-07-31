@@ -119,7 +119,9 @@
                                     <th>Price</th>
                                     <th>Qauntity</th>
                                     <th>Status</th>
+                                    @if(!isset($item))
                                     <th class="text-center">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody class="m-3 p-3">
@@ -150,6 +152,7 @@
                                                 <button class="btn btn-sm btn-danger">Inactive</button>
                                             @endif
                                         </td>
+                                        @if(!isset($item))
                                         <td>
                                             <a class="btn" href="{{ route('item.edit', $value->id) }}">
                                                 <i class="fa fa-pen text-warning"></i> Edit
@@ -158,6 +161,7 @@
                                                 <i class="fa fa-trash text-danger"></i> Delete
                                             </a>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

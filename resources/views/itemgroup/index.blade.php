@@ -79,7 +79,9 @@
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
+                                @if(!isset($itemgroup))
                                 <th class="text-center">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -102,6 +104,7 @@
                                             <button class="badge rounded-pill bg-danger">Inactive</button>
                                         @endif
                                     </td>
+                                    @if(!isset($itemgroup))
                                     <td>
                                         <a class="btn" href="{{route('itemgroup.edit',$item_group->id)}}">
                                             <i class="fa fa-pen text-warning"></i> Edit
@@ -110,6 +113,7 @@
                                             <i class="fa fa-trash text-danger"></i> Delete
                                         </a>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
