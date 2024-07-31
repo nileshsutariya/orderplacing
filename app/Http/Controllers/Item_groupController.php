@@ -51,7 +51,7 @@ class Item_groupController extends Controller
 
     public function edit($id)
     {
-        $itemgroups = Item_group::paginate(2);
+        $itemgroups = Item_group::paginate(1);
         $itemgroup = Item_group::find($id);
         $itemgroup = Item_group::where('id',$id)->first();
         if (is_null($itemgroup)) {

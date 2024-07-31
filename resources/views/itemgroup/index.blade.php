@@ -98,7 +98,7 @@
                                         @if ($item_group->status == '1')
                                             <button class="badge bg-success">Active</button>
                                         @else
-                                            <button class="badge rounded-pill bg-danger">Inactive</button>
+                                            <button class="badge bg-danger">Inactive</button>
                                         @endif
                                     </td>
                                     <td>

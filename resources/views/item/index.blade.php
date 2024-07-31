@@ -100,7 +100,7 @@
                 <div class="col-md-7">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Item Group Data</h3>
+                            <h3 class="card-title">Item Data</h3>
                         </div>
 
                         <div class="card-body">
@@ -140,9 +140,9 @@
                                         </td>
                                         <td class="text-center">
                                             @if ($value->status == '1')
-                                                <button class="btn btn-sm text-center btn-success">Active</button>
+                                                <button class="badge bg-success">Active</button>
                                             @else
-                                                <button class="btn btn-sm btn-danger">Inactive</button>
+                                                <button class="badge bg-danger">Inactive</button>
                                             @endif
                                         </td>
                                         <td>
