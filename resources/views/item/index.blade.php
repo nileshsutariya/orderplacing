@@ -105,7 +105,7 @@
 
                         <div class="card-body">
 
-                        <table id="example1" class="table  table-hover table-valign-middle table-bordered">
+                        <table class="table  ">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -156,8 +156,8 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
+                        {{ $items->links()}}
                     </div>
                 </div>
             </div>

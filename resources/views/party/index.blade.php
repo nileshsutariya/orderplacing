@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <label for="name" class=" col-form-label ">Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        value="{{isset($party))? $party->name : old('name')}} ">
+                                        value="{{isset($party)? $party->name : old('name')}} ">
                                     @error('name')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label for="email" class=" col-form-label text-dark">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="{{isset($party))? $party->email : old('email')}} ">
+                                        value="{{isset($party)? $party->email : old('email')}} ">
                                     @error('email')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label for="phone number" class=" col-form-label text-dark">Phone number</label>
                                     <input type="text" class="form-control" id="phonenumber" name="phonenumber"
-                                        value="{{isset($party))?$party->phone_number : old('phonenumber')}} ">
+                                        value="{{isset($party)?$party->phone_number : old('phonenumber')}} ">
                                     @error('phonenumber')
                                         <span class="text-danger">
                                             {{ $message }}
@@ -76,7 +76,7 @@
                                         <div class="form-group">
                                             <label for="pancardno" class=" col-form-label text-dark">PANCard No.</label>
                                             <input type="text" class="form-control" id="pancardno" name="pancardno"
-                                                value="{{isset($party))?$party->pancard_no : old('pancardno')}} ">
+                                                value="{{isset($party)?$party->pancard_no : old('pancardno')}} ">
                                         </div>
                                     </div>
                                 </div>
