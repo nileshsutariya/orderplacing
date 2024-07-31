@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
-                <div class="card card-outline card-primary">
+                <div class="card card-outline card-info">
                     <div class="card-header">
                         <h3 class="card-title">Item Group</h3>
                     </div>
@@ -72,14 +72,16 @@
                     </div>
                     <div class="card-body">
 
-                    <table id="example1" class="table  table-hover table-valign-middle table-bordered">
+                    <table  class="table table-hover table-valign-middle table-bordered">
                         <thead>
                             <tr>
                                 <th>No.</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
+                                @if(!isset($itemgroup))
                                 <th class="text-center">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -102,6 +104,7 @@
                                             <button class="badge bg-danger">Inactive</button>
                                         @endif
                                     </td>
+                                    @if(!isset($itemgroup))
                                     <td>
                                         <a class="btn" href="{{route('itemgroup.edit',$item_group->id)}}">
                                             <i class="fa fa-pen text-warning"></i> Edit
@@ -110,6 +113,7 @@
                                             <i class="fa fa-trash text-danger"></i> Delete
                                         </a>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -122,13 +126,5 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    $(function() {
-        // $("#example1").DataTable({
-        //     "responsive": true,
-        //     "lengthChange": false,
-        //     "autoWidth": false,
-        // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
-</script>
+
 @include('layouts.footer')

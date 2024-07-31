@@ -17,8 +17,8 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5">
-                <div class="card card-outline card-primary">
+            <div class="col-md-4">
+                <div class="card card-outline card-info">
                     <div class="card-header">
                         <h1 class="card-title ">Users</h1>
                     </div>
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <div class="form-group clearfix">
                                 <div class="icheck-primary d-inline">
                                     <input type="checkbox" id="active" name="status"
@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">User Data</h3>
@@ -143,7 +143,9 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Status</th>
+                                    @if(!isset($user))
                                     <th class="text-center">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody >
@@ -177,6 +179,7 @@
                                                 <button class="badge bg-danger">Inactive</button>
                                             @endif
                                         </td>
+                                        @if(!isset($user))
                                         <td>
                                             <a class="btn" href="{{ route('user.edit', $value->id) }}">
                                                 <i class="fa  fa-pen text-warning"></i> Edit
@@ -185,6 +188,7 @@
                                                 <i class="fa fa-trash text-danger"></i> Delete
                                             </a>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

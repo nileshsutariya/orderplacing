@@ -55,6 +55,7 @@ class ItemController extends Controller
     public function edit($id)
     {
         $items= Item::paginate(1);
+        $items= Item::paginate(2);
         $item = Item::find($id);
         $itemgroup= Item_group::all();
         return view("item.index",compact('item', 'items', 'itemgroup'));

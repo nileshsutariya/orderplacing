@@ -17,7 +17,7 @@ class UserController extends Controller
     // }else{
     //     $user = User::where('company', 'LIKE', '%' . $search . '%')->paginate(1);
     // }
-        $users= User::paginate(1);
+        $users= User::paginate(2);
         $data = compact("users");
         return view("users.index", compact("users"));
     }
