@@ -23,7 +23,6 @@
                         <h3 class="card-title">Items</h3>
                     </div>
                     <div class="card-body">
-
                         @if (isset($item))
                             <form action="{{ route('item.update') }}" method="post">
                             @else
@@ -67,6 +66,9 @@
                                     <label for="price" class=" col-form-label text-dark">Price</label>
                                     <input type="text" class="form-control" id="price" name="price"
                                         value="{{isset($item)? $item->price : old('price')}}">
+                                        @error('price')<span class="text-danger">
+                                            {{ $message }}
+                                    </span>@enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -74,6 +76,9 @@
                                     <label for="qty" class=" col-form-label text-dark">qty</label>
                                     <input type="text" class="form-control" id="qty" name="qty"
                                     value="{{isset($item)?$item->qty : old('qty')}}">
+                                    @error('qty')<span class="text-danger">
+                                            {{ $message }}
+                                    </span>@enderror
                                 </div>
                             </div>
                         </div>
@@ -105,7 +110,7 @@
 
                         <div class="card-body">
 
-                        <table id="example1" class="table table-hover table-valign-middle table-bordered">
+                        <table  class="table table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -165,9 +170,6 @@
                     </div>
                 </div>
             </div>
-        {{-- </div> --}}
 </section>
-<script type="text/javascript">
- 
-</script>
+
 @include('layouts.footer')

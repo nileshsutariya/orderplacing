@@ -84,7 +84,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <li class="nav-item">
-              <a href="{{route('index')}}" class="nav-link active">
+              <a href="{{route('dashboard.index')}}" class="nav-link active">
               <ion-icon name="cellular-outline"></ion-icon>                
               <p>Dashboard </p>
               </a>

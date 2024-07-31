@@ -10,13 +10,13 @@ class UserController extends Controller
 {
     public function index(request $request)
     {
-        $search= $request['search'];
-    if($search==""){
-        print_r("ksdfghjfghnjm,xcvbnm");
-        $user = User::all();
-    }else{
-        $user = User::where('company', 'LIKE', '%' . $search . '%')->paginate(1);
-    }
+    //     $search= $request['search'];
+    // if($search==""){
+    //     print_r("ksdfghjfghnjm,xcvbnm");
+    //     $user = User::all();
+    // }else{
+    //     $user = User::where('company', 'LIKE', '%' . $search . '%')->paginate(1);
+    // }
         $users= User::paginate(1);
         $data = compact("users");
         return view("users.index", compact("users"));
@@ -30,11 +30,8 @@ class UserController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
                 'cpassword' => 'required|same:password',
-            ]);
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
+            ])->validate();
+            
             print_r($request->all());
             $user = new User;
             $user->first_name = $request['first_name'];

@@ -22,11 +22,8 @@ class ItemController extends Controller
                 'name' => 'required',
                 'price' => 'numeric',
                 'qty' => 'numeric',
-            ]);
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
+            ])->validate(); 
+    
             print_r($request->all());
             $item= new Item();
             $item->group_id = $request['group_id'];
@@ -69,11 +66,8 @@ class ItemController extends Controller
             'name' => 'required',
             'price' => 'numeric',
             'qty' => 'numeric',
-        ]);
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            print_r($errors);die;
-         }  
+        ])->validate();
+   
         $item = Item::find($request->id); 
         print_r($request->all());
         $itemgroup= Item_group::all();

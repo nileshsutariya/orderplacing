@@ -36,7 +36,8 @@
                                     @error('name')
                                     <span class="text-danger">
                                     {{$message}} 
-                                </span>@enderror
+                                </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="description" class=" col-form-label text-dark">Description</label>

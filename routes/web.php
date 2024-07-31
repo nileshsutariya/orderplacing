@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PartyController;
+use App\Http\Controllers\dashboard;
+
 use App\Http\Controllers\Item_groupController;
 
 // Route::get('/', function () {
@@ -43,5 +45,8 @@ use App\Http\Controllers\Item_groupController;
         Route::get('/user/edit/{id}',[UserController::class,'edit'] )->name('user.edit');
         Route::post('/user/update',[UserController::class,'update'] )->name('user.update');
         Route::get('/user/delete/{id}',[UserController::class,'delete'] )->name('user.delete');
+
+        Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
+
     });
 });

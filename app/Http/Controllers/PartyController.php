@@ -19,11 +19,8 @@ class PartyController extends Controller
                 'name' => 'required',
                 'phonenumber' => 'numeric',
                 'email' => 'required|email',
-            ]);
-            if ($validator->fails()) {
-                $errors = $validator->errors();
-                print_r($errors);die;
-             }
+            ])->validate();
+
             print_r($request->all());
             $party = new Party;
             $party->name = $request['name'];
@@ -54,7 +51,7 @@ class PartyController extends Controller
 
     public function edit($id)
     {
-        $parties= Party::all();
+        $parties= Party::paginate(1);
 
         $party = Party::find($id);
         $party= Party::where('id',$id)->first();
@@ -65,19 +62,11 @@ class PartyController extends Controller
     
     public function update(request $request)
     {
-         if($request['password'] !=null){
-            $request->validate([
-                'cpassword' => 'required|same:password'
-            ]);
-         }
-         else{
-            $request->validate([
-                'name' => 'required',
-                'address' => 'required',
-                'phonenumber' => 'required|numeric',
-                'email' => 'required|email'
-            ]);
-         }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'phonenumber' => 'numeric',
+            'email' => 'required|email',
+        ])->validate();
         $party = Party::find($request->id);        
         $party->name = $request['name'];
         $party->email = $request['email'];
