@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
-                <div class="card card-outline card-primary">
+                <div class="card card-outline card-info">
                     <div class="card-header">
                         <h3 class="card-title">Items</h3>
                     </div>
@@ -110,7 +110,7 @@
 
                         <div class="card-body">
 
-                        <table  class="table table-hover table-valign-middle table-bordered">
+                        <table  class="table table-responsive table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>

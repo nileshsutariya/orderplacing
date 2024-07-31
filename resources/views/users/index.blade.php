@@ -17,7 +17,7 @@
 <section class="content ">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="card card-outline card-info">
                     <div class="card-header">
                         <h1 class="card-title ">Users</h1>
@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">User Data</h3>
