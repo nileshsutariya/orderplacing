@@ -11,7 +11,7 @@ class Item_groupController extends Controller
 
     public function index()
     {
-        $itemgroups= Item_group::paginate(2);
+        $itemgroups= Item_group::paginate(1);
         $data = compact("itemgroups");
         return view('itemgroup.index', compact('itemgroups'));
     }

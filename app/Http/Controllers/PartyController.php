@@ -54,7 +54,7 @@ class PartyController extends Controller
 
     public function edit($id)
     {
-        $parties= Party::all();
+        $parties= Party::paginate(1);
 
         $party = Party::find($id);
         $party= Party::where('id',$id)->first();
