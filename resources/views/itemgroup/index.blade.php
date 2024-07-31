@@ -63,14 +63,12 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($itemgroup))  {echo $itemgroup->id;} @endphp ">
-                        
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
-
-
+            
             <div class="col-md-7">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
@@ -120,6 +118,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-3">
+                        {{$itemgroups->links('pagination::bootstrap-5')}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,11 +128,11 @@
 </section>
 <script type="text/javascript">
     $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        // $("#example1").DataTable({
+        //     "responsive": true,
+        //     "lengthChange": false,
+        //     "autoWidth": false,
+        // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
 @include('layouts.footer')

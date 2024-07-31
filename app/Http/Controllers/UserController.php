@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users= User::all();
+        $users= User::paginate(1);
         $data = compact("users");
         return view("users.index", compact("users"));
     }
@@ -56,7 +56,6 @@ class UserController extends Controller
         $user = User::find($id)->delete();
         return redirect()->route('user.index');
     }
-
     public function edit($id)
     {
         $users = User::all();

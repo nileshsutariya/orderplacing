@@ -66,10 +66,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- </div> --}}
-
-                            {{-- <div class="row"> --}}
-
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="phone number" class=" col-form-label text-dark">Phone
@@ -106,9 +102,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- </div> --}}
 
-                            {{-- <div class="row"> --}}
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address" class=" col-form-label text-dark">Address</label>
@@ -127,13 +121,11 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row"> --}}
                         <div class="col-sm-4">
                             <div class="form-group clearfix">
                                 <div class="icheck-primary d-inline">
                                     <input type="checkbox" id="active" name="status"
-                                        @php
-if (isset($user)) {
+                                        @php if (isset($user)) {
                                                         if ($user['status'] == '1') {
                                                             echo "checked";
                                                         }
@@ -143,7 +135,6 @@ if (isset($user)) {
                                 </div>
                             </div>
                         </div>
-                        {{-- </div> --}}
                         <button type="submit" class="btn btn-success">submit</button>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($user))  {echo $user->id;} @endphp ">
@@ -153,12 +144,12 @@ if (isset($user)) {
             </div>
 
             <div class="col-md-7">
-                <div class="card card-outline card-secondary">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">User Data</h3>
                     </div>
                     <div class="card-body">
-                        <table id="example1" class="table  table-hover table-valign-middle table-bordered">
+                        <table class="table table-responsive table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -168,6 +159,7 @@ if (isset($user)) {
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Status</th>
+
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -214,22 +206,25 @@ if (isset($user)) {
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-3">
+                            {{$users->links('pagination::bootstrap-5')}}
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-    </div>
+    {{-- </div> --}}
 </section>
 <script type="text/javascript">
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+    // $(function() {
+    //     // $("#table").DataTable({
+    //     //     "responsive": true,
+    //     //     // "lengthChange": false,
+    //     //     // "autoWidth": false,
+    //     // });
+    // });
 </script>
 
 @include('layouts.footer')

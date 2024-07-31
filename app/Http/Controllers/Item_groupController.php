@@ -8,13 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class Item_groupController extends Controller
 {
-    // public  function index(){
-    //     $itemgroup= Item_group::all();
-    //     return view('itemgroup.index', compact("itemgroup"));
-    // }
+
     public function index()
     {
-        $itemgroups= Item_group::all();
+        $itemgroups= Item_group::paginate(2);
         $data = compact("itemgroups");
         return view('itemgroup.index', compact('itemgroups'));
     }
@@ -57,7 +54,7 @@ class Item_groupController extends Controller
 
     public function edit($id)
     {
-        $itemgroups = Item_group::all();
+        $itemgroups = Item_group::paginate(2);
         $itemgroup = Item_group::find($id);
         $itemgroup = Item_group::where('id',$id)->first();
         if (is_null($itemgroup)) {

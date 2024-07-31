@@ -1,9 +1,8 @@
 <!-- 
-27/07/2024
+30/07/2024
   Today report :
-     DHS testing
      EMC tracker
-     CRUD operation in party_master and user table
+     set all CRUD operation in new design of orderplacing
 
 24/07/2024
   Today report :

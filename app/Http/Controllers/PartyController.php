@@ -9,7 +9,7 @@ class PartyController extends Controller
 {
     public function index()
     {
-        $parties= Party::all();
+        $parties= Party::paginate(1);
         $data = compact("parties");
         return view("party.index")->with($data);
     }
@@ -62,10 +62,8 @@ class PartyController extends Controller
         $data = compact("party","parties");
         return view("party.index")->with($data);
     }
-    public function create()
-    {
-        return view('party');    
-    }
+
+    
     public function update(request $request)
     {
          if($request['password'] !=null){

@@ -10,14 +10,15 @@ use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
- 
     public function index()
     {   
-        $items= Item::all();
+        // $items = Item::paginate(10);
+        // $items= Item::all();
+        $items= Item::paginate(1);
+        // $itemgroup= Item_group::all();
         $itemgroup= Item_group::all();
         return view('item.index', compact('items', 'itemgroup'));
     }
-
     public function store(Request $request)
     {
             $validator = Validator::make($request->all(), [
@@ -31,9 +32,7 @@ class ItemController extends Controller
              }
             print_r($request->all());
             $item= new Item();
-            // Item::create($request->all());
             $item->group_id = $request['group_id'];
-            // print_r($item); die();
             $item->name = $request['name'];
             $item->description = $request['description'];
             $item->price = $request['price'];

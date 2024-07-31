@@ -14,21 +14,23 @@
         </div>
     </div>
 </section>
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-md-4">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Party</h3>
                     </div>
-                    @if (isset($party))
-                        <form action="{{ route('party.update') }}" method="post">
-                        @else
-                            <form action="{{ route('party.store') }}" method="post">
-                    @endif
-                    @csrf
                     <div class="card-body">
+                        @if (isset($party))
+                            <form action="{{ route('party.update') }}" method="post">
+                            @else
+                                <form action="{{ route('party.store') }}" method="post">
+                        @endif
+                        @csrf
                         <div class="form-group">
                             <label for="name" class=" col-form-label ">Name</label>
                             <input type="text" class="form-control" id="name" name="name"
@@ -50,6 +52,7 @@
                                 </span>
                             @enderror
                         </div>
+
                         <div class="form-group">
                             <label for="phone number" class=" col-form-label text-dark">Phone number</label>
                             <input type="text" class="form-control" id="phonenumber" name="phonenumber"
@@ -107,8 +110,7 @@
                                     <div class="icheck-primary d-inline">
                                         <input type="checkbox" id="active" name="status" value="1"
                                             @php
-                                                if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} 
-                                            @endphp>
+                                            if(isset($itemgroup)){if($itemgroup['status']=='1' ){echo "checked" ;}} @endphp >
                                         <label for="active">is Active
                                         </label>
                                     </div>
@@ -117,24 +119,25 @@
                         </div>
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="@php if(isset($party))  {echo $party->id;} @endphp ">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
             </div>
 
-
             <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Party Data</h3>
+                        <h3 class="card-title">Item Group Data</h3>
                     </div>
+
                     <div class="card-body">
-                        <table id="example1" class="table  table-hover table-valign-middle table-bordered">
+
+                        <table id="example" class="table table-responsive  table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th> Name</th>
+                                    <th>Name</th>
                                     <th>Address</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
@@ -191,19 +194,26 @@
                             </tbody>
 
                         </table>
-
+                    <div class="mt-3">
+                        {{$parties->links('pagination::bootstrap-5')}}
                     </div>
+                    {{-- Paginate {{ $items->links('pagination::bootstrap-5' ) }} --}}
+                    {{-- {{ $items->links('pagination::bootstrap-4')}} --}}
+                    {{-- {!! $items->links('pagination::bootstrap-5') !!} --}}
+                    
                 </div>
             </div>
+
         </div>
+    </div>
 </section>
 <script type="text/javascript">
     $(function() {
-        $("#example1").DataTable({
+        $("#example").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
 @include('layouts.footer')

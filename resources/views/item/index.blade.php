@@ -137,7 +137,7 @@
 
                         <div class="card-body">
 
-                        <table id="example1" class="table  table-hover table-valign-middle table-bordered">
+                        <table id="example1" class="table table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -146,7 +146,9 @@
                                     <th>Price</th>
                                     <th>Qauntity</th>
                                     <th>Status</th>
+                                    @if (isset($items))
                                     <th class="text-center">Action</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody class="m-3 p-3">
@@ -179,7 +181,7 @@
                                         </td>
                                         <td>
                                             <a class="btn" href="{{ route('item.edit', $value->id) }}">
-                                                <i class="fa  fa-pen text-warning"></i> Edit
+                                                <i class="fa fa-pen text-warning"></i> Edit
                                             </a>
                                             <a class="btn" href="{{ route('item.delete', $value->id) }}">
                                                 <i class="fa fa-trash text-danger"></i> Delete
@@ -190,18 +192,25 @@
                             </tbody>
 
                         </table>
+                        <div class="mt-3">
+                            {{$items->links('pagination::bootstrap-5')}}
+                        </div>
+                        {{-- Paginate {{ $items->links('pagination::bootstrap-5' ) }} --}}
+                        {{-- {{ $items->links('pagination::bootstrap-4')}} --}}
+                        {{-- {!! $items->links('pagination::bootstrap-5') !!} --}}
+                        
                     </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
 </section>
 <script type="text/javascript">
     $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        // $("#example1").DataTable({
+        //     "responsive": true,
+        //     "lengthChange": false,
+        //     "autoWidth": false,
+        // }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
 @include('layouts.footer')
