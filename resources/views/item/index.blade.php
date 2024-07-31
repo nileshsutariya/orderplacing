@@ -114,7 +114,6 @@
                                     <th>Price</th>
                                     <th>Qauntity</th>
                                     <th>Status</th>
-                                    @if (isset($items))
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -161,9 +160,7 @@
                         <div class="mt-3">
                             {{$items->links('pagination::bootstrap-5')}}
                         </div>
-                        {{-- Paginate {{ $items->links('pagination::bootstrap-5' ) }} --}}
-                        {{-- {{ $items->links('pagination::bootstrap-4')}} --}}
-                        {{-- {!! $items->links('pagination::bootstrap-5') !!} --}}
+                       
                         
                     </div>
                 </div>
@@ -171,12 +168,6 @@
         {{-- </div> --}}
 </section>
 <script type="text/javascript">
-    $(function() {
-        // $("#example1").DataTable({
-        //     "responsive": true,
-        //     "lengthChange": false,
-        //     "autoWidth": false,
-        // }).container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    });
+ 
 </script>
 @include('layouts.footer')

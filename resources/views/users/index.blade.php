@@ -105,8 +105,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="address" class=" col-form-label text-dark">Address</label>
-                                    <textarea type="text" class="form-control" id="address" name="address">
-                                        {{isset($user)?$user->address : old('address')}}</textarea>
+                                    <textarea type="text" class="form-control" id="address" name="address">{{isset($user)?$user->address : old('address')}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +113,7 @@
                             <div class="form-group clearfix">
                                 <div class="icheck-primary d-inline">
                                     <input type="checkbox" id="active" name="status"
-                                    {{ isset($user) && $user->status=='1' ? 'checked' : '' }} >
+                                    {{isset($user) && $user->status=='1' ? 'checked' : '' }} >
                                     <label for="active">is Active
                                     </label>
                                 </div>
@@ -132,6 +131,7 @@
                 <div class="card card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title">User Data</h3>
+                        <!-- <input class="form-control" type="search" id="search" name="search" placeholder="Search"> -->
                     </div>
                     <div class="card-body">
                         <table class="table table-responsive table-hover table-valign-middle table-bordered">
@@ -144,11 +144,10 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Status</th>
-
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 @php
                                     $i = 1;
                                 @endphp
@@ -201,14 +200,63 @@
     </div>
     {{-- </div> --}}
 </section>
-<script type="text/javascript">
-    // $(function() {
-    //     // $("#table").DataTable({
-    //     //     "responsive": true,
-    //     //     // "lengthChange": false,
-    //     //     // "autoWidth": false,
-    //     // });
-    // });
-</script>
+<!-- <script>
+     $(document).ready(function() {
+        $(document).on("input", "#search", function() {
+             var search=$(this).val();  
+            $.ajax ({     
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{route('user.index')}}",
+                data: {
+                    'search':search,
+                },
+                type: 'POST',
+                success: function(data) {
+                    console.log(data)
+                    var i=1;
+                    var a ="";
+                    if(data.length==0){
+                        console.log("data is null");
+                    }else{
+                       data.forEach(function(value){
+                            console.log("dfghjkl");
+                                a += `<tr>
+                                <td>`+i+`</td>
+                                <td>`+value.first_name+`</td>
+                                <td>`+value.last_name+`</td>
+                                <td>`+value.email+`</td>
+                                <td>`+value.address+`</td>
+                                <td>`+value.phone_number+`</td>
+                                <td> `;
+                                 if(value.status == 1){
+                                    a+=`<button class="btn btn-sm text-center btn-success">Active</button>
+                                 `; }else{
+                                    a+=`
+                                <button class="btn btn-sm btn-danger">Inactive</button>
+                                 `; }
+                                 a+= `
+                                </td>
+                                <td>
+                                <a class="btn" href="`;{{route('user.edit', ['id' => $value->id])}}
+                                a+=`">
+                                                <i class="fa  fa-pen text-warning"></i> Edit
+                                            </a>
+                                            <a class="btn" href="`;{{route('user.delete', ['id' => $value->id])}}
+                                   a+=`">
+                                                <i class="fa fa-trash text-danger"></i> Trash
+                                            </a>
+                                </td>
+                                </tr>`;
+                        });
+                        $('#a1').html(a);
+                        console.log("end");
+                    }
+                        }
+                        });
+                    });
+            });  
+</script> -->
 
 @include('layouts.footer')

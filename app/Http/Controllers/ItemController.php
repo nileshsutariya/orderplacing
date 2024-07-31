@@ -12,10 +12,7 @@ class ItemController extends Controller
 {
     public function index()
     {   
-        // $items = Item::paginate(10);
-        // $items= Item::all();
-        $items= Item::paginate(1);
-        // $itemgroup= Item_group::all();
+        $items= Item::paginate(2);
         $itemgroup= Item_group::all();
         return view('item.index', compact('items', 'itemgroup'));
     }

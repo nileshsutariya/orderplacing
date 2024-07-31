@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(request $request)
     {
+        $search= $request['search'];
+    if($search==""){
+        print_r("ksdfghjfghnjm,xcvbnm");
+        $user = User::all();
+    }else{
+        $user = User::where('company', 'LIKE', '%' . $search . '%')->paginate(1);
+    }
         $users= User::paginate(1);
         $data = compact("users");
         return view("users.index", compact("users"));
@@ -57,15 +64,11 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $users = User::all();
+        $users = User::paginate(2);
         $user = User::find($id);
         $user= User::where('id',$id)->first();
-        if (is_null($user)) {
-            return redirect("/user");
-        } else {
-            $data = compact("user", "users");
-            return view("users.index")->with($data);
-        }
+        $data = compact("user", "users");
+        return view("users.index")->with($data);
     }
     public function update(request $request)
     {
