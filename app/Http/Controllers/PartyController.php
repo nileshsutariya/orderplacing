@@ -27,9 +27,8 @@ class PartyController extends Controller
                 'email' => 'required|email',
                 'password' => 'required',
                 'cpassword' => 'required|same:password',
-                'gst' => 'required|regex:/^\d{2}[A-Z]{5}\d{4}[A-Z]{1}\d{1}[Z]{1}\d{1}$/',
-                'pancardno' => 'required|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
-            
+                // 'gst' => 'required|regex:/^\d{2}[A-Z]{5}\d{4}[A-Z]{1}\d{1}[Z]{1}\d{1}$/',
+                // 'pancardno' => 'required|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
             ])->validate();
 
             print_r($request->all());
@@ -37,8 +36,6 @@ class PartyController extends Controller
             $party->name = $request['name'];
             $party->email = $request['email'];
             $party->password = Hash::make($request['password']);
-            $party->gst = $request['gst'];
-            $party->Pancard_no = $request['pancardno'];
             $party->address = $request['address'];
             $party->phone_number = $request['phonenumber'];
             $party->gst = $request['gst'];
@@ -77,16 +74,25 @@ class PartyController extends Controller
     
     public function update(request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'phonenumber' => 'numeric',
-            'email' => 'required|email',
-            'gst'=>'regex = “^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$”' 
-        ])->validate();
+        if($request['password'] !=null){
+            $request->validate([
+                'cpassword' => 'required|same:password'
+            ]);
+         }
+         else{
+            $request->validate([
+                'name' => 'required',
+                'phonenumber' => 'numeric',
+                'email' => 'required|email',
+                'gst'=>'regex = “^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$”' ,
+            ]);
+         }
+      
         $party = Party::find($request->id);        
         $party->name = $request['name'];
         $party->email = $request['email'];
         $party->gst = $request['gst'];
+        $party->password = Hash::make($request['password']);
         $party->Pancard_no = $request['pancardno'];
         $party->address = $request['address'];
         $party->phone_number = $request['phonenumber'];

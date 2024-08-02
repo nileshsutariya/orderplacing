@@ -41,7 +41,8 @@
                                 </span>
                             @enderror
                         </div>
-
+<div class="row">
+    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email" class=" col-form-label text-dark">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
@@ -52,28 +53,8 @@
                                 </span>
                             @enderror
                         </div>
-                        {{-- <div class="col-sm-12"> --}}
-                            <div class="form-group">
-                                <label for="password" class=" col-form-label text-dark">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                                @error('password')
-                                    <span class="text-danger">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-                        {{-- </div>
-                        <div class="col-sm-12"> --}}
-                            <div class="form-group">
-                                <label for="confirm password" class=" col-form-label text-dark">Confirm Password</label>
-                                <input type="password" class="form-control" id="cpassword" name="cpassword">
-                                @error('cpassword')
-                                    <span class="text-danger">
-                                        {{ $message }}
-                                    </span>
-                                @enderror
-                            </div>
-                        {{-- </div> --}}
+                        </div>
+                        <div class="col-sm-6">
                         <div class="form-group">
                             <label for="phone number" class=" col-form-label text-dark">Phone number</label>
                             <input type="text" class="form-control" id="phonenumber" name="phonenumber"
@@ -83,6 +64,8 @@
                                     {{ $message }}
                                 </span>
                             @enderror
+                        </div>
+                        </div>
                         </div>
                         <div class="form-group">
                             <label for="address" class=" col-form-label text-dark">Address</label>
@@ -116,10 +99,33 @@
                                             {{ $message }}
                                         </span>
                                     @enderror
-                                    {{-- <span id="pancardno" class="error">Invalid PAN Number</span> --}}
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                           <div class="col-sm-6"> 
+                           <div class="form-group">
+                                <label for="password" class=" col-form-label text-dark">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                                @error('password')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                     </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="confirm password" class=" col-form-label text-dark">Confirm Password</label>
+                                <input type="password" class="form-control" id="cpassword" name="cpassword">
+                                @error('cpassword')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                      </div>
+                      </div>
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group clearfix">

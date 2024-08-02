@@ -15,38 +15,6 @@ class LoginController extends Controller
         return view('login');
     }
 
-    // public function login(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required',
-    //     ]);
-    //     $email=User::where('email',$request->email)->first();
-    //     if($email){
-    //         $login=[
-    //             'email'=>$request['email'],
-    //             'password'=>$request['password']
-    //     ];
-        
-    //     if ($email) {
-    //         if (Auth::attempt($login)) {
-    //             $request->session()->regenerate();
-
-    //             $user = Auth::user();
-    //             if ($user->role_as == 'admin') {
-    //                 return redirect()->route('party.index');
-    //             } else {
-    //                 return redirect()->route('item.index');
-    //             }
-    //         }
-    //     }
-    
-    // }
-    //     return back()->withErrors([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ]);
-    // }
-
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');

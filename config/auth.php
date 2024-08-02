@@ -74,8 +74,9 @@ return [
             'table' => 'users',
         ],
         'admins' => [
-            'driver' => 'eloquent',
+            'driver' => 'session',
             'model' => env('AUTH_MODEL', App\Models\Admin::class),
+            'provider' => 'admin',
         ],
         // 'party' => [
         //     'driver' => 'eloquent',

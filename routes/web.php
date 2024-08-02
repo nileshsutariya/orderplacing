@@ -55,7 +55,6 @@ Route::group(['prefix'=>'admin'], function () {
 
         Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
         Route::get('/cart',[dashboard::class,'index'])->name('party.cart');
-      
 
     });
     Route::get('/party',[PartyController::class,'index'] )->name('party.index');
