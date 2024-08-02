@@ -47,6 +47,10 @@ use App\Http\Controllers\Item_groupController;
         Route::get('/user/delete/{id}',[UserController::class,'delete'] )->name('user.delete');
 
         Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
+        Route::get('/cart',[dashboard::class,'index'])->name('party.cart');
+      
 
     });
 });
+Route::get('/ordernow/{id}',[dashboard::class,'ordernow'] )->name('party.ordernow');
+Route::post('/orderconfirm',[dashboard::class,'orderconfirm'] )->name('party.orderconfirm');

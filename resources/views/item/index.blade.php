@@ -29,16 +29,11 @@
                             <form action="{{ route('item.store') }}" method="post">
                         @endif
                         @csrf
-                        {{-- <pre>
-                            @php
-                                print_r($errors->all());
-                            @endphp
-                            </pre> --}}
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="group_id">Item Group</label>
-                                    <select name="group_id" id="group_id" class="form-control">
+                                    <select name="group_id" id="group_id" class="form-control mt-1">
                                         @if (!isset($item))
                                             <option value="">-- Select Item Group --</option>
                                         @endif
@@ -60,12 +55,6 @@
                                         @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="description" class=" col-form-label text-dark">Description</label>
-                                    <textarea type="text" class="form-control" id="description" name="description">{{isset($item)? $item->description:old('description')}}</textarea>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -84,6 +73,24 @@
                                     <input type="text" class="form-control" id="qty" name="qty"
                                     value="{{isset($item)?$item->qty : old('qty')}}">
                                     @error('qty')<span class="text-danger">
+                                            {{ $message }}
+                                    </span>@enderror
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="description" class=" col-form-label text-dark">Description</label>
+                                    <textarea type="text" class="form-control" id="description" name="description">{{isset($item)? $item->description:old('description')}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="tax" class=" col-form-label text-dark">Tax</label>
+                                    <input type="text" class="form-control" id="tax" name="tax"
+                                    value="{{isset($item)?$item->tax : old('tax')}}">
+                                    @error('tax')<span class="text-danger">
                                             {{ $message }}
                                     </span>@enderror
                                 </div>
@@ -116,7 +123,7 @@
 
                         <div class="card-body">
 
-                        <table  class="table table-responsive table-hover table-valign-middle table-bordered">
+                        <table  class="table  table-hover table-valign-middle table-bordered">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -124,6 +131,7 @@
                                     <th>Description</th>
                                     <th>Price</th>
                                     <th>Qauntity</th>
+                                    <th>Tax</th>
                                     <th>Status</th>
                                     @if(!isset($item))
                                     <th class="text-center">Action</th>
@@ -150,6 +158,9 @@
                                         </td>
                                         <td>
                                             {{ $value->qty }}
+                                        </td>
+                                        <td>
+                                            {{ $value->tax}}%
                                         </td>
                                         <td class="text-center">
                                             @if ($value->status == '1')

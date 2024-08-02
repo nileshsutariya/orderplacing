@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row">
           @foreach($items as $value)
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
@@ -36,14 +36,36 @@
                     <span>{{$value->price}}</span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> Stock in warehouse
+                    @if($value->qty==0)
+                      <span class="text-danger">
+                      <i class="fas fa-arrow-down"></i> Not In Stock 
                     </span>
-                    <span class="text-muted">{{$value->qty}}</span>
+                    @else
+                      <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> In Stock 
+                    </span>
+                    @endif
                   </p>
+                  
                 </div>
-                <div>{{$value->description}}</div>
+                <div class="d-flex">
+                <p class="d-flex flex-column">
+                    <span>{{$value->description}}</span>
+                  </p>
+              </div>
                 <!-- /.d-flex -->
+                <div class="card-footer float-right">
+                <a class="btn" href="{{ route('item.edit', $value->id) }}">
+                <i class="fas fa-shopping-cart text-secondary"></i> 
+                      Add to cart
+                  </a>
+                  @if($value->qty!=0)
+                  <a class="btn" href="{{ route('party.ordernow', $value->id) }}">
+                      <i class="fas fa-shopping-bag text-primary"></i> 
+                      Buy now
+                  </a> 
+                  @endif 
+                </div>
               </div>
               </div>
             </div>

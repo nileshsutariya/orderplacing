@@ -9,7 +9,7 @@
   <title>orderplacing</title>
 
    <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
-   <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script> 
+   <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script>  -->
 
 
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
