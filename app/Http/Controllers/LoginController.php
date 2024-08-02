@@ -23,7 +23,7 @@ class LoginController extends Controller
             // echo "user";
             return redirect()->intended(route('party.index')); 
         }
-        elseif(Auth::guard('admin')->attempt($credentials)) {
+        elseif(Auth::guard('party')->attempt($credentials)) {
             // echo "admin";
             return redirect()->intended(route('item.index'));
             // die();

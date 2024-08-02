@@ -40,14 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'user',
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        // 'party' => [
+        // 'admin' => [
         //     'driver' => 'session',
-        //     'provider' => 'party',
+        //     'provider' => 'admins',
         // ],
+        'party' => [
+            'driver' => 'session',
+            'provider' => 'party',
+        ],
     ],
 
     /*
@@ -73,16 +73,16 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
             'table' => 'users',
         ],
-        'admins' => [
-            'driver' => 'session',
-            'model' => env('AUTH_MODEL', App\Models\Admin::class),
-            'provider' => 'admin',
-        ],
-        // 'party' => [
-        //     'driver' => 'eloquent',
-        //     'model' => env('AUTH_MODEL', App\Models\Party::class),
-        //     'table' => 'party_master',
-        // ],        
+        // 'admins' => [
+        //     'driver' => 'session',
+        //     'model' => env('AUTH_MODEL', App\Models\Admin::class),
+        //     'provider' => 'admin',
+        // ],
+        'party' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Party::class),
+            'table' => 'party_master',
+        ],        
     ],
 
     /*
