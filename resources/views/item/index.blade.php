@@ -26,7 +26,7 @@
                         @if (isset($item))
                             <form action="{{ route('item.update') }}" method="post">
                         @else
-                            <form action="{{ route('item.store') }}" method="post">
+                            <form action="{{ route('item.store') }}" method="post" enctype="multipart/form-data">
                         @endif
                         @csrf
                         <div class="row">
@@ -86,12 +86,15 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                            <div class="form-group">
-                                    <label for="itemimage">Image</label>
-                                    <input type="file" class="form-control-file mt-2" name="itemimage" id="image" placeholder=" enter your image">
-                                        @php if(isset($item)) {echo $id = str_replace("public/imageuploaded/", "",  $item->image); } @endphp
+                            {{-- <form enctype="multipart/form-data" method="post" action="{{url('/upload')}}">
+                                @csrf --}}
+                                <div class="form-group">
+                                            <label for="itemimage">Image</label>
+                                        <input type="file" class="form-control-file mt-2" name="image" id="image">
+                                            @php if(isset($item)) {echo $id = str_replace("storage/app/uploads/", "",  $item->image); } @endphp
+                                    </div>
                                 </div>
-                            </div>
+                            {{-- </form> --}}
                         </div>
                         <div class="row">
                             <div class="col-sm-4">

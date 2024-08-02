@@ -13,4 +13,7 @@ class Party extends Authenticatable
     protected $guard = 'party';
     protected $table="party_master";
     protected $primarykey = "id";
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 }

@@ -31,7 +31,7 @@ class PartyController extends Controller
                 // 'pancardno' => 'required|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
             ])->validate();
 
-            print_r($request->all());
+            // print_r($request->all());
             $party = new Party;
             $party->name = $request['name'];
             $party->email = $request['email'];
