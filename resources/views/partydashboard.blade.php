@@ -24,18 +24,17 @@
       <div class="container-fluid">
         <div class="row">
           @foreach($items as $value)
-          <div class="col-lg-2">
-            <div class="card">
-              <div class="card-header border-0">
+          <div class="col-sm-2">
+            <div class="card" style="width:270px;  height:520px;">
+              <div class="card-header border-0 m-0 ">
                 <div class="d-flex justify-content-between">
-                  <h2 class="card-title"style="font-size:30px;">{{$value->name}}</h2>
+                  <h2 class="card-title"style="font-size:30px;">{{$value->name}}</h2><br>
                 </div>
-                <span>{{$value->description}}</span>
+                <span>{{$value->description}}</span><br>
+                <img src="{{$value->image}}"  style="width: 100%; height: 90%;" alt="">
               </div>
-              <div class="card-body">
-                
-                <img src="{{$value->image}}"  style="width: 260px; height: 200px;" alt="">
-                
+
+              <div class="card-body ">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-lg">Price</span>
@@ -56,16 +55,19 @@
                 </div>
                 <!-- /.d-flex -->
                 <div class="card-footer float-right">
-                <a class="btn" href="{{ route('item.edit', $value->id) }}">
-                <i class="fas fa-shopping-cart text-secondary"></i> 
-                      Add to cart
-                  </a>
-                  @if($value->qty!=0)
+                <div class="d-flex">
+                @if($value->qty!=0)
                   <a class="btn" href="{{ route('party.ordernow', $value->id) }}">
                       <i class="fas fa-shopping-bag text-primary"></i> 
                       Buy now
-                  </a> 
+                  </a>
                   @endif 
+                  <a class="btn" href="{{ route('item.edit', $value->id) }}">
+                <i class="fas fa-shopping-cart text-secondary"></i> 
+                      Add to cart
+                  </a>
+                </div>
+                
                 </div>
               </div>
               </div>

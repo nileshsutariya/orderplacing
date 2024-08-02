@@ -61,6 +61,6 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/party',[PartyController::class,'index'] )->name('party.index');
     Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
 
-Route::get('/ordernow/{id}',[dashboard::class,'ordernow'] )->name('party.ordernow');
-Route::post('/orderconfirm',[dashboard::class,'orderconfirm'] )->name('party.orderconfirm');
+Route::get('/ordernow/{id}',[partydashboard::class,'ordernow'] )->name('party.ordernow');
+Route::post('/orderconfirm',[partydashboard::class,'orderconfirm'] )->name('party.orderconfirm');
 Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');
