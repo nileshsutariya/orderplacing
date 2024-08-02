@@ -5,6 +5,7 @@ use App\Models\Item;
 use App\Models\Partyorder;   
 use App\Models\Party; 
 use Illuminate\Http\Request;
+use Auth;
 
 class partydashboard extends Controller
 {
@@ -14,9 +15,11 @@ class partydashboard extends Controller
          return view('partydashboard', compact('items'));
     }
     
-    public function ordernow($id)
+    public function ordernow($pid)
     {
-        $party=Party::where('id',6)->first();
+        $partyid=Auth::guard('party')->id;
+       print_r($partyid);die;
+        $party=Party::where('id',$partyid)->first();
         $items= Item::paginate(2);
         $item = Item::find($id);
         return view("party.partyorder",compact('item', 'items', 'party'));
