@@ -15,45 +15,54 @@ class LoginController extends Controller
         return view('login');
     }
 
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //     ]);
+    //     $email=User::where('email',$request->email)->first();
+    //     if($email){
+    //         $login=[
+    //             'email'=>$request['email'],
+    //             'password'=>$request['password']
+    //     ];
+        
+    //     if ($email) {
+    //         if (Auth::attempt($login)) {
+    //             $request->session()->regenerate();
+
+    //             $user = Auth::user();
+    //             if ($user->role_as == 'admin') {
+    //                 return redirect()->route('party.index');
+    //             } else {
+    //                 return redirect()->route('item.index');
+    //             }
+    //         }
+    //     }
+    
+    // }
+    //     return back()->withErrors([
+    //         'email' => 'The provided credentials do not match our records.',
+    //     ]);
+    // }
+
     public function login(Request $request)
     {
-     $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-        $email=User::where('email',$request->email)->first();
-        $email=Party::where('email',$request->email)->first();
-        if($email){
-            $login=[
-                'email'=>$request['email'],
-                'password'=>$request['password']
-            ];
-        
-        
-         // $request->session()->regenerate();
-         
-         if ($email) {
-             if (Auth::attempt($login)) {
-                 print_r("hdgwqy");die;
-                 return redirect()->route('party.index');
-                }
-             else {
-                print_r("dfghjky");die;
-                // return redirect()->route('party.index');
-            }
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::guard('users')->attempt($credentials)) {
+            // echo "user";
+            return redirect()->intended(route('party.index')); 
         }
-        else{
-            print_r("wertyui");die;
-            return redirect()->route('user.index');
+        elseif(Auth::guard('admin')->attempt($credentials)) {
+            // echo "admin";
+            return redirect()->intended(route('item.index'));
+            // die();
         }
     
     }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
-    }
-
-
+  
     public function logout(Request $request)
     {
         Auth::logout();
@@ -64,5 +73,5 @@ class LoginController extends Controller
         return redirect('/');
     }
        
-    }
+}
 

@@ -211,7 +211,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{route('user.index')}}",
+                {{-- url: "{{route('user.index')}}", --}}
                 data: {
                     'search':search,
                 },
@@ -242,12 +242,12 @@
                                  a+= `
                                 </td>
                                 <td>
-                                <a class="btn" href="`;{{route('user.edit', ['id' => $value->id])}}
+                                {{-- <a class="btn" href="`;{{route('user.edit', ['id' => $value->id])}} --}}
                                 a+=`">
                                                 <i class="fa  fa-pen text-warning"></i> Edit
                                             </a>
-                                            <a class="btn" href="`;{{route('user.delete', ['id' => $value->id])}}
-                                   a+=`">
+                                            {{-- <a class="btn" href="`;{{route('user.delete', ['id' => $value->id])}}
+                                   a+=`"> --}}
                                                 <i class="fa fa-trash text-danger"></i> Trash
                                             </a>
                                 </td>

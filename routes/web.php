@@ -28,7 +28,7 @@ Route::group(['prefix'=>'admin'], function () {
         //     return view('partydashboard');
         // }); 
         Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
-        Route::get('/dashboard',[dashboard::class,'partyindex'] )->name('dashboard.index');
+        Route::get('/dashboard',[dashboard::class,'partyindex'] )->name('partydashboard.index');
 
         Route::get('/item',[ItemController::class,'index'] )->name('item.index');
         Route::post('/item/store',[ItemController::class,'store'] )->name('item.store');

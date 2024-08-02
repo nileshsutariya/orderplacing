@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Party;
 use Dotenv\Util\Regex;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 class PartyController extends Controller
 {
@@ -24,6 +25,8 @@ class PartyController extends Controller
                 'name' => 'required',
                 'phonenumber' => 'numeric',
                 'email' => 'required|email',
+                'password' => 'required',
+                'cpassword' => 'required|same:password',
                 'gst' => 'required|regex:/^\d{2}[A-Z]{5}\d{4}[A-Z]{1}\d{1}[Z]{1}\d{1}$/',
                 'pancardno' => 'required|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
             
@@ -33,6 +36,7 @@ class PartyController extends Controller
             $party = new Party;
             $party->name = $request['name'];
             $party->email = $request['email'];
+            $party->password = Hash::make($request['password']);
             $party->gst = $request['gst'];
             $party->Pancard_no = $request['pancardno'];
             $party->address = $request['address'];
