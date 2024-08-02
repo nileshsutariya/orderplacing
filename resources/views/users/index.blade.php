@@ -129,7 +129,7 @@
             <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">User Data</h3>
+                        <h3 class="card-title">Users Data</h3>
                         <!-- <input class="form-control" type="search" id="search" name="search" placeholder="Search"> -->
                     </div>
                     <div class="card-body">
@@ -241,16 +241,7 @@
                                  `; }
                                  a+= `
                                 </td>
-                                <td>
-                                <a class="btn" href="`;{{route('user.edit', ['id' => $value->id])}}
-                                a+=`">
-                                                <i class="fa  fa-pen text-warning"></i> Edit
-                                            </a>
-                                            <a class="btn" href="`;{{route('user.delete', ['id' => $value->id])}}
-                                   a+=`">
-                                                <i class="fa fa-trash text-danger"></i> Trash
-                                            </a>
-                                </td>
+                            
                                 </tr>`;
                         });
                         $('#a1').html(a);

@@ -21,37 +21,43 @@ class LoginController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        $email=User::where('email',$request->email)->first();
-        $email=Party::where('email',$request->email)->first();
-        if($email){
-            $login=[
-                'email'=>$request['email'],
-                'password'=>$request['password']
-            ];
-        
-        
-         // $request->session()->regenerate();
-         
-         if ($email) {
-             if (Auth::attempt($login)) {
-                 print_r("hdgwqy");die;
-                 return redirect()->route('party.index');
+        if($user=User::where('email',$request->email)){
+            $l=User::where('email',$request->email)->first();
+            if($l){
+                $login=[
+                    'email'=>$request['email'],
+                    'password'=>$request['password']
+                ];
+             if ($l){
+                 if (Auth::attempt($login)) {
+                     return redirect()->route('dashboard.index');
+                    }
+                 else {
+                    Auth::logout();
                 }
-             else {
-                print_r("dfghjky");die;
-                // return redirect()->route('party.index');
+            }
+        }else{
+            $l=Admin::where('email',$request->email)->first();
+            if($l){
+                $login=[
+                    'email'=>$request['email'],
+                    'password'=>$request['password']
+                ];
+             if ($l){
+                 if (Auth::guard('admin')->attempt($login)) {
+                     return redirect()->route('party.index');
+                    }
+                 else {
+                    Auth::logout();
+                }
             }
         }
-        else{
-            print_r("wertyui");die;
-            return redirect()->route('user.index');
-        }
+    }}} 
     
-    }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
-    }
+
+    
+   
+    
 
 
     public function logout(Request $request)

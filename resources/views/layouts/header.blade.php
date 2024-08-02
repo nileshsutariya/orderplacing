@@ -92,7 +92,7 @@
             <li class="nav-item">
               <a href="{{ route('user.index') }}" class="nav-link ">
                 <i class="fa fa-users nav-icon"></i>
-                <p>User</p>
+                <p>Users</p>
               </a>
             </li>
             <li class="nav-item">
@@ -100,7 +100,7 @@
                 <i class="fa fa-user nav-icon"></i>
                 <p> Party</p>
               </a>
-            </li>
+            </li> 
             <li class="nav-item">
               <a href="{{route('itemgroup.index')}}" class="nav-link">
                 <i class="fas fa-boxes nav-icon"></i>
