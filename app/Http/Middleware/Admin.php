@@ -14,13 +14,32 @@ class Admin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $role_as): Response
     {
-        // print_r(Auth::user());die;
-        if (!Auth::guard('admin')->check()) {
-            return redirect('/admin/login');
+        if(auth()->user()->type == $role_as){
+            return $next($request);
         }
+
+        // auth()->user()->role
+        // if('admin' == $role){
+        //     return $next($request);
+        // }
         
-        return $next($request);
+        // print_r(Auth::user());die;
+        // if (!Auth::guard('admin')->check()) {
+        //     return redirect('/admin/login');
+        // }
+
+
+        // if (!Auth::guard('users')->check()) {
+        //     return redirect('/admin/login');
+        // }
+
+        // if ($guard == "admin" && Auth::guard($guard)->check()) {
+        //     return redirect('/admin/dashboard');
+        // }
+        // if ($guard == "users" && Auth::guard($guard)->check()) {
+        //     return redirect('/admin/party/dashboard');
+        // }
     }
 }

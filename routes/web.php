@@ -9,19 +9,27 @@ use App\Http\Controllers\PartyController;
 use App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Item_groupController;
+use App\Http\Controllers\LoginController;
 
-// Route::get('/', function () {
-//     return view('item');
-// }); 
-    Route::group(['prefix'=>'admin'], function () {
+Route::get('/', [LoginController::class, 'index'])->name('loginform');
+Route::post('/abc', [LoginController::class, 'login'])->name('login');
+
+Route::group(['prefix'=>'admin'], function () {
 
     Route::get('/login', [AdminController::class, 'loginform'])->name('loginadmin');
     Route::post('/login', [AdminController::class, 'adminlogin'])->name('admin.login');
+    // Route::post('/login', [AdminController::class, 'userlogin'])->name('user.login');
     Route::post('/logout', [AdminController::class, 'logout'])->name('adminlogout');
 
-    Route::middleware('admin')->group(function () {
+    // Route::middleware('admin')->group(function () {
         Route::get('/', [AdminController::class, 'adminindex'])->name('index');
         
+        // Route::get('/party/dashboard', function () {
+        //     return view('partydashboard');
+        // }); 
+        Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
+        Route::get('/dashboard',[dashboard::class,'partyindex'] )->name('dashboard.index');
+
         Route::get('/item',[ItemController::class,'index'] )->name('item.index');
         Route::post('/item/store',[ItemController::class,'store'] )->name('item.store');
         Route::get('/item/delete/{id}',[ItemController::class,'delete'] )->name('item.delete');
@@ -51,6 +59,5 @@ use App\Http\Controllers\Item_groupController;
       
 
     });
-});
 Route::get('/ordernow/{id}',[dashboard::class,'ordernow'] )->name('party.ordernow');
 Route::post('/orderconfirm',[dashboard::class,'orderconfirm'] )->name('party.orderconfirm');

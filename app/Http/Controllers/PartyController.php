@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 class PartyController extends Controller
 {
+    public function partyindex()
+    {
+        return view("partydashboard");
+    }
     public function index()
     {
         $parties= Party::paginate(1);

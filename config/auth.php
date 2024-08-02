@@ -36,14 +36,18 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'users' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'user',
         ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        // 'party' => [
+        //     'driver' => 'session',
+        //     'provider' => 'party',
+        // ],
     ],
 
     /*
@@ -64,20 +68,21 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'user' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+            'table' => 'users',
         ],
         'admins' => [
-            'driver' => 'eloquent',
+            'driver' => 'session',
             'model' => env('AUTH_MODEL', App\Models\Admin::class),
-            'table' => 'admin',
+            'provider' => 'admin',
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // 'party' => [
+        //     'driver' => 'eloquent',
+        //     'model' => env('AUTH_MODEL', App\Models\Party::class),
+        //     'table' => 'party_master',
+        // ],        
     ],
 
     /*
