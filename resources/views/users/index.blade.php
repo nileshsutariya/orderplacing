@@ -211,7 +211,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{route('user.index')}}",
+                {{-- url: "{{route('user.index')}}", --}}
                 data: {
                     'search':search,
                 },

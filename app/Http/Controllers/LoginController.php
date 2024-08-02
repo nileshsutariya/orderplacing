@@ -15,51 +15,54 @@ class LoginController extends Controller
         return view('login');
     }
 
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //     ]);
+    //     $email=User::where('email',$request->email)->first();
+    //     if($email){
+    //         $login=[
+    //             'email'=>$request['email'],
+    //             'password'=>$request['password']
+    //     ];
+        
+    //     if ($email) {
+    //         if (Auth::attempt($login)) {
+    //             $request->session()->regenerate();
+
+    //             $user = Auth::user();
+    //             if ($user->role_as == 'admin') {
+    //                 return redirect()->route('party.index');
+    //             } else {
+    //                 return redirect()->route('item.index');
+    //             }
+    //         }
+    //     }
+    
+    // }
+    //     return back()->withErrors([
+    //         'email' => 'The provided credentials do not match our records.',
+    //     ]);
+    // }
+
     public function login(Request $request)
     {
-     $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-        if($user=User::where('email',$request->email)){
-            $l=User::where('email',$request->email)->first();
-            if($l){
-                $login=[
-                    'email'=>$request['email'],
-                    'password'=>$request['password']
-                ];
-             if ($l){
-                 if (Auth::attempt($login)) {
-                     return redirect()->route('dashboard.index');
-                    }
-                 else {
-                    Auth::logout();
-                }
-            }
-        }else{
-            $l=Admin::where('email',$request->email)->first();
-            if($l){
-                $login=[
-                    'email'=>$request['email'],
-                    'password'=>$request['password']
-                ];
-             if ($l){
-                 if (Auth::guard('admin')->attempt($login)) {
-                     return redirect()->route('party.index');
-                    }
-                 else {
-                    Auth::logout();
-                }
-            }
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::guard('users')->attempt($credentials)) {
+            // echo "user";
+            return redirect()->intended(route('party.index')); 
         }
-    }}} 
+        elseif(Auth::guard('admin')->attempt($credentials)) {
+            // echo "admin";
+            return redirect()->intended(route('item.index'));
+            // die();
+        }
     
-
-    
-   
-    
-
-
+    }
+  
     public function logout(Request $request)
     {
         Auth::logout();
@@ -70,5 +73,5 @@ class LoginController extends Controller
         return redirect('/');
     }
        
-    }
+}
 
