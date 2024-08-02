@@ -13,7 +13,7 @@ class ItemController extends Controller
     public function index()
     {   
         $items= Item::paginate(1);
-        $itemgroup= Item_group::all();
+        $itemgroup= Item_group::where('status',1)->get();
         return view('item.index', compact('items', 'itemgroup'));
     }
     public function store(Request $request)
@@ -30,7 +30,15 @@ class ItemController extends Controller
             $item->description = $request['description'];
             $item->price = $request['price'];
             $item->qty = $request['qty'];
-            $item->tax= $request['tax'];
+           
+            $image=$request->file('image');
+            // print_r($image);die;
+            $imagename= $image->getClientOriginalName();
+            $imagepath='public/imageuploaded/';
+            $image->move($imagepath,$imagename);
+
+            $item->image=$imagepath.$imagename;
+
             if ($request['status'] == 'on') {
                 $status = 1;
             } else {
@@ -38,13 +46,6 @@ class ItemController extends Controller
             }
             $item->status = $status;
 
-            $image=$request->file('image');
-            print_r($image);die;
-            $imagename= $image->getClientOriginalName();
-            $imagepath='public/imageuploaded/';
-            $image->move($imagepath,$imagename);
-
-            $item->image= $imagepath.$imagename;
             $item->save();
             $url=$request->url();
             if (strpos($url, 'api') == true){
@@ -85,10 +86,16 @@ class ItemController extends Controller
         $item->description = $request['description'];
         $item->price = $request['price'];
         $item->qty = $request['qty'];
-        $item->tax= $request['tax'];
+        if($image=$request->file('image')){
+            $imagename= $image->getClientOriginalName();
+            $imagepath='public/imageuploaded/';
+            $image->move($imagepath,$imagename);
+
+            $item->image=$imagepath.$imagename;
+        }
         if ($request['status'] == 'on') {
             $status = 1;
-        } else {
+        } else { 
             $status = 0;
         }
         $item->status = $status;

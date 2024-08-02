@@ -1,6 +1,8 @@
-@include('layouts.header')
+
+@include('layouts.partyheader')
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <section class="content-header">
+
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -14,22 +16,26 @@
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+</section>
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <section class="content">
       <div class="container-fluid">
         <div class="row">
           @foreach($items as $value)
-          <div class="col-lg-4">
+          <div class="col-lg-2">
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">{{$value->name}}</h3>
+                  <h2 class="card-title"style="font-size:30px;">{{$value->name}}</h2>
                 </div>
+                <span>{{$value->description}}</span>
               </div>
               <div class="card-body">
+                
+                <img src="{{$value->image}}"  style="width: 260px; height: 200px;" alt="">
+                
                 <div class="d-flex">
                   <p class="d-flex flex-column">
                     <span class="text-bold text-lg">Price</span>
@@ -48,11 +54,6 @@
                   </p>
                   
                 </div>
-                <div class="d-flex">
-                <p class="d-flex flex-column">
-                    <span>{{$value->description}}</span>
-                  </p>
-              </div>
                 <!-- /.d-flex -->
                 <div class="card-footer float-right">
                 <a class="btn" href="{{ route('item.edit', $value->id) }}">
@@ -76,7 +77,7 @@
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
-      </div>
+      </section>
       <!-- /.container-fluid -->
     </div>
     <!-- /.content -->

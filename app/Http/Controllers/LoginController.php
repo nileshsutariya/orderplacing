@@ -20,7 +20,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         
         if (Auth::guard('users')->attempt($credentials)) {
-            return redirect()->route('dashboard.index'); 
+            return redirect()->intended(route('dashboard.index')); 
         }
         elseif(Auth::guard('party')->attempt($credentials)) {
             // echo "admin";

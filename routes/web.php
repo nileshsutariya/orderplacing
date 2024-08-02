@@ -7,10 +7,11 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\dashboard;
-use App\Http\Controllers\FileController;
+use App\Http\Controllers\partydashboard;
+
 use App\Http\Controllers\Item_groupController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PartyDashboard;
+// use App\Http\Controllers\PartyDashboard;
 
 Route::get('/', [LoginController::class, 'index'])->name('loginform');
 Route::post('/abc', [LoginController::class, 'login'])->name('login');
@@ -52,8 +53,7 @@ Route::group(['prefix'=>'admin'], function () {
 
 Route::get('/ordernow/{id}',[dashboard::class,'ordernow'] )->name('party.ordernow');
 Route::post('/orderconfirm',[dashboard::class,'orderconfirm'] )->name('party.orderconfirm');
-Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
-Route::get('/party/dashboard',[PartyDashboard::class,'index'] )->name('partydashboard.index');
+Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');
 
 // Route::post('/upload', [FileController::class, 'upload']);
 Route::post('/fileupload', [ItemController::class, 'upload']);
