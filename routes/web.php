@@ -42,7 +42,6 @@ Route::group(['prefix'=>'admin'], function () {
         Route::post('/itemgroup/update',[Item_groupController::class,'update'] )->name('itemgroup.update');
         Route::get('/itemgroup/delete/{id}',[Item_groupController::class,'delete'] )->name('itemgroup.delete');
        
-        Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
         Route::get('/party/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
         Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
         Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
@@ -58,6 +57,7 @@ Route::group(['prefix'=>'admin'], function () {
 
     });
     Route::get('/party',[PartyController::class,'index'] )->name('party.index');
+    Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
 
 Route::get('/ordernow/{id}',[dashboard::class,'ordernow'] )->name('party.ordernow');
 Route::post('/orderconfirm',[dashboard::class,'orderconfirm'] )->name('party.orderconfirm');

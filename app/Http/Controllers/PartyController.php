@@ -52,7 +52,7 @@ class PartyController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("register successfully.");
              }else{
-                return redirect()->route('party.index');
+                return view('login');
              }
     }
     public function delete($id)

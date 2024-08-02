@@ -1,26 +1,19 @@
-@include('layouts.header')
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Party</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Party</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</section>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Login </title>
+</head>
+
+<body>
 
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid  mx-auto">
         <div class="row">
-
-            <div class="col-md-4">
-                <div class="card card-outline card-info">
+            <div class="col-md-12 mt-5 p-4">
+                <div class="card card-outline card-info mx-auto"  style="width: 40rem; bordered: 5px;">
                     <div class="card-header">
                         <h3 class="card-title">Party</h3>
                     </div>
@@ -41,8 +34,8 @@
                                 </span>
                             @enderror
                         </div>
-<div class="row">
-    <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email" class=" col-form-label text-dark">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
@@ -145,87 +138,9 @@
                     </form>
                 </div>
             </div>
-
-            <div class="col-md-8">
-                <div class="card card-outline card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">party Data</h3>
-                    </div>
-
-                    <div class="card-body">
-                        <table  class="table table-responsive  table-hover table-valign-middle table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>GST No.</th>
-                                    <th>PANCard No.</th>
-                                    <th>Status</th>
-                                    @if(!isset($party))
-                                    <th class="text-center">Action</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $i = 1;
-                                @endphp
-                                @foreach ($parties as $value)
-                                    <tr>
-                                        <td>
-                                            {{ $i++ }}
-                                        </td>
-                                        <td scope="row">
-                                            {{ $value->name }}
-                                        </td>
-                                        <td>
-                                            {{ $value->address }}
-                                        </td>
-                                        <td>
-                                            {{ $value->email }}
-                                        </td>
-                                        <td>
-                                            {{ $value->phone_number }}
-                                        </td>
-                                        <td>
-                                            {{ $value->gst }}
-                                        </td>
-                                        <td>
-                                            {{ $value->pancard_no }}
-                                        </td>
-                                        <td class="text-center">
-                                            @if ($value->status == '1')
-                                                <button class="badge bg-success">Active</button>
-                                            @else
-                                                <button class="badge bg-danger">Inactive</button>
-                                            @endif
-                                        </td>
-                                        @if(!isset($party))
-                                        <td>
-                                            <a class="btn" href="{{ route('party.edit', $value->id) }}">
-                                                <i class="fa  fa-pen text-warning"></i> Edit
-                                            </a>
-                                            <a class="btn" href="{{ route('party.delete', $value->id) }}">
-                                                <i class="fa fa-trash text-danger"></i> Delete
-                                            </a>
-                                        </td>
-                                        @endif
-                                    </tr>
-                                @endforeach
-                            </tbody>
-
-                        </table>
-                    <div class="mt-3">
-                        {{$parties->links('pagination::bootstrap-5')}}
-                    </div>
-                </div>
-            </div>
-
+</div>
+           
         </div>
     </div>
 </section>
 
-@include('layouts.footer')
