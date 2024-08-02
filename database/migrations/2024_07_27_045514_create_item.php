@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->string('description');
                 $table->string('price');
                 $table->string('qty')->nullable();
-                $table->string('tax');
+                $table->text('image');
                 $table->boolean('status')->default(0)->comment('0 is Deactive , 1 is Active');
                 $table->foreign('group_id')->references('id')->on('item_group')->onUpdate("cascade")->onDelete("cascade");
                 $table->timestamps();

@@ -24,7 +24,6 @@ class ItemController extends Controller
                 'qty' => 'numeric',
             ])->validate(); 
     
-            print_r($request->all());
             $item= new Item();
             $item->group_id = $request['group_id'];
             $item->name = $request['name'];
@@ -38,6 +37,14 @@ class ItemController extends Controller
                 $status = 0;
             }
             $item->status = $status;
+
+            $image=$request->file('image');
+            print_r($image);die;
+            $imagename= $image->getClientOriginalName();
+            $imagepath='public/imageuploaded/';
+            $image->move($imagepath,$imagename);
+
+            $item->image= $imagepath.$imagename;
             $item->save();
             $url=$request->url();
             if (strpos($url, 'api') == true){

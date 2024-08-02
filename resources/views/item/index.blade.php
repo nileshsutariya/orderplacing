@@ -86,13 +86,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="tax" class=" col-form-label text-dark">Tax</label>
-                                    <input type="text" class="form-control" id="tax" name="tax"
-                                    value="{{isset($item)?$item->tax : old('tax')}}">
-                                    @error('tax')<span class="text-danger">
-                                            {{ $message }}
-                                    </span>@enderror
+                            <div class="form-group">
+                                    <label for="itemimage">Image</label>
+                                    <input type="file" class="form-control-file mt-2" name="itemimage" id="image" placeholder=" enter your image">
+                                        @php if(isset($item)) {echo $id = str_replace("public/imageuploaded/", "",  $item->image); } @endphp
                                 </div>
                             </div>
                         </div>
