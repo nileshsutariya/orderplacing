@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function partyindex()
+    {
+        return view("partydashboard");
+    }
     public function index(request $request)
     {
     //     $search= $request['search'];
@@ -17,7 +21,7 @@ class UserController extends Controller
     // }else{
     //     $user = User::where('company', 'LIKE', '%' . $search . '%')->paginate(1);
     // }
-        $users= User::paginate(2);
+        $users= User::paginate(1);
         $data = compact("users");
         return view("users.index", compact("users"));
     }

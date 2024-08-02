@@ -8,7 +8,8 @@ class dashboard extends Controller
 {
     public function index()
     {   
-        $items = Item::all();
-         return view('dashboard', compact('items'));
+        return view('dashboard');
+        // $items = Item::all();
+        //  return view('dashboard', compact('items'));
     }
 }

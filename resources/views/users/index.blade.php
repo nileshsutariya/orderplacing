@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Users</h1>
+                <h1>Party</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Users</li>
+                    <li class="breadcrumb-item active">Party</li>
                 </ol>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="col-md-4">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h1 class="card-title ">Users</h1>
+                        <h1 class="card-title ">Party</h1>
                     </div>
                     <div class="card-body">
                         @if (isset($user))
@@ -129,7 +129,7 @@
             <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">User Data</h3>
+                        <h3 class="card-title">Party Data</h3>
                         <!-- <input class="form-control" type="search" id="search" name="search" placeholder="Search"> -->
                     </div>
                     <div class="card-body">

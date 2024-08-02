@@ -8,21 +8,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-class AdminController extends Controller
+class AdminController extends Controller 
 {
-    public function adminindex()
-    {      
-        if (Auth::guard('admin')->check()) {
+    public function adminindex(Request $request)
+    {
+        if($request->user()->role_as == 'user') 
+        {
+            return view('partydashboard');
+        }
+        else
+        {
             return view('dashboard');
         }
-        return redirect('/admin/login');
+        // elseif($request->user()->role_as === 'user') 
+        // return view('login');
     }
-
-    public function loginform()
-    {
-        return view('login');
-    }
-
+public function loginform()
+{
+    return view('login');
+}
     public function adminlogin(Request $request) 
     {
               
