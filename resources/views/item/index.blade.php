@@ -24,9 +24,9 @@
                     </div>
                     <div class="card-body">
                         @if (isset($item))
-                            <form action="{{ route('item.update') }}" method="post">
+                            <form action="{{ route('item.update') }}" method="post" enctype="multipart/form-data">
                         @else
-                            <form action="{{ route('item.store') }}" method="post">
+                            <form action="{{ route('item.store') }}" method="post" enctype="multipart/form-data">
                         @endif
                         @csrf
                         <div class="row">
@@ -87,8 +87,8 @@
                             </div>
                             <div class="col-sm-6">
                             <div class="form-group">
-                                    <label for="itemimage">Image</label>
-                                    <input type="file" class="form-control-file mt-2" name="itemimage" id="image" placeholder=" enter your image">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="form-control mt-2" name="image" id="image" placeholder=" enter your image" >
                                         @php if(isset($item)) {echo $id = str_replace("public/imageuploaded/", "",  $item->image); } @endphp
                                 </div>
                             </div>
@@ -128,7 +128,6 @@
                                     <th>Description</th>
                                     <th>Price</th>
                                     <th>Qauntity</th>
-                                    <th>Tax</th>
                                     <th>Status</th>
                                     @if(!isset($item))
                                     <th class="text-center">Action</th>
@@ -155,9 +154,6 @@
                                         </td>
                                         <td>
                                             {{ $value->qty }}
-                                        </td>
-                                        <td>
-                                            {{ $value->tax}}%
                                         </td>
                                         <td class="text-center">
                                             @if ($value->status == '1')
