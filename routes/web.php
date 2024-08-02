@@ -13,16 +13,17 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [LoginController::class, 'index'])->name('loginform');
 Route::post('/abc', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('adminlogout');
 
 Route::group(['prefix'=>'admin'], function () {
 
-    Route::get('/login', [AdminController::class, 'loginform'])->name('loginadmin');
-    Route::post('/login', [AdminController::class, 'adminlogin'])->name('admin.login');
-    // Route::post('/login', [AdminController::class, 'userlogin'])->name('user.login');
-    Route::post('/logout', [AdminController::class, 'logout'])->name('adminlogout');
+    // Route::get('/login', [AdminController::class, 'loginform'])->name('loginadmin');
+    // Route::post('/login', [AdminController::class, 'adminlogin'])->name('admin.login');
+    // // Route::post('/login', [AdminController::class, 'userlogin'])->name('user.login');
+    // Route::post('/logout', [AdminController::class, 'logout'])->name('adminlogout');
 
-    // Route::middleware('admin')->group(function () {
-        Route::get('/', [AdminController::class, 'adminindex'])->name('index');
+    // // Route::middleware('admin')->group(function () {
+    //     Route::get('/', [AdminController::class, 'adminindex'])->name('index');
         
         // Route::get('/party/dashboard', function () {
         //     return view('partydashboard');

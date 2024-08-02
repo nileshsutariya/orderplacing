@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{route('index')}}"><b>Admin</b>LTE</a>
+    {{-- <a href="{{route('index')}}"><b>Admin</b>LTE</a> --}}
   </div>
   <div class="card">
     <div class="card-body login-card-body">
