@@ -31,6 +31,7 @@ class ItemController extends Controller
             $item->description = $request['description'];
             $item->price = $request['price'];
             $item->qty = $request['qty'];
+            $item->tax= $request['tax'];
             if ($request['status'] == 'on') {
                 $status = 1;
             } else {
@@ -77,6 +78,7 @@ class ItemController extends Controller
         $item->description = $request['description'];
         $item->price = $request['price'];
         $item->qty = $request['qty'];
+        $item->tax= $request['tax'];
         if ($request['status'] == 'on') {
             $status = 1;
         } else {

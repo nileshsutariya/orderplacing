@@ -54,8 +54,10 @@ Route::group(['prefix'=>'admin'], function () {
         Route::post('/user/update',[UserController::class,'update'] )->name('user.update');
         Route::get('/user/delete/{id}',[UserController::class,'delete'] )->name('user.delete');
 
-        
-    });
-// });
+        Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
+        Route::get('/cart',[dashboard::class,'index'])->name('party.cart');
+      
 
-Route::get('/user',[UserController::class,'userindex'] )->name('user.index');
+    });
+Route::get('/ordernow/{id}',[dashboard::class,'ordernow'] )->name('party.ordernow');
+Route::post('/orderconfirm',[dashboard::class,'orderconfirm'] )->name('party.orderconfirm');

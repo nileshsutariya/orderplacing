@@ -1,5 +1,5 @@
 <!-- 
-31/07/2024
+01/08/2024
   Today report :
      EMC tracker
      pagination and validation in orderplacing
