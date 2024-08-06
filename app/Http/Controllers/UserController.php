@@ -21,7 +21,7 @@ class UserController extends Controller
     // }else{
     //     $user = User::where('company', 'LIKE', '%' . $search . '%')->paginate(1);
     // }
-        $users= User::paginate(1);
+        $users= User::paginate(3);
         $data = compact("users");
         return view("users.index", compact("users"));
     }
@@ -65,7 +65,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
-        $users = User::paginate(1);
+        $users = User::paginate(3);
         $user = User::find($id);
         $user= User::where('id',$id)->first();
         $data = compact("user", "users");
@@ -101,5 +101,9 @@ class UserController extends Controller
         $user->status = $status;
         $user->save();
         return redirect()->route('user.index');
+    }
+    public function tax(){
+        return view("tax");
+
     }
 }

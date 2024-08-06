@@ -24,7 +24,6 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="{{route('register')}}" method="post">
         @csrf
         {{-- <div class="input-group mb-3">
           <input type="text" name="name" class="form-control" placeholder="Full name" required>

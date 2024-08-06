@@ -8,15 +8,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <title>orderplacing</title>
 
-   <script src="https://code.jquery.com/jquery-3.7.1.js"></script> 
-   <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script>  -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <!-- <script src="http://localhost/orderplacing/public/dist/js/pages/dashboard.js:14:27"></script>  -->
 
 
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -49,7 +51,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Home</a>
+          <a href="" class="nav-link">Home</a>
         </li>
 
       </ul>
@@ -84,9 +86,9 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <li class="nav-item">
-              <a href="{{route('dashboard.index')}}" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Dashboard </p>
+              <a href="{{route('dashboard.index')}}" class="nav-link ">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Dashboard </p>
               </a>
             </li>
             <li class="nav-item">
@@ -95,12 +97,7 @@
                 <p>Users</p>
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a href="{{ route('party.index') }}" class="nav-link ">
-                <i class="fa fa-user nav-icon"></i>
-                <p> Party</p>
-              </a>
-            </li>  -->
+
             <li class="nav-item">
               <a href="{{route('itemgroup.index')}}" class="nav-link">
                 <i class="fas fa-boxes nav-icon"></i>
@@ -111,6 +108,12 @@
               <a href="{{route('item.index')}}" class="nav-link">
                 <i class="fas fa-th nav-icon"></i>
                 <p>Item</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('tax.index') }}" class="nav-link ">
+                <i class="fa fa-cog nav-icon"></i>
+                <p>Setting </p>
               </a>
             </li>
           </ul>

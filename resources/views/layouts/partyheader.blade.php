@@ -37,9 +37,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed">
+  <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -48,9 +46,11 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Home</a>
-        </li>
+            <li class="nav-item">
+              <a href="{{route('partydashboard.index')}}" class="nav-link ">
+              <p>Dashboard </p>
+              </a>
+            </li>
 
       </ul>
 
@@ -70,8 +70,8 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="index3.html" class="brand-link">
-        <span class="brand-text font-weight-light">Order Placing</span>
+      <a href="index3.html" class="brand-link text-center ">
+        <span class="brand-text font-weight-light "><h4>Order Placing</h4></span>
       </a>
 
       <!-- Sidebar -->
@@ -81,12 +81,17 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-            <li class="nav-item">
-              <a href="{{route('partydashboard.index')}}" class="nav-link active">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="ul">
+            <li class="nav-item li">
+              <a href="{{route('partydashboard.index')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard </p>
+              </a>
+            </li>
+            <li class="nav-item li">
+              <a href="{{route('party.edit',$party->id)}}" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Profile </p>
               </a>
             </li>
           </ul>
@@ -94,5 +99,21 @@
       </div>
       <!-- /.sidebar -->
     </aside>
+    <script>           
+   $(function(){
+   var current = location.pathname;
+   
+   $('#ul li a').each(function(){
+     var a = $(this);
+     // if the current path is like this link, make it active
+     if(a.attr('href').indexOf(current) !== -1){
+      
+
+            a.addClass('active');
+        }
+    })
+})
+
+    </script>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

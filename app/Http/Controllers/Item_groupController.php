@@ -11,8 +11,7 @@ class Item_groupController extends Controller
 
     public function index()
     {
-        $itemgroups= Item_group::paginate(1);
-        $data = compact("itemgroups");
+        $itemgroups= Item_group::paginate(3);
         return view('itemgroup.index', compact('itemgroups'));
     }
     public function store(Request $request)
@@ -24,7 +23,7 @@ class Item_groupController extends Controller
             $itemgroup= new Item_group();
             $itemgroup->name = $request['name'];
             $itemgroup->description = $request['description'];
-            if ($request['status'] == 'on') {
+            if ($request['status'] == '1') {
                 $status = 1;
             } else {
                 $status = 0;

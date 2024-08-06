@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number');
             $table->string('address')->nullable();
-            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');;
+            $table->boolean('status')->default(1)->comment('0 is Deactive , 1 is Active');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

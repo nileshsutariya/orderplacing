@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('partyorder', function (Blueprint $table) {
+        Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->string('party_id');
-            $table->string('buyer_name');
-            $table->string('phone_number');
-            $table->string('address')->nullable();
-            $table->string('item_name');
-            $table->string('price');
-            $table->string('qty');
-            $table->string('total');
+            $table->unsignedBigInteger('party_id');
+            $table->foreign('party_id')->references('id')->on('party_master')->onUpdate("cascade")->onDelete("cascade");
+            $table->string('total_products');
+            $table->string('subtotal');
+            $table->string('tax_percentage');
+            $table->string('tax_amount');
+            $table->string('final_total');
             $table->boolean('status')->default(0)->comment('0 is Pending , 1 is Shipped , 2 is Completed');
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('partyorder');
+        Schema::dropIfExists('order');
     }
 };

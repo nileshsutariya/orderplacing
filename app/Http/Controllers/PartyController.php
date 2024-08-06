@@ -15,7 +15,7 @@ class PartyController extends Controller
     }
     public function index()
     {
-        $parties= Party::paginate(1);
+        $parties= Party::paginate(3);
         $data = compact("parties");
         return view("party.index")->with($data);
     }
@@ -52,7 +52,7 @@ class PartyController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("register successfully.");
              }else{
-                return view('login');
+                return redirect()->route("loginform");
              }
     }
     public function delete($id)
@@ -63,7 +63,7 @@ class PartyController extends Controller
 
     public function edit($id)
     {
-        $parties= Party::paginate(1);
+        $parties= Party::paginate(3);
 
         $party = Party::find($id);
         $party= Party::where('id',$id)->first();
@@ -74,7 +74,7 @@ class PartyController extends Controller
     
     public function update(request $request)
     {
-        if($request['password'] !=null){
+        if(isset($request['password']) && $request['password']!=""){
             $request->validate([
                 'cpassword' => 'required|same:password'
             ]);
@@ -84,7 +84,7 @@ class PartyController extends Controller
                 'name' => 'required',
                 'phonenumber' => 'numeric',
                 'email' => 'required|email',
-                'gst'=>'regex = “^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$”' ,
+                // 'gst'=>'regex = “^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$”' ,
             ]);
          }
       
@@ -92,7 +92,10 @@ class PartyController extends Controller
         $party->name = $request['name'];
         $party->email = $request['email'];
         $party->gst = $request['gst'];
+        $password=$request['password'];
+      if(isset($password)){
         $party->password = Hash::make($request['password']);
+      }
         $party->Pancard_no = $request['pancardno'];
         $party->address = $request['address'];
         $party->phone_number = $request['phonenumber'];
@@ -103,6 +106,6 @@ class PartyController extends Controller
         }
         $party->status = $status;
         $party->save();
-        return redirect()->route('party.index');
+        return redirect()->route('loginform');
     }
 }

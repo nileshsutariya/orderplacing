@@ -1,20 +1,14 @@
-<!-- <!-- 
-01/08/2024
+<!-- 
+06/08/2024
   Today report :
      EMC tracker
-     pagination and validation in orderplacing
+     insert and delete operation in cart table
+     display cart data with calculation in cart page
 
-      
-01/08/2024
-Authentication login 
-design buy now page
-
-
-/08/2024
+03/08/2024
   Today report :
-      html and css form design   
-      Ajax tutorials
-      Jquery ajax methods 
+       design cart page 
+       dhs testing
 -->
 
 <div class="col-md-8">

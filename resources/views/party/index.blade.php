@@ -1,4 +1,7 @@
-<html>
+@if (isset($party))
+    @include('layouts.partyheader') 
+    @else
+    <html>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,15 +17,25 @@
 </head>
 
 <body>
+@endif
+
 
 <section class="content">
     <div class="container-fluid  mx-auto">
         <div class="row">
+        @if(!isset($party))
             <div class="col-md-12 mt-5 p-4">
                 <div class="card card-outline card-info mx-auto"  style="width: 40rem; bordered: 5px;">
-                    <div class="card-header text-">
-                        <h3 class="card-title">Party</h3>
+                <div class="card-header">
+                        <h3 class="card-title"> Registration</h3>
                     </div>
+                @else            
+                <div class="col-md-12 ">
+                <div class="card card-outline card-info m-3">
+                <div class="card-header">
+                        <h3 class="card-title">Update the profile</h3>
+                    </div>
+                @endif
                     <div class="card-body">
                         @if (isset($party))
                             <form id="myform" action="{{ route('party.update') }}" method="post">
@@ -57,7 +70,7 @@
                         <div class="form-group">
                             <label for="phone number" class=" col-form-label text-dark">Phone number</label>
                             <input type="text" class="form-control" id="phonenumber" name="phonenumber"
-                                value="{{isset($party)?$party->phone_number: old('phonenumber')}} ">
+                                value="{{isset($party)?$party->phone_number: old('phonenumber')}} " oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                             @error('phonenumber')
                                 <span class="text-danger">
                                     {{ $message }}
@@ -105,7 +118,7 @@
                            <div class="col-sm-6"> 
                            <div class="form-group">
                                 <label for="password" class=" col-form-label text-dark">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
+                                <input type="password" class="form-control" id="password" name="password" oninput="if(/^\s/.test(this.value))this.value = ''; ">
                                 @error('password')
                                     <span class="text-danger">
                                         {{ $message }}
@@ -150,5 +163,9 @@
     </div>
 </section>
 
-</body>
+@if (isset($party))
+    @include('layouts.footer')
+    @else
+    </body>
 </html>
+@endif

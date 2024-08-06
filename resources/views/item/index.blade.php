@@ -62,7 +62,7 @@
                                     <label for="price" class=" col-form-label text-dark">Price</label>
                                     <input type="text" class="form-control" id="price" name="price"
                                         value="{{isset($item)? $item->price : old('price')}}">
-                                        @error('price')<span class="text-danger">
+                                        @error('price')<span class="text-danger" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                                             {{ $message }}
                                     </span>@enderror
                                 </div>
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <label for="qty" class=" col-form-label text-dark">qty</label>
                                     <input type="text" class="form-control" id="qty" name="qty"
-                                    value="{{isset($item)?$item->qty : old('qty')}}">
+                                    value="{{isset($item)?$item->qty : old('qty')}}" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                                     @error('qty')<span class="text-danger">
                                             {{ $message }}
                                     </span>@enderror
