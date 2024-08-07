@@ -93,7 +93,7 @@
                 <i class="nav-icon bi bi-bag-check-fill m-1"></i>
               <p>Orderview </p>
             <li class="nav-item li">
-              <a href="{{route('party.edit',$party->id)}}" class="nav-link ">
+              <a href="{{route('party.edit', $party->id)}}" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Profile </p>
               </a>
@@ -104,18 +104,14 @@
       <!-- /.sidebar -->
     </aside>
     <script>           
-   $(function(){
-   var current = location.pathname;
-   
-   $('#ul li a').each(function(){
-     var a = $(this);
-     // if the current path is like this link, make it active
-     if(a.attr('href').indexOf(current) !== -1){
-      
-
-            a.addClass('active');
-        }
-    })
+$(function(){
+var current = location.pathname;
+  $('#ul li a').each(function(){
+    var a = $(this);
+    if(a.attr('href').indexOf(current) !== -1){
+      a.addClass('active');
+    }
+  })
 })
 
     </script>

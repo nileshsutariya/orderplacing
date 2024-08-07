@@ -28,6 +28,10 @@ Route::post('/statusupdate/{id}', [OrderController::class, 'statusupdate'])->nam
 Route::get('/party',[PartyController::class,'index'] )->name('party.index');
 Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
 
+Route::get('/party/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
+Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
+Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
+
 Route::get('/ordernow',[AdminDashboard::class,'ordernow'] )->name('party.ordernow');
 Route::post('/orderconfirm',[partydashboard::class,'orderconfirm'] )->name('party.orderconfirm');
 Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');
@@ -50,10 +54,6 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/itemgroup/edit/{id}',[Item_groupController::class,'edit'] )->name('itemgroup.edit');
     Route::post('/itemgroup/update',[Item_groupController::class,'update'] )->name('itemgroup.update');
     Route::get('/itemgroup/delete/{id}',[Item_groupController::class,'delete'] )->name('itemgroup.delete');
-    
-    Route::get('/party/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
-    Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
-    Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
 
     Route::get('/user',[UserController::class,'index'] )->name('user.index');
     Route::post('/user/store',[UserController::class,'store'] )->name('user.store');

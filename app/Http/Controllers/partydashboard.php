@@ -32,8 +32,9 @@ class partydashboard extends Controller
         // print_r(Auth::user());die();
         $partyid = Auth::guard('party')->id();
         $party=Party::where('id',$partyid)->first();
+
         $cart = Item::all();
-         return view('partydashboard', compact('cart','party'));
+        return view('partydashboard', compact('cart','party'));
     }
     public function delete($id){
         $cart= Cart::find($id)->delete();
@@ -62,7 +63,7 @@ class partydashboard extends Controller
             $qty=$cart->qty +1;
             $cart->qty = $qty;
             $cart->save();
-        }else{
+        } else {
             $cart = new Cart;
             $cart->party_id=$partyid;
             $cart->item_id=$item->id;
