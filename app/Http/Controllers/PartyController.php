@@ -59,29 +59,29 @@ class PartyController extends Controller
 //         } else {
 //             return view('login');
 //         }
-        print_r($request->all());
-        $party = new Party;
-        $party->name = $request['name'];
-        $party->email = $request['email'];
-        $party->password = Hash::make($request['password']);
-        $party->address = $request['address'];
-        $party->phone_number = $request['phonenumber'];
-        $party->gst = $request['gst'];
-        $party->pancard_no = $request['pancardno'];
+            print_r($request->all());
+            $party = new Party;
+            $party->name = $request['name'];
+            $party->email = $request['email'];
+            $party->password = Hash::make($request['password']);
+            $party->address = $request['address'];
+            $party->phone_number = $request['phonenumber'];
+            $party->gst = $request['gst'];
+            $party->pancard_no = $request['pancardno'];
 
-        if ($request['status'] == '1') {
-            $status = 1;
-        } else {
-            $status = 0;
-        }
-        $party->status = $status;
-        $party->save();
-        $url=$request->url();
-        if (strpos($url, 'api') == true){
-                return response()->json("register successfully.");
-        } else {
-        return redirect()->route("loginform");
-        }
+            if ($request['status'] == '1') {
+                $status = 1;
+            } else {
+                $status = 0;
+            }
+            $party->status = $status;
+            $party->save();
+            $url=$request->url();
+            if (strpos($url, 'api') == true){
+                 return response()->json("register successfully.");
+             }else{
+                return redirect()->route("loginform");
+             }
     }
     public function delete($id)
     {
@@ -92,6 +92,7 @@ class PartyController extends Controller
     public function edit($id)
     {
         $parties= Party::paginate(3);
+
         $party = Party::find($id);
         $party= Party::where('id',$id)->first();
         $data = compact("party","parties");
@@ -105,15 +106,15 @@ class PartyController extends Controller
             $request->validate([
                 'cpassword' => 'required|same:password'
             ]);
-        }
-        else { 
+         }
+         else{
             $request->validate([
                 'name' => 'required',
                 'phonenumber' => 'numeric',
                 'email' => 'required|email',
                 // 'gst'=>'regex = “^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$”' ,
             ]);
-        }
+         }
       
         $party = Party::find($request->id);        
         $party->name = $request['name'];

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Auth;
 
 class OrderController extends Controller
 {
@@ -52,10 +50,11 @@ class OrderController extends Controller
             $cart=Cart::where('party_id', $partyid)->get();
             print_r($cart->toArray()); die();
 
-            // $url=$request->url();
+            
+            $url=$request->url();
             if (strpos($url, 'api') == true){
                  return response()->json("register successfully.");
-             } else {
+             }else{
                 return redirect()->route("partydashboard.index");
              }
     }
