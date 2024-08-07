@@ -20,8 +20,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -45,7 +44,7 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
@@ -81,10 +80,10 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" id="ul">
 
             <li class="nav-item">
-              <a href="{{route('dashboard.index')}}" class="nav-link active">
+              <a href="{{route('dashboard.index')}}" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard </p>
               </a>
@@ -101,25 +100,25 @@
                 <p> Party</p>
               </a>
             </li>  -->
-            <li class="nav-item">
+            <li class="nav-item li">
               <a href="{{route('itemgroup.index')}}" class="nav-link">
                 <i class="fas fa-boxes nav-icon"></i>
                 <p>Item Group</p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item li">
               <a href="{{route('item.index')}}" class="nav-link">
                 <i class="fas fa-th nav-icon"></i>
                 <p>Item</p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item li">
               <a href="{{ route('orderview') }}" class="nav-link ">
                 <i class="nav-icon bi bi-bag-check-fill m-1"></i>
                 <p>Orderview</p>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item li">
               <a href="{{ route('orderstatus') }}" class="nav-link ">
                 <i class="nav-icon bi bi-truck m-1"></i>
                 <p>Orderstatus</p>
@@ -130,5 +129,18 @@
       </div>
       <!-- /.sidebar -->
     </aside>
+    
+    <script>           
+   $(function(){
+   var current = location.pathname;
+   
+   $('#ul li a').each(function(){
+     var a = $(this);
+     if(a.attr('href').indexOf(current) !== -1){
+            a.addClass('active');
+        }
+    })
+})
+    </script>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

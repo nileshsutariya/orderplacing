@@ -87,12 +87,7 @@
               <p>Dashboard </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{route('partydashboard.index')}}" class="nav-link">
-                <i class="nav-icon bi bi-bag-check-fill m-1"></i>
-              <p>Orderview </p>
-              </a>
-            </li>
+    
             <li class="nav-item li">
               <a href="{{route('party.edit',$party->id)}}" class="nav-link ">
               <i class="fas fa-user-edit ml-1"></i>
@@ -110,15 +105,10 @@
    
    $('#ul li a').each(function(){
      var a = $(this);
-     // if the current path is like this link, make it active
      if(a.attr('href').indexOf(current) !== -1){
-      
-
             a.addClass('active');
         }
     })
 })
-
     </script>
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
