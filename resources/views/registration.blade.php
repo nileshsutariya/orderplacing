@@ -38,7 +38,6 @@
   <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new party</p>
-
       <form action="{{ route('register') }}" method="post">
         @csrf
         <div class="input-group mb-3">

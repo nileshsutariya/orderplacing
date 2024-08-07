@@ -11,8 +11,7 @@ class Item_groupController extends Controller
 
     public function index()
     {
-        $itemgroups= Item_group::paginate(1);
-        $data = compact("itemgroups");
+        $itemgroups= Item_group::paginate(3);
         return view('itemgroup.index', compact('itemgroups'));
     }
     public function store(Request $request)

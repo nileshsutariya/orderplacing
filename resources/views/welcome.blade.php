@@ -1,19 +1,19 @@
-{{-- <!-- 
+<!-- <!-- 
 01/08/2024
   Today report :
      EMC tracker
      pagination and validation in orderplacing
 
       
-05/08/2024
-changes in design
-order status page
+01/08/2024
+Authentication login 
+design buy now page
+
 
 /08/2024
   Today report :
-      html and css form design   
-      Ajax tutorials
-      Jquery ajax methods 
+       design cart page 
+       dhs testing
 -->
 
 <div class="col-md-8">

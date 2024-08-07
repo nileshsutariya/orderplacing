@@ -71,7 +71,7 @@
                                     <label for="phone number" class=" col-form-label text-dark">Phone
                                         number</label>
                                     <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{isset($user)?$user->phone_number : old('phone_number')}} ">
+                                    value="{{isset($user)?$user->phone_number : old('phone_number')}} " oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                                     @error('phone_number')
                                         <span class="text-danger">
                                             {{ $message }}

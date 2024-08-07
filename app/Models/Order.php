@@ -20,4 +20,6 @@ class Order extends Model
         'buyer_name', 'phone_number', 'address', 'item_name', 'price', 'qty'
     ];
     public $timestamps = false;
+//     protected $table="order";
+//     protected $primarykey = "id";
 }

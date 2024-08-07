@@ -21,7 +21,6 @@ class LoginController extends Controller
             return redirect()->route('dashboard.index'); 
         }
         elseif(Auth::guard('party')->attempt($credentials)) {
-            // echo "admin";
             return redirect()->route('partydashboard.index');
         }
         else {
