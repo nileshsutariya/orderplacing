@@ -24,53 +24,71 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach($partyOrders as $order)
+                            @foreach($partyorders as $key=> $order)
                             <div class="col-md-12 mb-3">
-                                <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->name }}"> {{--  id --}}
+                                <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->buyer_name }}"> 
                                     <div class="card-body">
                                         {{-- <div class="text text-lg">Order ID: {{ $order->id }}</div> --}}
-                                        <div class="text text-lg text-bold">BUYER NAME </div>{{ $order->name }}{{--  id --}}
-                                        <button class="btn btn-light float-right show-more" data-id="{{ $order->id }}">{{--  id --}}
+                                      
+                                        <div class="row">
+                                            <div class="col-md-6 ">
+                                            <span class="text-lg text-bold">
+                                            BUYER NAME
+                                            </span><br>
+                                            {{ $order->buyer_name }} 
+                                            </div>
+                                            <div class="col-md-6 text-right text-bold">
+                                                @if($order->status == 0)
+                                                
+                                                    <div class="text-danger"><i class="bi bi-exclamation-circle-fill m-2"></i>Pending</div>
+                                                @elseif($order->status == 1)
+                                                    <div class="text-warning"><i class="bi bi-clock-fill m-2"></i>Shipped</div>
+                                                @else
+                                                    <div class="text-success"><i class="bi bi-check-circle-fill m-2"></i>Completed</div>
+                                                @endif
+                                                
+                                        <button class="btn btn- float-right show-more mt-2" data-id="{{ $order->id }}">
                                             Show More Detail
                                         </button>
-                                        <div class="extra-details" id="extra{{ $order->id }}" style="display: none;">{{--  id --}}
+                                        </div>
+                                        </div>
+                                        
+                                        <div class="extra-details" id="extra{{ $order->id }}" style="display: none;">
                                             <hr>
-                                            <h5>Shipping Details</h5>
+                                            <h4>Shipping Details</h4>
                                             <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    <div class="text text-bold">Order Id : {{ $order->id }}</div>
-                                                    <div class="text">Buyer Name (Shipping to) : {{ $order->name }}</div>
-                                                    <div class="text">Phone Number : {{ $order->phone_number }}</div>
-                                                    <div class="text">Address : {{ $order->address }}</div>
+                                                    <div class="text"><b>Order Id : </b>{{ $order->id }}
+                                                    </div>
+                                                    <div><b>Buyer Name (Shipping to) : </b>{{ $order->buyer_name }}</div>
+                                                    <div><b>Phone Number :  </b>{{ $order->buyer_phone_number }}</div>
+                                                    <div><b>Address : </b> {{ $order->buyer_address }}</div>
                                                     <th scope="col">Product</th>
                                                     <th scope="col">Price</th>
                                                     <th scope="col">Qty</th>
                                                     <th scope="col">Total</th>
-                                                    <th scope="col">Order Status</th>
                                                 </tr>
                                                 </thead>
                                                 <hr>
                                                 <tbody>
-                                                <tr>
-                                                    <td class="text">{{ $order->item_name }}</td>
-                                                    <td class="text">{{ $order->price }}</td>
-                                                    <td class="text">{{ $order->qty }}</td>
-                                                    <td class="text">{{ $order->subtotal }}</td>
-                                                   <td> 
-                                                    @if($order->status == 0)
-                                                        <div class="text-danger">Pending</div>
-                                                    @elseif($order->status == 1)
-                                                        <div class="text-warning">Shipped</div>
-                                                    @else
-                                                        <div class="text-success">Completed</div>
-                                                    @endif
-                                                   </td>
-                                                    {{-- <td class="text">{{ $order->status }}</td> --}}
-                                                </tr>
+                                                    @foreach ($orderitem[$key] as $item)
+                                                    <tr>
+                                                        <td class="text">{{ $item->item_name }}</td>
+                                                        <td class="text">{{ $item->price }}</td>
+                                                        <td class="text">{{ $item->qty }}</td>
+                                                        <td class="text">{{ $item->price * $item->qty }}</td>
+                                                    </tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="text-right">
+                                            <div class="text"><b>Sub Total  : </b>  {{ $order->subtotal }}</div>
+                                                    <div class="text"><b>Tax  :  </b>{{ $order->tax_percentage }}  %</div>
+                                                    <div class="text"><b>Tax Amount :  </b>{{ $order->tax_amount }}</div> 
+                                                    <div class="text"><b>Final Total :  </b>{{ $order->final_total }}</div> 
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>

@@ -44,22 +44,22 @@
                                     <tr>
                                         <th>Buyer Name</th>
                                         <th>Address</th>
-                                        <th>Item Name</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th>Total</th>
+                                        <th>Subtotal</th>
+                                        <th>Tax</th>
+                                        <th>Tax Amount</th>
+                                        <th>Final Total</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($partyOrders as $order)
+                                    @foreach($partyorders as $key=> $order)
                                         <tr>
-                                            <td class="text">{{ $order->name }}</td>
-                                            <td class="text">{{ $order->address }}</td>
-                                            <td class="text">{{ $order->item_name }}</td>
-                                            <td class="text">{{ $order->price }}</td>
-                                            <td class="text">{{ $order->qty }}</td>
-                                            <td class="text">{{ $order->price * $order->qty }}</td>
+                                            <td class="text">{{ $order->buyer_name }}</td>
+                                            <td class="text"><b>Delivery address : </b>{{ $order->buyer_address }}</td>
+                                            <td class="text">{{ $order->subtotal }}</td>
+                                            <td class="text">{{ $order->tax_percentage }}</td>
+                                            <td class="text">{{ $order->tax_amount }}</td>
+                                            <td class="text">{{ $order->final_total }}</td>
                                             <td>
                                                 @if ($order->status == '0')
                                                     <form action="{{ route('statusupdate', $order->id) }}" method="POST">
