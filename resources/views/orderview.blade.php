@@ -26,10 +26,10 @@
                         <div class="row">
                             @foreach($partyOrders as $order)
                             <div class="col-md-12 mb-3">
-                                <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->buyer_name }}"> {{--  id --}}
+                                <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->name }}"> {{--  id --}}
                                     <div class="card-body">
                                         {{-- <div class="text text-lg">Order ID: {{ $order->id }}</div> --}}
-                                        <div class="text text-lg text-bold">BUYER NAME </div>{{ $order->buyer_name }}{{--  id --}}
+                                        <div class="text text-lg text-bold">BUYER NAME </div>{{ $order->name }}{{--  id --}}
                                         <button class="btn btn-light float-right show-more" data-id="{{ $order->id }}">{{--  id --}}
                                             Show More Detail
                                         </button>
@@ -41,7 +41,7 @@
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <div class="text text-bold">Order Id : {{ $order->id }}</div>
-                                                    <div class="text">Buyer Name (Shipping to) : {{ $order->buyer_name }}</div>
+                                                    <div class="text">Buyer Name (Shipping to) : {{ $order->name }}</div>
                                                     <div class="text">Phone Number : {{ $order->phone_number }}</div>
                                                     <div class="text">Address : {{ $order->address }}</div>
                                                     <th scope="col">Product</th>
@@ -57,7 +57,7 @@
                                                     <td class="text">{{ $order->item_name }}</td>
                                                     <td class="text">{{ $order->price }}</td>
                                                     <td class="text">{{ $order->qty }}</td>
-                                                    <td class="text">{{ $order->price * $order->qty }}</td>
+                                                    <td class="text">{{ $order->subtotal }}</td>
                                                    <td> 
                                                     @if($order->status == 0)
                                                         <div class="text-danger">Pending</div>

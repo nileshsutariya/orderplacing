@@ -54,7 +54,7 @@
                                 <tbody>
                                     @foreach ($partyOrders as $order)
                                         <tr>
-                                            <td class="text">{{ $order->buyer_name }}</td>
+                                            <td class="text">{{ $order->name }}</td>
                                             <td class="text">{{ $order->address }}</td>
                                             <td class="text">{{ $order->item_name }}</td>
                                             <td class="text">{{ $order->price }}</td>

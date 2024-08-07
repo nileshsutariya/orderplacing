@@ -203,7 +203,6 @@ class PartyController extends Controller
 
     public function edit($id)
     {
-        
         $parties= Party::paginate(3);
         $party = Party::find($id);
         $party= Party::where('id',$id)->first();

@@ -14,7 +14,15 @@ class OrderController extends Controller
 {
     public function orderview()
     {
-        $partyOrders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.*', 'order.*')->get();
+        $partyOrders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')
+                            ->select('party_master.*', 'order.*')
+                            ->get(); 
+                            
+        // $partyOrders = DB::table('order')
+        //                     ->leftjoin('party_master', 'party_master.id', '=', 'order.party_id')
+        //                     ->leftjoin('order_details', 'party_master.id', '=', 'order_details.id')
+        //                     ->select('party_master.*', 'order.*', 'order_details.*')
+        //                     ->get();   
         // print_r($partyOrders); die;
         
         return view('orderview', compact('partyOrders'));
