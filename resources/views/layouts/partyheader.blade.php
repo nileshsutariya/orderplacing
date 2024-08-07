@@ -92,6 +92,8 @@
               <a href="{{route('partydashboard.index')}}" class="nav-link">
                 <i class="nav-icon bi bi-bag-check-fill m-1"></i>
               <p>Orderview </p>
+              </a>
+            </li>
             <li class="nav-item li">
               <a href="{{route('party.edit',$party->id)}}" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>

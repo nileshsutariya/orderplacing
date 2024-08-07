@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -48,7 +51,7 @@ class OrderController extends Controller
             $order->status = 0;
             // $order->save()
             $cart=Cart::where('party_id', $partyid)->get();
-            print_r($cart->toArray()); die();
+            // print_r($cart->toArray()); die();
 
             
             $url=$request->url();

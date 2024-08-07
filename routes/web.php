@@ -86,7 +86,7 @@ Route::group(['prefix'=>'admin'], function () {
         Route::post('/itemgroup/update',[Item_groupController::class,'update'] )->name('itemgroup.update');
         Route::get('/itemgroup/delete/{id}',[Item_groupController::class,'delete'] )->name('itemgroup.delete');
        
-        Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
+        // Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
 
         Route::get('/user',[UserController::class,'index'] )->name('user.index');
         Route::post('/user/store',[UserController::class,'store'] )->name('user.store');
@@ -98,20 +98,17 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');
 
 
-    Route::get('/party',[PartyController::class,'index'] )->name('party.index');
-    Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
+    // Route::get('/party',[PartyController::class,'index'] )->name('party.index');
+    // Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
     
-    Route::get('/party/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
-    Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
+    // Route::get('/party/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
+    // Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
 
     Route::get('/cart/{id}',[partydashboard::class,'cart'])->name('cart');
     Route::get('/cart',[partydashboard::class,'cartview'])->name('cartview');
     Route::get('/cart/delete/{id}',[partydashboard::class,'delete'])->name('cart.delete');
 
     Route::post('/order/store',[OrderController::class,'store'] )->name('order.store');
-
-
-
 
     Route::get('/tax',[TaxController::class,'index'] )->name('tax.index');
     Route::post('/tax/store',[taxController::class,'store'] )->name('tax.store');
