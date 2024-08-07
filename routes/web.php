@@ -67,9 +67,9 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/cart/{id}',[partydashboard::class,'cart'])->name('cart');
     Route::get('/cart',[partydashboard::class,'cartview'])->name('cartview');
     Route::get('/cart/delete/{id}',[partydashboard::class,'delete'])->name('cart.delete');
+    Route::post('/cart/update',[partydashboard::class,'cartqtyupdate'])->name('cart.qty.update');
 
     Route::post('/order/store',[OrderController::class,'store'] )->name('order.store');
-
 
 
 

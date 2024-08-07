@@ -1,16 +1,3 @@
-<!-- 
-06/08/2024
-  Today report :
-     EMC tracker
-     insert and delete operation in cart table
-     display cart data with calculation in cart page
-
-03/08/2024
-  Today report :
-       design cart page 
-       dhs testing
--->
-
 <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">

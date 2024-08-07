@@ -21,7 +21,6 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -90,8 +89,8 @@
             </li>
             <li class="nav-item li">
               <a href="{{route('party.edit',$party->id)}}" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>Profile </p>
+              <i class="fas fa-user-edit ml-1"></i>
+              <p class="ml-1">Profile </p>
               </a>
             </li>
           </ul>
