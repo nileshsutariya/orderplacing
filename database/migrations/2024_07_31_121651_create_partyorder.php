@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('partyorder', function (Blueprint $table) {
             $table->id();
-            $table->string('party_id');
+            $table->unsignedBigInteger('party_id');
             $table->string('buyer_name');
             $table->string('phone_number');
             $table->string('address')->nullable();
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('price');
             $table->string('qty');
             $table->string('total');
+            $table->foreign('party_id')->references('id')->on('party_master')->onUpdate("cascade")->onDelete("cascade");
+            // $table->boolean('order_status')->default(0)->comment('0 is Pending , 1 is Accept , 2 is Cancel');
             $table->boolean('status')->default(0)->comment('0 is Pending , 1 is Shipped , 2 is Completed');
             $table->timestamps();
         });

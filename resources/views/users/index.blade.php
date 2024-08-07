@@ -1,4 +1,4 @@
-@include('layouts.header')
+@include('layouts.adminheader')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-outline card-primary">
+                <div class="card card-outline card-primary shadow">
                     <div class="card-header">
                         <h1 class="card-title ">Users</h1>
                     </div>
@@ -125,9 +125,8 @@
                     </form>
                 </div>
             </div>
-
             <div class="col-md-8">
-                <div class="card card-outline card-primary">
+                <div class="card card-outline card-primary shadow">
                     <div class="card-header">
                         <h3 class="card-title">Users Data</h3>
                         <!-- <input class="form-control" type="search" id="search" name="search" placeholder="Search"> -->

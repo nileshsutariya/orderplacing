@@ -89,6 +89,12 @@
               <p>Dashboard </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{route('partydashboard.index')}}" class="nav-link">
+                <i class="nav-icon bi bi-bag-check-fill m-1"></i>
+              <p>Orderview </p>
+              </a>
+            </li>
           </ul>
           <!-- /.sidebar-menu -->
       </div>

@@ -1,14 +1,13 @@
-<!-- <!-- 
+{{-- <!-- 
 01/08/2024
   Today report :
      EMC tracker
      pagination and validation in orderplacing
 
       
-01/08/2024
-Authentication login 
-design buy now page
-
+05/08/2024
+changes in design
+order status page
 
 /08/2024
   Today report :
@@ -92,4 +91,4 @@ design buy now page
                         {{$parties->links('pagination::bootstrap-5')}}
                     </div>
                 </div>
-            </div> -->
+            </div> --> --}}

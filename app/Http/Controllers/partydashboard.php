@@ -5,23 +5,25 @@ use App\Models\Item;
 use App\Models\Partyorder;   
 use App\Models\Party; 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
+// use Auth;
 
 class partydashboard extends Controller
 {
     public function index()
     {   
         $items = Item::all();
-         return view('partydashboard', compact('items'));
+        return view('partydashboard', compact('items'));
     }
     
     public function ordernow($pid)
     {
         $partyid=Auth::guard('party')->id;
-       print_r($partyid);die;
-        $party=Party::where('id',$partyid)->first();
-        $items= Item::paginate(2);
-        $item = Item::find($id);
+        print_r($partyid);die;
+        $party = Party::where('id',$partyid)->first();
+        $items = Item::paginate(2);
+        $item = Item::find($pid);
         return view("party.partyorder",compact('item', 'items', 'party'));
     }
     public function orderconfirm(request $request)

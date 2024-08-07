@@ -17,12 +17,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    {{-- <a href="{{route('index')}}"><b>Admin</b>LTE</a> --}}
+    <a href="#"><b>Login</b></a>
   </div>
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to get admin access</p>
-
       <form action="{{route('login')}}" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -55,10 +54,9 @@
           </div>
         </div>
       </form>
-
-      <p class="mb-1">
+      {{-- <p class="mb-1">
         <a href="#">I forgot my password</a>
-      </p>
+      </p> --}}
        <p class="mb-0">
         <a href="{{route('party.index')}}" class="text-center">Register</a>
       </p> 

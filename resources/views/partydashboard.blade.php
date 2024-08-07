@@ -31,7 +31,7 @@
                   <h2 class="card-title"style="font-size:30px;">{{$value->name}}</h2><br>
                 </div>
                 <span>{{$value->description}}</span><br>
-                <img src="{{$value->image}}"  style="width: 100%; height: 90%;" alt="">
+                <img src="{{$value->image}}" style="width: 100%; height: 90%;" alt="">
               </div>
 
               <div class="card-body ">

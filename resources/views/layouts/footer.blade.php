@@ -1,14 +1,14 @@
   </div>
 
   <footer class="main-footer mt-6">
-      <strong>Copyright &copy; 2014-2021 <a href="#">Billing</a>.</strong>
+      <strong>Copyright &copy; 2024 <a href="#">Billing</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
           <b>Version</b> 3.2.0
       </div>
   </footer>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>

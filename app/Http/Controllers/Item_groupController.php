@@ -24,7 +24,7 @@ class Item_groupController extends Controller
             $itemgroup= new Item_group();
             $itemgroup->name = $request['name'];
             $itemgroup->description = $request['description'];
-            if ($request['status'] == 'on') {
+            if ($request['status'] == '1') {
                 $status = 1;
             } else {
                 $status = 0;

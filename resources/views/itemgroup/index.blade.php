@@ -1,4 +1,4 @@
-@include('layouts.header')
+@include('layouts.adminheader')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -18,14 +18,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5">
-                <div class="card card-outline card-info">
+                <div class="card card-outline card-primary shadow">
                     <div class="card-header">
                         <h3 class="card-title">Item Group</h3>
                     </div>
-                    @if (isset($itemgroup))
+                        @if (isset($itemgroup))
                             <form action="{{ route('itemgroup.update') }}" method="post">
-                            @else
-                                <form action="{{ route('itemgroup.store') }}" method="post">
+                        @else
+                            <form action="{{ route('itemgroup.store') }}" method="post">
                         @endif
                         @csrf
                         <div class="card-body">
@@ -57,16 +57,15 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" class="form-control" id="id" name="id"
-                            value="{{ isset($itemgroup)? $itemgroup->id:''}}">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type="hidden" class="form-control" id="id" name="id" value="{{ isset($itemgroup)? $itemgroup->id:''}}">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
             
             <div class="col-md-7">
-                <div class="card card-outline card-primary">
+                <div class="card card-outline card-primary shadow">
                     <div class="card-header">
                         <h3 class="card-title">Item Group Data</h3>
                     </div>
@@ -79,9 +78,9 @@
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>
-                                @if(!isset($itemgroup))
+                                {{-- @if(!isset($itemgroup)) --}}
                                 <th class="text-center">Action</th>
-                                @endif
+                                {{-- @endif --}}
                             </tr>
                         </thead>
                         <tbody>

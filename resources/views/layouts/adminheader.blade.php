@@ -114,15 +114,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('user.index') }}" class="nav-link ">
-                <i class="fa fa-users nav-icon"></i>
-                <p>Users</p>
+              <a href="{{ route('orderview') }}" class="nav-link ">
+                <i class="nav-icon bi bi-bag-check-fill m-1"></i>
+                <p>Orderview</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('user.index') }}" class="nav-link ">
-                <i class="fa fa-users nav-icon"></i>
-                <p>Users</p>
+              <a href="{{ route('orderstatus') }}" class="nav-link ">
+                <i class="nav-icon bi bi-truck m-1"></i>
+                <p>Orderstatus</p>
               </a>
             </li>
           </ul>
