@@ -1,21 +1,3 @@
-<!-- <!-- 
-01/08/2024
-  Today report :
-     EMC tracker
-     pagination and validation in orderplacing
-
-      
-01/08/2024
-Authentication login 
-design buy now page
-
-
-/08/2024
-  Today report :
-       design cart page 
-       dhs testing
--->
-
 <div class="col-md-8">
                 <div class="card card-outline card-primary">
                     <div class="card-header">

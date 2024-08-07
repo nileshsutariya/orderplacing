@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $table = 'partyorder';
+    protected $table = 'order';
 
     protected $primaryKey = 'id';
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
-
+use App\Models\OrderDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +14,9 @@ class OrderController extends Controller
 {
     public function orderview()
     {
-        $partyOrders = Order::all();
+        $partyOrders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.*', 'order.*')->get();
+        // print_r($partyOrders); die;
+        
         return view('orderview', compact('partyOrders'));
     }
     public function orderstatus() 
@@ -49,11 +51,23 @@ class OrderController extends Controller
             $order->tax_amount = $request['taxamount'];
             $order->final_total = $request['finaltotal'];
             $order->status = 0;
-            // $order->save()
-            $cart=Cart::where('party_id', $partyid)->get();
-            // print_r($cart->toArray()); die();
+            $order->save();
 
-            
+            $order_id=$order->id;
+
+            $cart=Cart::where('party_id', $partyid)->get();
+
+            foreach($cart as $value){
+                $order_details= new OrderDetails();
+                $order_details->order_id=$order_id;
+                $order_details->item_id=$value->item_id;   
+                $order_details->qty=$value->qty;
+                // print_r($order_details);die;
+                $order_details->save();
+
+                $cartdelete=Cart::where('party_id', $partyid)->where('item_id',$value->item_id)->delete();
+            }
+        
             $url=$request->url();
             if (strpos($url, 'api') == true){
                  return response()->json("register successfully.");

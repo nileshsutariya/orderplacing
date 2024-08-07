@@ -26,7 +26,7 @@
                         <div class="row">
                             @foreach($partyOrders as $order)
                             <div class="col-md-12 mb-3">
-                                <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->buter_name }}"> {{--  id --}}
+                                <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->buyer_name }}"> {{--  id --}}
                                     <div class="card-body">
                                         {{-- <div class="text text-lg">Order ID: {{ $order->id }}</div> --}}
                                         <div class="text text-lg text-bold">BUYER NAME </div>{{ $order->buyer_name }}{{--  id --}}

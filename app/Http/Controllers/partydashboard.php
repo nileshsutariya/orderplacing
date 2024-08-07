@@ -88,7 +88,6 @@ class partydashboard extends Controller
 {
     public function index()
     {   
-        // print_r(Auth::user());die();
         $partyid = Auth::guard('party')->id();
         $party=Party::where('id',$partyid)->first();
         $cart = Item::all();
@@ -102,11 +101,9 @@ class partydashboard extends Controller
     public function cartview(){
         $partyid = Auth::guard('party')->id();
         $party=Party::where('id',$partyid)->first();
-        $item = Cart::join('item','cart.item_id','=','item.id')->select('item.*','cart.*')->where('party_id',$partyid)->get();
+        $item = Cart::leftjoin('item','cart.item_id','=','item.id')->select('item.*','cart.*')->where('party_id',$partyid)->get();
         $taxpercentage=Tax::where('id',1)->first();
-        $total=0;        
-        $totalqty=0; 
-        $tax=0;
+        $total=0;  $totalqty=0; $tax=0;
         foreach($item as $value){
             $total+=$value->price*$value->qty;
             $totalqty+=$value->qty;
@@ -131,5 +128,13 @@ class partydashboard extends Controller
             $cart->save();
         }
         return redirect()->route('cartview');
+    }
+    
+    public function cartqtyupdate(Request $request){
+        $partyid = Auth::guard('party')->id();
+        $itemid=$request->id;
+        $cart=Cart::find($itemid);
+        $cart->qty=$request->qty;
+        $cart->save();
     }
 }
