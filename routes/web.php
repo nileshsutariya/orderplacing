@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\partyorderdetails;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
@@ -72,7 +73,7 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/Customer/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
     Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
 
-    Route::get('/party/orderview',[PartyController::class, 'orderview'])->name('partyorderview');
+    // Route::get('/party/orderview',[PartyController::class, 'orderview'])->name('partyorderview');
 
     Route::get('/cart/{id}',[partydashboard::class,'cart'])->name('cart');
     Route::get('/cart',[partydashboard::class,'cartview'])->name('cartview');
@@ -80,6 +81,9 @@ Route::group(['prefix'=>'admin'], function () {
     Route::post('/cart/update',[partydashboard::class,'cartqtyupdate'])->name('cart.qty.update');
 
     Route::post('/order/store',[OrderController::class,'store'] )->name('order.store');
+    Route::get('/draft',[partyorderdetails::class,'draft'])->name('draft');
+    Route::get('/pendingorder',[partyorderdetails::class,'pendingorder'])->name('pendingorder');
+    Route::get('/completeorder',[partyorderdetails::class,'completeorder'])->name('completeorder');
 
     Route::get('/tax',[TaxController::class,'index'] )->name('tax.index');
     Route::post('/tax/store',[taxController::class,'store'] )->name('tax.store');
