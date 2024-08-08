@@ -107,4 +107,7 @@ class PartyController extends Controller
         $party->save();
         return redirect()->route('loginform');
     }
+
+    
+    
 } 
