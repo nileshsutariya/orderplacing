@@ -94,16 +94,25 @@
               <p class="ml-1">Profile </p>
               </a>
             </li>
-            <li class="nav-item li">
 
+            <li class="nav-item li">
               <a href="{{route('draft')}}" class="nav-link ">
               <i class="fa fa-shopping-bag ml-1" aria-hidden="true"></i>
               <p class="ml-2">Draft </p>
+              </a>
+            </li>
 
-              <a href="{{route('partyorderview')}}" class="nav-link ">
+            <li class="nav-item li">
+            <a href="{{route('pendingorder')}}" class="nav-link ">
               <i class="fas fa-user-edit ml-1"></i>
-              <p class="ml-1">Orderview </p>
-
+              <p class="ml-1">Pending Order </p>
+              </a>
+            </li> 
+            
+            <li class="nav-item li">
+              <a href="{{route('completeorder', $party->id)}}" class="nav-link ">
+              <i class="fas fa-user-edit ml-1"></i>
+              <p class="ml-1">Complete Order  </p>
               </a>
             </li>
           </ul>

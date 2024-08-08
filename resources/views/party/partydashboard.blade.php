@@ -30,13 +30,9 @@
                                 <h3>{{ $value->name }}</h3>
                             </div>
                             <span>{{ $value->description }}</span><br>
-                            <img class="product-image" src="{{ $value->image }}" style="width: 300px; height: 200px;" alt="">
-                            {{-- <span>{{$value->description}}</span> --}}
+                            <img class="product-image" src="{{ $value->image }}"  alt="">
                           </div>
                           <div class="card-body">
-                            {{-- <div class="row mb-3 ">
-                                <img class="product-image" src="{{ $value->image }}">
-                            </div> --}}
                             <div class="row text-right">
                                 <div class="col-sm-12 text-right text-lg  ">
                                     <span class="price">₹ {{ $value->price }}</span>

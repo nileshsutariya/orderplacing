@@ -80,7 +80,7 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/Customer/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
     Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
 
-    Route::get('/party/orderview',[PartyController::class, 'orderview'])->name('partyorderview');
+    // Route::get('/party/orderview',[PartyController::class, 'orderview'])->name('partyorderview');
 
     Route::get('/cart/{id}',[partydashboard::class,'cart'])->name('cart');
     Route::get('/cart',[partydashboard::class,'cartview'])->name('cartview');
@@ -89,6 +89,8 @@ Route::group(['prefix'=>'admin'], function () {
 
     Route::post('/order/store',[OrderController::class,'store'] )->name('order.store');
     Route::get('/draft',[partyorderdetails::class,'draft'])->name('draft');
+    Route::get('/pendingorder',[partyorderdetails::class,'pendingorder'])->name('pendingorder');
+    Route::get('/completeorder',[partyorderdetails::class,'completeorder'])->name('completeorder');
 
 
 

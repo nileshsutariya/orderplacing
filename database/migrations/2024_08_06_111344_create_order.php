@@ -14,15 +14,6 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('party_id');
-            // $table->string('buyer_name');
-            // $table->string('phone_number');
-            // $table->string('address')->nullable();
-            // $table->string('item_name');
-            // $table->string('price');
-            // $table->string('qty');
-            // $table->string('total');
-            // $table->foreign('party_id')->references('id')->on('party_master')->onUpdate("cascade")->onDelete("cascade");
-            // // $table->boolean('order_status')->default(0)->comment('0 is Pending , 1 is Accept , 2 is Cancel');
             $table->foreign('party_id')->references('id')->on('party_master')->onUpdate("cascade")->onDelete("cascade");
             $table->string('total_products');
             $table->string('subtotal');
@@ -30,6 +21,8 @@ return new class extends Migration
             $table->string('tax_amount');
             $table->string('final_total');
             $table->boolean('status')->default(0)->comment('0 is Pending , 1 is Shipped , 2 is Completed');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }
