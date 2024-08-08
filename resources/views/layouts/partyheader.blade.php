@@ -89,15 +89,21 @@
             </li>
     
             <li class="nav-item li">
-              <a href="{{route('party.edit',$party->id)}}" class="nav-link ">
+              <a href="{{route('party.edit', $party->id)}}" class="nav-link ">
               <i class="fas fa-user-edit ml-1"></i>
               <p class="ml-1">Profile </p>
               </a>
             </li>
             <li class="nav-item li">
+
               <a href="{{route('draft')}}" class="nav-link ">
               <i class="fa fa-shopping-bag ml-1" aria-hidden="true"></i>
               <p class="ml-2">Draft </p>
+
+              <a href="{{route('partyorderview')}}" class="nav-link ">
+              <i class="fas fa-user-edit ml-1"></i>
+              <p class="ml-1">Orderview </p>
+
               </a>
             </li>
           </ul>

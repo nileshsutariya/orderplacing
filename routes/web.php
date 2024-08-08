@@ -80,6 +80,8 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/Customer/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
     Route::post('/party/update',[PartyController::class,'update'] )->name('party.update');
 
+    Route::get('/party/orderview',[PartyController::class, 'orderview'])->name('partyorderview');
+
     Route::get('/cart/{id}',[partydashboard::class,'cart'])->name('cart');
     Route::get('/cart',[partydashboard::class,'cartview'])->name('cartview');
     Route::get('/cart/delete/{id}',[partydashboard::class,'delete'])->name('cart.delete');
