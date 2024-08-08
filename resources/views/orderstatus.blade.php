@@ -54,27 +54,28 @@
                                 <tbody>
                                     @foreach($partyorders as $key=> $order)
                                         <tr>
+                                            <input type="hidden" value="{{$order->id}}">
                                             <td class="text">{{ $order->buyer_name }}</td>
                                             <td class="text"><b>Delivery address : </b>{{ $order->buyer_address }}</td>
                                             <td class="text">{{ $order->subtotal }}</td>
                                             <td class="text">{{ $order->tax_percentage }}</td>
                                             <td class="text">{{ $order->tax_amount }}</td>
                                             <td class="text">{{ $order->final_total }}</td>
-                                            <td>
+                                            <td class="status">
                                                 @if ($order->status == '0')
                                                     <form action="{{ route('statusupdate', $order->id) }}" method="POST">
                                                         {{ csrf_field() }}
-                                                        <button type="submit" class="btn btn-warning" style="border: none;" value="0"><i class="bi bi-exclamation-circle-fill m-2"> Pending </i></button>
+                                                        <button type="submit" class="btn btn-warning update-status" style="border: none;" value="0"><i class="bi bi-exclamation-circle-fill m-2"> Pending </i></button>
                                                     </form>
                                                 @elseif($order->status == '1')
                                                     <form action="{{ route('statusupdate', $order->id) }}" method="POST">
                                                         {{ csrf_field() }}
-                                                        <button type="submit" class="btn btn-info" style="border: none;" name="changeStatus" value="1"><i class="bi bi-clock-fill m-2"> Shipped </i></button>
+                                                        <button type="submit" class="btn btn-info update-status" style="border: none;" name="changeStatus" value="1"><i class="bi bi-clock-fill m-2"> Shipped </i></button>
                                                     </form>
                                                 @else
                                                     <form action="{{ route('statusupdate', $order->id) }}" method="POST">
                                                         {{ csrf_field() }}
-                                                        <button type="submit" class="btn btn-success" style="border: none;" name="changeStatus" value="2"><i class="bi bi-check-circle-fill m-2"> Completed </i></button>
+                                                        <button type="submit" class="btn btn-success update-status" style="border: none;" name="changeStatus" value="2"><i class="bi bi-check-circle-fill m-2"> Completed </i></button>
                                                     </form>
                                                 @endif
                                             </td>
