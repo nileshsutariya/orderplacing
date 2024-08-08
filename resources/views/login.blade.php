@@ -44,10 +44,9 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember" name="remember">
-              <label for="remember">
-                Remember Me
-              </label>
+              <p class="mb-0">
+                <a href="{{route('party.index')}}" class="text-center">Register</a>
+              </p> 
             </div>
           </div>
           <div class="col-4">
@@ -58,9 +57,7 @@
       {{-- <p class="mb-1">
         <a href="#">I forgot my password</a>
       </p> --}}
-       <p class="mb-0">
-        <a href="{{route('party.index')}}" class="text-center">Register</a>
-      </p> 
+       
     </div>
   </div>
 </div>

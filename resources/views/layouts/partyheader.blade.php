@@ -87,17 +87,17 @@
               <p>Dashboard </p>
               </a>
             </li>
-    
+            
             <li class="nav-item li">
               <a href="{{route('party.edit', $party->id)}}" class="nav-link ">
-              <i class="fas fa-user-edit ml-1"></i>
-              <p class="ml-1">Profile </p>
+                <i class="fas fa-user-edit ml-1"></i>
+                <p class="ml-1">Profile </p>
               </a>
             </li>
             <li class="nav-item li">
               <a href="{{route('partyorderview')}}" class="nav-link ">
-              <i class="fas fa-user-edit ml-1"></i>
-              <p class="ml-1">Orderview </p>
+                <i class="nav-icon bi bi-bag-check-fill m-1"></i>
+              <p>Orderview </p>
               </a>
             </li>
           </ul>

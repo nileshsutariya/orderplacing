@@ -25,18 +25,12 @@ Route::get('/orderview', [OrderController::class, 'orderview'])->name('orderview
 Route::get('/orderstatus', [OrderController::class, 'orderstatus'])->name('orderstatus');
 Route::post('/statusupdate/{id}', [OrderController::class, 'statusupdate'])->name('statusupdate');
 
-Route::get('/party',[PartyController::class,'index'] )->name('party.index');
-Route::post('/party/store',[PartyController::class,'store'] )->name('party.store');
-
 Route::get('/ordernow',[AdminDashboard::class,'ordernow'] )->name('party.ordernow');
 Route::post('/orderconfirm',[partydashboard::class,'orderconfirm'] )->name('party.orderconfirm');
-// Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');
 
 Route::post('/fileupload', [ItemController::class, 'upload']);
 
 Route::group(['prefix'=>'admin'], function () {
-
-    Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
 
     Route::get('/item',[ItemController::class,'index'] )->name('item.index');
     Route::post('/item/store',[ItemController::class,'store'] )->name('item.store');
@@ -49,7 +43,6 @@ Route::group(['prefix'=>'admin'], function () {
     Route::get('/itemgroup/edit/{id}',[Item_groupController::class,'edit'] )->name('itemgroup.edit');
     Route::post('/itemgroup/update',[Item_groupController::class,'update'] )->name('itemgroup.update');
     Route::get('/itemgroup/delete/{id}',[Item_groupController::class,'delete'] )->name('itemgroup.delete');
-    
 
     Route::get('/party/delete/{id}',[PartyController::class,'delete'] )->name('party.delete');
 
@@ -88,12 +81,10 @@ Route::group(['prefix'=>'admin'], function () {
 
     Route::post('/order/store',[OrderController::class,'store'] )->name('order.store');
 
-
-
     Route::get('/tax',[TaxController::class,'index'] )->name('tax.index');
     Route::post('/tax/store',[taxController::class,'store'] )->name('tax.store');
     Route::post('/tax/update',[taxController::class,'update'] )->name('tax.update');
-    Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
+    // Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
 
 
 
