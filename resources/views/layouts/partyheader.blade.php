@@ -94,6 +94,12 @@
               <p class="ml-1">Profile </p>
               </a>
             </li>
+            <li class="nav-item li">
+              <a href="{{route('draft')}}" class="nav-link ">
+              <i class="fa fa-shopping-bag ml-1" aria-hidden="true"></i>
+              <p class="ml-2">Draft </p>
+              </a>
+            </li>
           </ul>
           <!-- /.sidebar-menu -->
       </div>
