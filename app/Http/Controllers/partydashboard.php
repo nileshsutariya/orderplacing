@@ -14,10 +14,9 @@ class partydashboard extends Controller
 {
     public function index()
     {   
-        $partyid = Auth::guard('party')->id();
-        $party=Party::where('id',$partyid)->first();
+        $party=Party::where('id',Auth::guard('party')->id())->first();
         $cart = Item::all();
-        return view('party.partydashboard', compact('cart','party','partyid'));
+        return view('party.partydashboard', compact('cart','party'));
     }
     public function delete($id){
         $cart= Cart::find($id)->delete();

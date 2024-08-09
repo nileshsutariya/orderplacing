@@ -108,17 +108,17 @@ class PartyController extends Controller
         }
         $party->status = $status;
         $party->save();
-        return redirect()->route('loginform');
+        return redirect()->route('partydashboard.index');
     }
-    public function orderview()
-    {
-        $partyId = Auth::guard('party')->id();
-        $partyorders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.name as buyer_name','party_master.address as buyer_address','party_master.phone_number as buyer_phone_number', 'order.*')->get();
-        foreach($partyorders as $key => $details){
-            $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
-        }
-        // print_r($orderitem); die();
-        return view('party.orderview', compact('partyorders', 'orderitem'));
-    }
+    // public function orderview()
+    // {
+    //     $partyId = Auth::guard('party')->id();
+    //     $partyorders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.name as buyer_name','party_master.address as buyer_address','party_master.phone_number as buyer_phone_number', 'order.*')->get();
+    //     foreach($partyorders as $key => $details){
+    //         $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
+    //     }
+    //     // print_r($orderitem); die();
+    //     return view('party.orderview', compact('partyorders', 'orderitem'));
+    // }
     
 } 

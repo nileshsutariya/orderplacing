@@ -18,11 +18,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Login</b></a>
+    <!-- <a href="#"><b>Login</b></a> -->
   </div>
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to get admin access</p>
+  <div class="card card-outline card-primary">
+    <div class="card-body login-card-body text-dark">
+      <p class="login-box-msg text-bold text-lg">Login</p>
       <form action="{{route('login')}}" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -33,6 +33,11 @@
             </div>
           </div>
         </div>
+        @error('fail')
+        <div class="alert alert-primary" role="alert">
+  This is a primary alert—check it out!
+</div>
+@enderror
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
@@ -41,23 +46,16 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <p class="mb-0">
-                <a href="{{route('party.index')}}" class="text-center">Register</a>
-              </p> 
+            <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-block" >Sign In</button>
             </div>
-          </div>
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-        </div>
+          <!-- </div> -->
+          <div class="d-grid text-center mt-2">
+            Not a Member Yet? 
+          <a href="{{route('party.index')}}" class="text-center">Sign Up</a>
+          </div> 
       </form>
-      {{-- <p class="mb-1">
-        <a href="#">I forgot my password</a>
-      </p> --}}
-       
+
     </div>
   </div>
 </div>

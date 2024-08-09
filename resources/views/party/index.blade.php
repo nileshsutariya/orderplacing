@@ -23,17 +23,17 @@
 <section class="content">
     <div class="container-fluid  mx-auto">
         <div class="row">
-        @if(!isset($party))
-            <div class="col-md-12 mt-5 p-4">
-                <div class="card card-outline card-info mx-auto"  style="width: 40rem; bordered: 5px;">
-                <div class="card-header">
-                        <h3 class="card-title"> Registration</h3>
-                    </div>
-                @else            
-                <div class="col-md-12 ">
-                <div class="card card-outline card-info m-3">
+        @if(isset($party))
+        <div class="col-md-12 ">
+                <div class="card card-outline card-info">
                 <div class="card-header">
                         <h3 class="card-title">Update the profile</h3>
+                    </div>
+                @else            
+                    <div class="col-md-12 mt-5 p-4">
+                <div class="card card-outline card-info mx-auto"  style="width: 30rem; bordered: 5px;">
+                <div class="card-header">
+                        <h3 class="card-title"> Registration</h3>
                     </div>
                 @endif
                     <div class="card-body">
@@ -153,7 +153,14 @@
                         </div><br>  
                         <input type="hidden" class="form-control" id="id" name="id"
                             value="{{isset($party)? $party->id:''}} ">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="d-grid">
+                                @if (isset($party))
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                @else
+                                <button type="submit" class="btn btn-primary">Register</button>
+                                @endif
+
+                            </div>
                     </div>
                     </form>
                 </div>

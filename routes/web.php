@@ -17,14 +17,16 @@ use App\Http\Controllers\Item_groupController;
 use App\Http\Controllers\LoginController;
 
 Route::get('/', [LoginController::class, 'index'])->name('loginform');
-// Route::get('/abc', [LoginController::class,'login'])->name('login');
-Route::post('/asd', [LoginController::class, 'login'])->name('login')->middleware('admin');
+Route::post('/asd', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['admin'])->group(function () {
+Route::get('/register',[PartyController::class,'index'] )->name('party.index');
+Route::post('/store',[PartyController::class,'store'] )->name('party.store');
+
+Route::middleware(['users'])->group(function () {
     Route::group(['prefix'=>'admin'], function () {
-    Route::get('/dashboard/admin', [AdminDashboard::class, 'dashboard'])->name('admindashboard');
-    Route::get('/orderview', [OrderController::class, 'orderview'])->name('orderview');
+    Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
+   Route::get('/orderview', [OrderController::class, 'orderview'])->name('orderview');
     Route::get('/orderstatus', [OrderController::class, 'orderstatus'])->name('orderstatus');
     Route::post('/statusupdate/{id}', [OrderController::class, 'statusupdate'])->name('statusupdate');
     
@@ -48,24 +50,20 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/user/update',[UserController::class,'update'] )->name('user.update');
     Route::get('/user/delete/{id}',[UserController::class,'delete'] )->name('user.delete');
     
-    // print_r('sdfghjknbvfdertyhjk');die;
-    Route::get('/dashboard',[dashboard::class,'index'] )->name('dashboard.index');
-    Route::get('/cart',[dashboard::class,'index'])->name('party.cart');
+    Route::get('/tax',[TaxController::class,'index'] )->name('tax');
+    Route::post('/tax/update',[taxController::class,'update'] )->name('tax.update');
 });
 });
-// Route::middleware('admin')->group(function () {
-    //     Route::get('/', [AdminController::class, 'adminindex'])->name('index');
-        
-        // Route::get('/party/dashboard', function () {
-        //     return view('partydashboard');
-        // }); 
+//     Route::get('/', [AdminController::class, 'adminindex'])->name('index');
+
+// Route::get('/party/dashboard', function () {
+    //     return view('partydashboard');
+    // }); 
+    Route::middleware('party')->group(function () {
     Route::group(['prefix'=>'Customer'], function () {
         
     Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');
 
-    Route::get('/register',[PartyController::class,'index'] )->name('party.index');
-    Route::post('/store',[PartyController::class,'store'] )->name('party.store');
-    
     Route::get('/edit/{id}',[PartyController::class,'edit'] )->name('party.edit');
     Route::post('/update',[PartyController::class,'update'] )->name('party.update');
 
@@ -79,8 +77,5 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/pendingorder',[partyorderdetails::class,'pendingorder'])->name('pendingorder');
     Route::get('/completeorder',[partyorderdetails::class,'completeorder'])->name('completeorder');
 
-    Route::get('/tax',[TaxController::class,'index'] )->name('tax');
-    Route::post('/tax/update',[taxController::class,'update'] )->name('tax.update');
-
 });
-// });
+});
