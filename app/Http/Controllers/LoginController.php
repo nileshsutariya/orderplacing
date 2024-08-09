@@ -24,16 +24,14 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         
         if (Auth::guard('users')->attempt($credentials)) {
-    
-            // print_r("hgedgh"); die;
             return redirect()->route('dashboard.index'); 
         }
         elseif(Auth::guard('party')->attempt($credentials)) {
             return redirect()->route('partydashboard.index');
         }
         else {
-            Auth::logout();
-            return redirect()->back();
+            // return back()->with('fail', 'The password you entered is invalid.');.
+            return back()->withInput()->withErrors(['fail' => 'Wrong Password',]); 
         }
     }
     

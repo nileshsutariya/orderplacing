@@ -59,7 +59,7 @@ Route::middleware(['users'])->group(function () {
 // Route::get('/party/dashboard', function () {
     //     return view('partydashboard');
     // }); 
-    Route::middleware('party')->group(function () {
+Route::middleware('party')->group(function () {
     Route::group(['prefix'=>'Customer'], function () {
         
     Route::get('/partydashboard',[partydashboard::class,'index'] )->name('partydashboard.index');

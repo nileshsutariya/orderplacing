@@ -33,11 +33,9 @@
             </div>
           </div>
         </div>
-        @error('fail')
-        <div class="alert alert-primary" role="alert">
-  This is a primary alert—check it out!
-</div>
-@enderror
+        @error ('email')
+        <span class="error " style="color:red; float:right;">{{$message}}</span>
+        @enderror
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
@@ -45,7 +43,10 @@
               <span class="fas fa-lock"></span>
             </div>
           </div>
-        </div>
+        </div>   
+        @error ('password')
+        <span class="error" style="color:red;  float:right;">{{$message}}</span>
+        @enderror
             <div class="d-grid">
             <button type="submit" class="btn btn-primary btn-block" >Sign In</button>
             </div>
@@ -54,6 +55,11 @@
             Not a Member Yet? 
           <a href="{{route('party.index')}}" class="text-center">Sign Up</a>
           </div> 
+         @error('fail')
+                <div class="alert alert-secondary" role="alert">
+                {{$message }}
+              </div>
+        @enderror
       </form>
 
     </div>
