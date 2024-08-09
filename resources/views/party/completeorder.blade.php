@@ -1,14 +1,15 @@
 @include('layouts.partyheader')
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Pending Order</h1>
+                <h1 class="m-0">Complete Order</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Pending Order details</li>
+                    <li class="breadcrumb-item active">Complete Order details</li>
                 </ol>
             </div>
         </div>
@@ -20,16 +21,16 @@
             <div class="col-md-12 mb-3">
                 <div class="card card-outline card-secondary shadow">
                     <div class="card-header">
-                        <h3 class="card-title">Pending Order</h3>
+                        <h3 class="card-title">Complete Order</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
+                           @if(isset($partyorders))
                             @foreach($partyorders as $key=> $order)
                             <div class="col-md-12 mb-3">
                                 <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->buyer_name }}"> 
                                     <div class="card-body">
                                         {{-- <div class="text text-lg">Order ID: {{ $order->id }}</div> --}}
-                                      
                                         <div class="row">
                                             <div class="col-md-6 ">
                                             <span class="text-lg text-bold">
@@ -53,13 +54,10 @@
                                         </div>
                                         
                                         <div class="extra-details" id="extra{{ $order->id }}" style="display: none;">
-                                            <hr>
-                                            <h4>Order Details</h4>
                                             <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
-                                                    
                                                     <th scope="col">Product</th>
                                                     <th scope="col">Price</th>
                                                     <th scope="col">Qty</th>
@@ -91,6 +89,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

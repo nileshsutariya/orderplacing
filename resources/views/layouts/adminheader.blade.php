@@ -58,7 +58,7 @@
         <li class="nav-item d-none d-sm-inline-block float-right">
           <a href="#" class="btn btn-primary"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="{{ route('adminlogout') }}" method="POST" style="display: none;">
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
           </form>
         </li>
@@ -122,6 +122,12 @@
               <a href="{{ route('orderstatus') }}" class="nav-link ">
                 <i class="nav-icon bi bi-truck m-1"></i>
                 <p>Orderstatus</p>
+              </a>
+            </li>
+            <li class="nav-item li">
+              <a href="{{ route('tax') }}" class="nav-link ">
+                <i class="fa fa-cog m-1"></i>
+                <p>Setting</p>
               </a>
             </li>
           </ul>

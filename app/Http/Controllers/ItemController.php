@@ -87,10 +87,10 @@ class ItemController extends Controller
         $item->qty = $request['qty'];
         if($image=$request->file('image')){
             $imagename= $image->getClientOriginalName();
-            $imagepath='public/imageuploaded/';
+            $imagepath='public/';
             $image->move($imagepath,$imagename);
 
-            $item->image=$imagepath.$imagename;
+            $item->image=$imagename;
         }
         if ($request['status'] == 'on') {
             $status = 1;
@@ -107,7 +107,6 @@ class ItemController extends Controller
             $itemgroup= Item_group::all();
             return redirect()->route('item.index');
          }
-        
         }
     
 }

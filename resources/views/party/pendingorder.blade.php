@@ -24,6 +24,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            @if(isset($partyorders))
                             @foreach($partyorders as $key=> $order)
                             <div class="col-md-12 mb-3">
                                 <div class="card card-outline card-container" style="width: 100%;" id="card{{ $order->buyer_name }}"> 
@@ -60,6 +61,8 @@
                                             <table class="table table-bordered">
                                                 <thead class="thead-light">
                                                 <tr>
+                                                <!-- <div class="text"><b>Order Id : </b>{{ $order->id }} -->
+
                                                     <div><b>Phone Number :  </b>{{ $party->phone_number }}</div>
                                                     <div><b>Address : </b> {{ $party->address }}</div>
                                                     <div><b>Order Date : </b> {{ $date[$key] }}</div>
@@ -94,6 +97,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -58,7 +58,7 @@
         <li class="nav-item d-none d-sm-inline-block float-right">
           <a href="#" class="btn btn-primary"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-          <form id="logout-form" action="{{ route('adminlogout') }}" method="POST" style="display: none;">
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
           </form>
         </li>
@@ -98,21 +98,21 @@
             <li class="nav-item li">
               <a href="{{route('draft')}}" class="nav-link ">
               <i class="fa fa-shopping-bag ml-1" aria-hidden="true"></i>
-              <p class="ml-2">Draft </p>
+              <p class="ml-1 pl-2">Draft </p>
               </a>
             </li>
 
             <li class="nav-item li">
             <a href="{{route('pendingorder')}}" class="nav-link ">
-              <i class="fas fa-user-edit ml-1"></i>
-              <p class="ml-1">Pending Order </p>
+              <i class="bi bi-clock-fill ml-1"></i>
+              <p class="ml-1 pl-1">  Pending Order </p>
               </a>
             </li> 
             
             <li class="nav-item li">
-              <a href="{{route('completeorder', $party->id)}}" class="nav-link ">
-              <i class="fas fa-user-edit ml-1"></i>
-              <p class="ml-1">Complete Order  </p>
+              <a href="{{route('completeorder')}}" class="nav-link ">
+              <i class="bi bi-check-circle-fill ml-1"></i>
+              <p class="ml-2">Complete Order  </p>
               </a>
             </li>
           </ul>

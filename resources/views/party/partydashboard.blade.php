@@ -29,8 +29,11 @@
                             <div class="d-flex justify-content-between">
                                 <h3>{{ $value->name }}</h3>
                             </div>
+                            @php
+                            $path='imageuploaded/'
+                            @endphp
                             <span>{{ $value->description }}</span><br>
-                            <img class="product-image" src="{{ $value->image }}"  alt="">
+                            <img class="product-image" src="{{asset('imageuploaded/'.$value->image)}}" alt="">
                           </div>
                           <div class="card-body">
                             <div class="row text-right">

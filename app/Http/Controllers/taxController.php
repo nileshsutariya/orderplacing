@@ -28,7 +28,7 @@ class taxController extends Controller
             if (strpos($url, 'api') == true){
                  return response()->json("register successfull.");
              }else{
-                return redirect()->route('tax.index');
+                return redirect()->route('tax');
              }
     }
 }

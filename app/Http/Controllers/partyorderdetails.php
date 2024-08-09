@@ -27,26 +27,33 @@ class partyorderdetails extends Controller
     }
     public function pendingorder(){
         $party=Party::where('id',Auth::guard('party')->id())->first();
-        $partyorders = Order::where('party_id', Auth::guard('party')->id())->where('status',0)->get();
-        
-        foreach($partyorders as $key => $details){
-
-            $createDate = new \DateTime($details->created_at);
-            $date[$key]= $createDate->format('d-m-Y');
-            $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
-        }
+        $orders = Order::where('party_id', Auth::guard('party')->id())->where('status',0)->orwhere('party_id', Auth::guard('party')->id())->where('status',1)->get();
+        if(sizeof($orders)!=0){
+        $partyorders = Order::where('party_id', Auth::guard('party')->id())->where('status',0)->orwhere('party_id', Auth::guard('party')->id())->where('status',1)->get();
+            foreach($partyorders as $key => $details){
+                $createDate = new \DateTime($details->created_at);
+                $date[$key]= $createDate->format('d-m-Y');
+                $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
+            }
         return view('party.pendingorder', compact('partyorders','orderitem','party','date'));
+         }else{
+            return view('party.pendingorder',compact('party'));
+         }
     }
     public function completeorder(){
         $party=Party::where('id',Auth::guard('party')->id())->first();
-        $partyorders = Order::where('party_id', Auth::guard('party')->id())->where('status',2)->get();
-        
-        foreach($partyorders as $key => $details){
+        $orders=Order::where('party_id', Auth::guard('party')->id())->where('status',2)->get();
+        if(sizeof($orders)!=0){
+            $partyorders= Order::where('party_id', Auth::guard('party')->id())->where('status',2)->get();
+            foreach($partyorders as $key => $details){
+                $createDate = new \DateTime($details->created_at);
+                $date[$key]= $createDate->format('d-m-Y');
+                $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
+            }
+                return view('party.completeorder', compact('partyorders','orderitem','party','date'));
+        }else{
+            return view('party.completeorder',compact('party'));
 
-            $createDate = new \DateTime($details->created_at);
-            $date[$key]= $createDate->format('d-m-Y');
-            $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
         }
-        return view('party.completeorder', compact('partyorders','orderitem','party','date'));
     }
 }

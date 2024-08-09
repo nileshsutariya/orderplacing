@@ -36,7 +36,7 @@
                                             </a>
                                         </td>
                                         <td  style="width:100px;" class="p-1">
-                                            <img src="{{$value->image}}" style="width: 100px; height:100px;">
+                                            <img src="{{asset('imageuploaded/'.$value->image)}}" style="width: 100px; height:100px;">
                                         </td> 
                                         <td scope="row">
                                             {{ $value->name }}

@@ -54,11 +54,11 @@
                                 <tbody>
                                     @foreach($partyorders as $key=> $order)
                                         <tr>
-                                            <input type="hidden" value="{{$order->id}}">
+                                            <input type="hidden" id="orderid" name="orderid" value="{{$order->id}}">
                                             <td class="text">{{ $order->buyer_name }}</td>
                                             <td class="text"><b>Delivery address : </b>{{ $order->buyer_address }}</td>
                                             <td class="text">{{ $order->subtotal }}</td>
-                                            <td class="text">{{ $order->tax_percentage }}</td>
+                                            <td class="text">{{ $order->tax_percentage }}%</td>
                                             <td class="text">{{ $order->tax_amount }}</td>
                                             <td class="text">{{ $order->final_total }}</td>
                                             <td class="status">

@@ -14,20 +14,27 @@ class OrderController extends Controller
 {
     public function orderview()
     {
+        if(sizeof(Order::all())!=0){
         $partyorders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.name as buyer_name','party_master.address as buyer_address','party_master.phone_number as buyer_phone_number', 'order.*')->get();
         foreach($partyorders as $key => $details){
             $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
         }
-        // print_r($orderitem);die();
         return view('orderview', compact('partyorders','orderitem'));
+    }else{
+        return view('orderview');
+    }
     }
     public function orderstatus() 
     {   
-        $partyorders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.name as buyer_name','party_master.address as buyer_address','party_master.phone_number as buyer_phone_number', 'order.*')->get();
-        foreach($partyorders as $key => $details){
-            $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
+        if(sizeof(Order::all())!=0){
+            $partyorders = Order::leftJoin('party_master', 'party_master.id', '=', 'order.party_id')->select('party_master.name as buyer_name','party_master.address as buyer_address','party_master.phone_number as buyer_phone_number', 'order.*')->get();
+            foreach($partyorders as $key => $details){
+                $orderitem[$key]=OrderDetails::leftJoin('item','item.id','=','order_details.item_id')->where('order_id',$details->id)->select('order_details.*','item.name as item_name','item.price')->get();
+            }
+            return view('orderstatus', compact('partyorders','orderitem'));
+        }else{
+            return view('orderstatus');
         }
-        return view('orderstatus', compact('partyorders','orderitem'));
     }
     public function statusupdate(Request $request, $id) {
         $order = Order::find($id);
